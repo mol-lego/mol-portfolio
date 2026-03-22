@@ -1143,20 +1143,65 @@ export const WorkDetail = () => {
                         href={work.media.noteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center justify-between border border-stone-200 p-6 md:p-8 hover:bg-stone-50 transition-colors"
+                        className="group block overflow-hidden border border-stone-300 bg-stone-50 shadow-[0_24px_60px_-42px_rgba(28,25,23,0.45)] transition-all duration-300 hover:border-stone-400 hover:shadow-[0_28px_70px_-40px_rgba(28,25,23,0.5)]"
                       >
-                        <div className="flex flex-col gap-2 min-w-0">
-                          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase">
-                            Article
-                          </span>
-                          <span className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-800 tracking-widest break-words">
-                            制作記を読む（note）
-                          </span>
+                        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+                          <div className="relative aspect-[16/10] overflow-hidden border-b border-stone-300 md:order-2 md:aspect-auto md:min-h-[320px] md:border-b-0 md:border-l">
+                            <img
+                              src={work.mainVisual}
+                              alt=""
+                              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                              aria-hidden="true"
+                            />
+                            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,25,23,0.08),rgba(28,25,23,0.02)_38%,rgba(250,250,249,0.14))]" />
+                            <div className="absolute left-4 top-4 inline-flex items-center border border-white/70 bg-white/88 px-3 py-1 font-['Inter',_sans-serif] text-[10px] md:text-xs tracking-[0.2em] text-stone-600 shadow-sm backdrop-blur-sm">
+                              note article
+                            </div>
+                          </div>
+
+                          <div className="flex flex-col gap-6 p-6 md:order-1 md:justify-between md:p-9">
+                            <div className="flex items-start justify-between gap-6">
+                              <div className="flex min-w-0 flex-col gap-3">
+                                <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs uppercase tracking-[0.2em] text-stone-500">
+                                  Read the Story
+                                </span>
+                                <div className="flex flex-col gap-3">
+                                  <span className="font-['Noto_Serif_JP',_serif] text-lg md:text-[1.45rem] text-stone-900 tracking-[0.08em] break-words leading-snug">
+                                    この作品の制作記
+                                  </span>
+                                  <p className="max-w-[38rem] font-['Noto_Serif_JP',_serif] text-sm text-stone-700 leading-loose tracking-[0.08em] break-words">
+                                    {work.title}の設計意図や制作中の試行錯誤、展示や撮影の裏話をnoteでまとめています。
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="hidden md:flex h-12 w-12 shrink-0 items-center justify-center border border-stone-300 bg-white text-stone-400 shadow-sm group-hover:text-stone-900 group-hover:border-stone-400 transition-colors">
+                                <ExternalLink
+                                  className="w-4 h-4"
+                                  strokeWidth={1.5}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex items-center justify-between gap-4 border-t border-stone-300/80 pt-4">
+                              <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs tracking-[0.2em] text-stone-500">
+                                Open in note
+                              </span>
+                              <div className="flex items-center gap-2 text-stone-700 group-hover:text-stone-950 transition-colors">
+                                <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs uppercase tracking-[0.22em]">
+                                  View Article
+                                </span>
+                                <ExternalLink
+                                  className="w-3.5 h-3.5 md:hidden"
+                                  strokeWidth={1.5}
+                                />
+                                <ArrowRight
+                                  className="w-3.5 h-3.5"
+                                  strokeWidth={1.5}
+                                />
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <ExternalLink
-                          className="w-4 h-4 text-stone-300 group-hover:text-stone-800 transition-colors"
-                          strokeWidth={1.5}
-                        />
                       </a>
                     </FadeIn>
                   )}
