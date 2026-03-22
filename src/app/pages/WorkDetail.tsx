@@ -44,6 +44,10 @@ import imgVenice8 from "../../assets/optimized/workdetail/venice8.jpg";
 import imgVenice9 from "../../assets/optimized/workdetail/venice9.jpg";
 import imgVenice10 from "../../assets/optimized/workdetail/venice10.jpg";
 import imgVenice11 from "../../assets/optimized/workdetail/venice11.jpg";
+import imgVenice13 from "../../assets/optimized/workdetail/venice13.jpg";
+import imgVenice14 from "../../assets/optimized/workdetail/venice14.jpg";
+import imgVenice15 from "../../assets/optimized/workdetail/venice15.jpg";
+import imgVenice16 from "../../assets/optimized/workdetail/venice16.jpg";
 import imgVeniceOriginal1 from "../../assets/optimized/workdetail/venice_original1.jpg";
 import imgVeniceOriginal2 from "../../assets/optimized/workdetail/venice_original2.jpg";
 import imgHawaii1 from "../../assets/optimized/workdetail/hawaii1.jpg";
@@ -98,7 +102,7 @@ const WORKS_DATA = {
     ],
     overview: [
       "世界有数の豪華客船「クイーンエリザベス号」を1/100スケールで再現した作品で、全長は3メートルに及びます。灘校レゴ同好会時代に手がけた最初の本格的な巨大作品であり、2019年灘校文化祭 SAIL AWAY でお披露目しました。",
-      "優美な船首のカーブ、層をなすデッキ、そしてたくさんの客室の窓やバルコニー、鮮やかな煙突など、特徴をとらえながら再現しています。",
+      "優美な船首のカーブ、層をなすデッキ、そしてたくさんの客室の窓やバルコニー、鮮やかな煙突など、魅力的な客船の特徴をとらえながら再現しています。",
     ],
     gallery: [
       {
@@ -108,7 +112,7 @@ const WORKS_DATA = {
       },
       {
         url: imgQE4,
-        caption: "展示の様子。",
+        caption: "展示の様子",
         span: "md:col-span-1",
       },
     ],
@@ -326,12 +330,20 @@ const WORKS_DATA = {
         caption: "ゴンドラから撮った小運河" 
       },
       {
+        url: imgVenice13,
+        caption: "駒場祭での展示の様子",
+      },
+      {
         url: imgVenice5,
         caption: "レストランでは海の幸たっぷりのイタリアンを",
       },
       {
         url: imgVenice6,
         caption: "どのレストランも美味しそう",
+      },
+      {
+        url: imgVenice14,
+        caption: "多くの来場者に囲まれた展示風景",
       },
     ],
     behindTheScenes: [
@@ -365,6 +377,14 @@ const WORKS_DATA = {
       { 
         url: imgVenice11, 
         caption: "完成した作品の俯瞰図。当初作成した地図とほぼ一致する。" 
+      },
+      {
+        url: imgVenice15,
+        caption: "ミニフィグや小物の配置はピンセットも使いながら細かく調整",
+      },
+      {
+        url: imgVenice16,
+        caption: "30時間かけた撮影の様子",
       },
     ],
     media: {
