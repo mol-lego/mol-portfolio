@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
 import { useImagePreload } from "../useImagePreload";
+import { useIsMobile } from "../components/ui/use-mobile";
 
 import imgQE1 from "../../assets/optimized/workdetail/msqe1.jpg";
 import imgQE2 from "../../assets/optimized/workdetail/msqe2.jpg";
@@ -30,6 +31,8 @@ import imgQE11 from "../../assets/optimized/workdetail/msqe11.jpg";
 import imgQE12 from "../../assets/optimized/workdetail/msqe12.jpg";
 import imgQE13 from "../../assets/optimized/workdetail/msqe13.jpg";
 import imgQE14 from "../../assets/optimized/workdetail/msqe14.jpg";
+import imgQE15 from "../../assets/optimized/workdetail/msqe15.jpg";
+import imgQE16 from "../../assets/optimized/workdetail/msqe16.jpg";
 import imgVenice1 from "../../assets/optimized/workdetail/venice1.jpg";
 import imgVenice2 from "../../assets/optimized/workdetail/venice2.jpg";
 import imgVenice3 from "../../assets/optimized/workdetail/venice3.jpg";
@@ -110,6 +113,10 @@ const WORKS_DATA = {
       },
     ],
     sliderGallery: [
+      {
+        url: imgQE15,
+        caption: "実際のクイーン・エリザベス号",
+      },
       { url: imgQE5, 
         caption: "船尾から" 
       },
@@ -122,12 +129,16 @@ const WORKS_DATA = {
         caption: "灘校レゴ同好会の集合写真",
       },
       {
-        url: imgQE9,
-        caption: "兵庫津ミュージアムでの展示",
+        url: imgQE16,
+        caption: "洋上を進む実船の全景",
       },
       {
         url: imgQE8,
         caption: "ホテル ナビオス横浜のロビーにて",
+      },
+      {
+        url: imgQE9,
+        caption: "兵庫津ミュージアムでの展示",
       },
     ],
     behindTheScenesGallery: [
@@ -155,24 +166,24 @@ const WORKS_DATA = {
     ],
     behindTheScenes: [
       {
-        title: "船首のカーブを描き出す",
+        title: "船首の曲面",
         content:
-          "船特有の滑らかで立体的な曲線を、四角いブロックのみでいかに表現するか。初めての大型作品の制作で一番苦戦したところでした。綺麗な曲面に見えるよう、一段ごとに分けて方眼紙に曲線を引きながら形を決めていきました。",
+          "船特有の滑らかで立体的な曲面を四角いブロックでいかに表現するか。初めての大型作品の制作で一番苦戦したところでした。綺麗な曲面に見えるよう、一段ごとに分けて方眼紙に曲線を引きながら形を決めていきました。",
       },
       {
         title: "目をひくテーマ",
         content:
-          "クイーンエリザベスという船のことは知らなくても、老若男女関係なく「おっきな船だ！」と一目見て分かる、ということは題材としてとても大切です。",
+          "老若男女関係なく「おっきな船だ！」と一目見て分かる、というのは題材としての大きな魅力です。題材決めには半年を要しました。",
       },
       {
         title: "重量を支える内部構造",
         content:
-          "重さ数十キロにもなる作品を安全に運搬し、かつ自重で崩れないよう、内部には隔壁のような補強構造を入れています。完成当初は入れておらず、初めての外部展示の帰りの車の中で一度崩壊したのでした。大型作品に「強度」は必須です。",
+          "重さ数十キロにもなる作品を安全に運搬し、かつ自重で崩れないよう、内部には隔壁のような補強構造を入れています。完成当初は入れておらず、初めての外部展示の帰りの車の中で一度崩壊したのでした。大型作品に強度はとても大切です。",
       },
       {
         title: "運搬のための分割",
         content:
-          "全長3メートルをそのまま運搬するのは至難の業ですから、作品は船首・中央・船尾の３つに分割できるように設計しています。各部のサイズに専用の板を作製することで運搬を容易にしており、灘校体育祭名物の部対抗リレーでは部員が船首を抱えて走ったほどです。",
+          "全長3メートルをそのまま運搬するのは至難の業ですから、作品は船首・中央・船尾の3つに分割できるように設計しています。各部のサイズに専用の板を作製することで運搬を容易にしており、灘校体育祭名物の部対抗リレーでは部員が船首を抱えて走ったらしいです。",
       },
     ],
     media: {
@@ -312,7 +323,7 @@ const WORKS_DATA = {
         caption: "小運河をゴンドラでゆく",
       },
       { url: imgVeniceOriginal2, 
-        caption: "実際の小運河" 
+        caption: "ゴンドラから撮った小運河" 
       },
       {
         url: imgVenice5,
@@ -654,6 +665,7 @@ export const WorkDetail = () => {
     caption?: string;
   } | null>(null);
   const sliderRef = useRef<Slider | null>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -709,16 +721,8 @@ export const WorkDetail = () => {
     pauseOnHover: false,
     pauseOnFocus: false,
     swipeToSlide: true,
-    slidesToShow: 2,
+    slidesToShow: isMobile ? 1 : 2,
     slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
   };
 
   const scrollSlider = (direction: "prev" | "next") => {
@@ -984,6 +988,7 @@ export const WorkDetail = () => {
                         </div>
                     
                         <Slider
+                          key={isMobile ? "mobile" : "desktop"}
                           ref={sliderRef}
                           {...sliderSettings}
                           className="-mx-2 md:-mx-4 [&_.slick-list]:overflow-hidden [&_.slick-track]:flex"
@@ -1295,11 +1300,18 @@ export const WorkDetail = () => {
             exit={{ opacity: 0, scale: 0.995, y: 4 }}
             transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img
-              src={expandedImage.src}
-              alt={expandedImage.alt}
-              className="max-h-[82vh] w-auto max-w-full object-contain"
-            />
+            <button
+              type="button"
+              onClick={() => setExpandedImage(null)}
+              className="cursor-zoom-out self-center"
+              aria-label="画像を閉じる"
+            >
+              <img
+                src={expandedImage.src}
+                alt={expandedImage.alt}
+                className="max-h-[82vh] w-auto max-w-full object-contain"
+              />
+            </button>
             {expandedImage.caption && (
               <p className="font-['Noto_Serif_JP',_serif] text-xs tracking-wider text-white/75">
                 {expandedImage.caption}
