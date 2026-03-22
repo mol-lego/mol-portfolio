@@ -10,6 +10,7 @@ document.addEventListener("touchmove", preventScroll, { passive: false });
 const searchParams = new URLSearchParams(window.location.search);
 const backTarget = searchParams.get("back") || "/ar-viewer";
 const backButton = document.querySelector(".ar-back");
+const modelViewer = document.querySelector(".ar-model");
 
 if (backButton) {
   backButton.addEventListener("click", () => {
@@ -40,3 +41,17 @@ window.addEventListener("resize", () => {
 });
 
 setFillHeight();
+
+if (modelViewer) {
+  modelViewer.addEventListener("load", () => {
+    const { x, y, z } = modelViewer.getDimensions();
+    const horizontalSpan = Math.max(x, z);
+    const targetY = Math.max(y * 0.1, 0.01);
+    const radius = Math.max(horizontalSpan * 1.8, y * 0.9, 0.01);
+
+    modelViewer.cameraTarget = `0m ${targetY}m 0m`;
+    modelViewer.cameraOrbit = `-135deg 76deg ${radius}m`;
+    modelViewer.fieldOfView = "28deg";
+    modelViewer.jumpCameraToGoal();
+  }, { once: true });
+}

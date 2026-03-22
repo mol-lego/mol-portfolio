@@ -11,6 +11,33 @@ const siteUrl = `https://${siteDomain}`;
 const defaultDescription =
   "molの建築・空間デザインのポートフォリオサイト。作品紹介、制作プロセス、ARビューを掲載。";
 
+const pages = [
+  {
+    path: "/about/",
+    title: "mol - プロフィール",
+    description:
+      "molのプロフィール、制作歴、展示会での活動記録を紹介するページ。",
+    ogImageSource: "src/assets/card.png",
+    ogImagePath: "/card.png",
+    width: 1200,
+    height: 630,
+    imageType: "image/png",
+    imageAlt: "mol profile card",
+  },
+  {
+    path: "/process/",
+    title: "mol - 制作プロセス",
+    description:
+      "設計、パーツ購入、組み立て、展示まで、molの作品制作プロセスを紹介するページ。",
+    ogImageSource: "src/assets/card.png",
+    ogImagePath: "/card.png",
+    width: 1200,
+    height: 630,
+    imageType: "image/png",
+    imageAlt: "mol process card",
+  },
+];
+
 const works = [
   {
     id: "01",
@@ -21,6 +48,7 @@ const works = [
     ogImagePath: "/og/work-01.jpg",
     width: 1800,
     height: 1200,
+    imageType: "image/jpeg",
   },
   {
     id: "02",
@@ -31,6 +59,7 @@ const works = [
     ogImagePath: "/og/work-02.jpg",
     width: 1800,
     height: 1200,
+    imageType: "image/jpeg",
   },
   {
     id: "03",
@@ -41,6 +70,7 @@ const works = [
     ogImagePath: "/og/work-03.jpg",
     width: 1800,
     height: 1199,
+    imageType: "image/jpeg",
   },
   {
     id: "04",
@@ -51,6 +81,7 @@ const works = [
     ogImagePath: "/og/work-04.jpg",
     width: 1800,
     height: 1200,
+    imageType: "image/jpeg",
   },
 ];
 
@@ -69,11 +100,11 @@ const replaceTag = (html, pattern, replacement) => {
   return html.replace(pattern, replacement);
 };
 
-const buildPageHtml = (template, work) => {
-  const pageUrl = `${siteUrl}/work/${work.id}/`;
-  const title = `mol - ${work.title}`;
-  const description = work.description || defaultDescription;
-  const imageUrl = `${siteUrl}${work.ogImagePath}`;
+const buildPageHtml = (template, page) => {
+  const pageUrl = `${siteUrl}${page.path}`;
+  const title = page.title;
+  const description = page.description || defaultDescription;
+  const imageUrl = `${siteUrl}${page.ogImagePath}`;
 
   let html = template;
   html = replaceTag(
@@ -113,18 +144,28 @@ const buildPageHtml = (template, work) => {
   );
   html = replaceTag(
     html,
+    /<meta\s+property="og:image:secure_url"\s+content="[^"]*"\s*\/>/,
+    `<meta property="og:image:secure_url" content="${imageUrl}" />`,
+  );
+  html = replaceTag(
+    html,
+    /<meta\s+property="og:image:type"\s+content="[^"]*"\s*\/>/,
+    `<meta property="og:image:type" content="${page.imageType}" />`,
+  );
+  html = replaceTag(
+    html,
     /<meta\s+property="og:image:width"\s+content="[^"]*"\s*\/>/,
-    `<meta property="og:image:width" content="${work.width}" />`,
+    `<meta property="og:image:width" content="${page.width}" />`,
   );
   html = replaceTag(
     html,
     /<meta\s+property="og:image:height"\s+content="[^"]*"\s*\/>/,
-    `<meta property="og:image:height" content="${work.height}" />`,
+    `<meta property="og:image:height" content="${page.height}" />`,
   );
   html = replaceTag(
     html,
     /<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/>/,
-    `<meta property="og:image:alt" content="${escapeHtml(work.title)}" />`,
+    `<meta property="og:image:alt" content="${escapeHtml(page.imageAlt)}" />`,
   );
   html = replaceTag(
     html,
@@ -141,6 +182,11 @@ const buildPageHtml = (template, work) => {
     /<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/>/,
     `<meta name="twitter:image" content="${imageUrl}" />`,
   );
+  html = replaceTag(
+    html,
+    /<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/>/,
+    `<meta name="twitter:image:alt" content="${escapeHtml(page.imageAlt)}" />`,
+  );
 
   return html;
 };
@@ -151,13 +197,31 @@ const main = () => {
 
   mkdirSync(ogDir, { recursive: true });
 
+  for (const page of pages) {
+    if (page.ogImageSource.startsWith("src/")) {
+      cpSync(resolve(rootDir, page.ogImageSource), resolve(distDir, page.ogImagePath.slice(1)));
+    }
+
+    const pageDir = resolve(distDir, page.path.slice(1));
+    mkdirSync(pageDir, { recursive: true });
+
+    const pageHtml = buildPageHtml(template, page);
+    writeFileSync(resolve(pageDir, "index.html"), pageHtml);
+  }
+
   for (const work of works) {
     cpSync(resolve(rootDir, work.ogImageSource), resolve(distDir, work.ogImagePath.slice(1)));
 
+    const page = {
+      ...work,
+      path: `/work/${work.id}/`,
+      title: `mol - ${work.title}`,
+      imageAlt: work.title,
+    };
     const pageDir = resolve(distDir, "work", work.id);
     mkdirSync(pageDir, { recursive: true });
 
-    const pageHtml = buildPageHtml(template, work);
+    const pageHtml = buildPageHtml(template, page);
     writeFileSync(resolve(pageDir, "index.html"), pageHtml);
   }
 };

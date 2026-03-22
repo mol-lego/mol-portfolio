@@ -583,6 +583,7 @@ const WORKS_DATA = {
         caption: "作品のために作った専用の等高線図",
       },
     ],
+    hasAR: true,
     exhibitions: [
       {
         date: "2020年2月~3月",
