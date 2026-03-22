@@ -17,7 +17,15 @@
       <span>BACK</span>
     </button>
     <figure class="ar-viewport">
-      <model-viewer class="ar-model" poster="hawaii.png" src="hawaii.glb" ios-src="hawaii.usdz" ar ar-modes="quick-look scene-viewer webxr" auto-rotate camera-controls reveal="auto" alt="Hawaii Volcanoes"></model-viewer>
+      <model-viewer class="ar-model" poster="hawaii.png" src="hawaii.glb" ios-src="hawaii.usdz" ar ar-modes="quick-look scene-viewer webxr" auto-rotate camera-controls reveal="auto" alt="Hawaii Volcanoes">
+        <button class="ar-launch" slot="ar-button" type="button" aria-label="ARで表示する">
+          <span class="ar-launch__badge">AR</span>
+          <span class="ar-launch__label">
+            <strong>ARで表示する</strong>
+            <small>実物大で部屋に置いてみる</small>
+          </span>
+        </button>
+      </model-viewer>
     </figure>
   </div>
 </body>
