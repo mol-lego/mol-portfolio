@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mol - ヴェネツィア AR</title>
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <script defer src="index.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+</head>
+<body>
+  <div id="ar-page">
+    <button class="ar-back" type="button" aria-label="戻る">
+      <span class="ar-back__icon" aria-hidden="true"></span>
+      <span>BACK</span>
+    </button>
+    <figure class="ar-viewport">
+      <model-viewer class="ar-model" poster="venice.png" src="venice.glb" ios-src="venice.usdz" ar ar-modes="quick-look scene-viewer webxr" auto-rotate camera-controls reveal="auto" alt="Venice"></model-viewer>
+    </figure>
+  </div>
+</body>
+</html>

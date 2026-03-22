@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      const pathSegmentsToKeep = 1;
+      const { protocol, host, pathname, search, hash } = window.location;
+      const repoBase = pathname
+        .split("/")
+        .slice(0, 1 + pathSegmentsToKeep)
+        .join("/");
+      const route = pathname.slice(repoBase.length).replace(/^\/+/, "");
+      const normalizedSearch = search
+        ? `&${search.slice(1).replace(/&/g, "~and~")}`
+        : "";
+
+      window.location.replace(
+        `${protocol}//${host}${repoBase}/?/${route}${normalizedSearch}${hash}`,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,36 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>mol - ポートフォリオ</title>
+      <script>
+        (() => {
+          const { location } = window;
+          if (!location.search.startsWith("?/")) {
+            return;
+          }
+
+          const decoded = location.search
+            .slice(2)
+            .replace(/~and~/g, "&");
+          const targetPath = decoded.includes("?")
+            ? decoded.replace("?", "&")
+            : decoded;
+
+          window.history.replaceState(
+            null,
+            "",
+            `${location.pathname}${targetPath}${location.hash}`,
+          );
+        })();
+      </script>
+    </head>
+
+    <body>
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+    </body>
+  </html>
+  
