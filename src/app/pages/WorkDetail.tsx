@@ -83,6 +83,22 @@ const WORKS_SEQUENCE = [
   { id: "04", title: "ハワイ火山国立公園" },
 ];
 
+const ARIcon = () => (
+  <svg
+    viewBox="0 0 48 48"
+    aria-hidden="true"
+    className="w-7 h-7 fill-none stroke-current stroke-[2.25]"
+  >
+    <path d="M16 8H10a2 2 0 0 0-2 2v6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M32 8h6a2 2 0 0 1 2 2v6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M40 32v6a2 2 0 0 1-2 2h-6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M16 40h-6a2 2 0 0 1-2-2v-6" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="m24 15 8 4.5v9L24 33l-8-4.5v-9Z" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="m24 15-8 4.5 8 4.5 8-4.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M24 24v9" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const WORKS_DATA = {
   "01": {
     id: "01",
@@ -889,8 +905,8 @@ export const WorkDetail = () => {
               href={arExperiencePath}
               className="group block bg-stone-50 hover:bg-stone-100 border border-stone-200 p-8 transition-colors text-center"
             >
-              <div className="w-12 h-12 mx-auto border border-stone-300 rounded-full flex items-center justify-center mb-4 group-hover:border-stone-500 transition-colors">
-                <div className="w-2 h-2 bg-stone-400 rounded-full group-hover:bg-stone-800 transition-colors" />
+              <div className="w-12 h-12 mx-auto border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                <ARIcon />
               </div>
               <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
                 3D / AR VIEWER
@@ -931,8 +947,8 @@ export const WorkDetail = () => {
                     href={arExperiencePath}
                     className="group block bg-stone-50 hover:bg-stone-100 border border-stone-200 p-8 transition-colors text-center"
                   >
-                    <div className="w-12 h-12 mx-auto border border-stone-300 rounded-full flex items-center justify-center mb-4 group-hover:border-stone-500 transition-colors">
-                      <div className="w-2 h-2 bg-stone-400 rounded-full group-hover:bg-stone-800 transition-colors" />
+                    <div className="w-12 h-12 mx-auto border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                      <ARIcon />
                     </div>
                     <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
                       3D / AR VIEWER

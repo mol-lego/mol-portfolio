@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>mol - 八坂神社 西楼門 AR</title>
   <link rel="stylesheet" type="text/css" href="index.css" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script defer src="index.js"></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
@@ -36,6 +37,14 @@
           </span>
         </button>
       </model-viewer>
+      <aside class="ar-qr" aria-label="スマートフォン向けAR案内">
+        <div class="ar-qr__copy">
+          <span class="ar-qr__eyebrow">AR - 拡張現実</span>
+          <p class="ar-qr__title">スマホで読み取ってAR表示</p>
+          <p class="ar-qr__text">このページをスマートフォンで開くと、実物大で空間に配置できます。</p>
+        </div>
+        <div class="ar-qr__code" aria-hidden="true"></div>
+      </aside>
     </figure>
   </div>
 </body>
