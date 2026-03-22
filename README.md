@@ -13,4 +13,7 @@
   - `Source`: `GitHub Actions`
 
   After that, each push to `main` will build and deploy automatically.
+
+  This workflow builds with `VITE_BASE_PATH=/` so the deployed site works on the
+  configured custom domain.
   

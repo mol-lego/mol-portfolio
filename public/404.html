@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      const pathSegmentsToKeep = 1;
+      const repositoryName = "mol-portfolio";
       const { protocol, host, pathname, search, hash } = window.location;
+      const [, firstSegment = ""] = pathname.split("/");
+      const pathSegmentsToKeep = firstSegment === repositoryName ? 1 : 0;
       const repoBase = pathname
         .split("/")
         .slice(0, 1 + pathSegmentsToKeep)
