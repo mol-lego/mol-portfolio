@@ -9,14 +9,14 @@ const siteDomain = readFileSync(cnamePath, "utf8").trim();
 const siteUrl = `https://${siteDomain}`;
 
 const defaultDescription =
-  "molの建築・空間デザインのポートフォリオサイト。作品紹介、制作プロセス、ARビューを掲載。";
+  "molのLEGO®︎作品をまとめています。写真や制作プロセスに加えて、ARを使って実物大で作品をご覧いただけます！";
 
 const pages = [
   {
     path: "/about/",
     title: "mol - プロフィール",
     description:
-      "molのプロフィール、制作歴、展示会での活動記録を紹介するページ。",
+      "molのプロフィール、制作歴、展示会での活動記録を紹介しています。",
     ogImageSource: "src/assets/card.png",
     ogImagePath: "/card.png",
     width: 1200,
@@ -28,7 +28,7 @@ const pages = [
     path: "/process/",
     title: "mol - 制作プロセス",
     description:
-      "設計、パーツ購入、組み立て、展示まで、molの作品制作プロセスを紹介するページ。",
+      "設計、パーツ購入、組み立て、展示まで、作品制作のプロセスを紹介しています。",
     ogImageSource: "src/assets/card.png",
     ogImagePath: "/card.png",
     width: 1200,
@@ -43,7 +43,7 @@ const works = [
     id: "01",
     title: "クイーンエリザベス号",
     description:
-      "世界有数の豪華客船「クイーンエリザベス号」を1/100スケールで再現した大型作品。",
+      "世界有数の豪華客船「クイーンエリザベス号」を1/100スケールで再現した大型LEGO®︎作品。",
     ogImageSource: "src/assets/optimized/workdetail/msqe1.jpg",
     ogImagePath: "/og/work-01.jpg",
     width: 1800,
@@ -54,7 +54,7 @@ const works = [
     id: "02",
     title: "ヴェネツィア",
     description:
-      "イタリア北部に浮かぶヴェネツィアをミニフィグスケールで再現した共同制作作品。",
+      "イタリア北部に浮かぶヴェネツィアの街並みをLEGO®︎で再現したミニフィグスケールの共同制作作品。",
     ogImageSource: "src/assets/optimized/workdetail/venice1.jpg",
     ogImagePath: "/og/work-02.jpg",
     width: 1800,
@@ -65,7 +65,7 @@ const works = [
     id: "03",
     title: "八坂神社 西楼門",
     description:
-      "京都・祇園の八坂神社 西楼門を52,000ピースで再現した大型作品。",
+      "京都・祇園の八坂神社 西楼門を52,000ピースのLEGO®︎ブロックで再現した大型作品。",
     ogImageSource: "src/assets/optimized/workdetail/yasaka1.jpg",
     ogImagePath: "/og/work-03.jpg",
     width: 1800,
@@ -76,7 +76,7 @@ const works = [
     id: "04",
     title: "ハワイ火山国立公園",
     description:
-      "世界遺産・ハワイ火山国立公園をレゴブロックで再現したジオラマ作品。",
+      "世界遺産・ハワイ火山国立公園をLEGO®︎ブロックで再現したジオラマ作品。",
     ogImageSource: "src/assets/optimized/workdetail/hawaii2.jpg",
     ogImagePath: "/og/work-04.jpg",
     width: 1800,
