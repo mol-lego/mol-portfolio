@@ -12,7 +12,7 @@ import imgHero from '../../assets/optimized/msqe1-hero.jpg';
 import imgHero2x from '../../assets/optimized/msqe1-hero@2x.jpg';
 
 export const Home = () => {
-  useDocumentTitle("mol - ポートフォリオ");
+  useDocumentTitle("mol - 作品集");
   const isHeroReady = useImagePreload(imgHero, {
     srcSet: `${imgHero} 1x, ${imgHero2x} 2x`,
     sizes: "(min-width: 768px) 1400px, 100vw",
