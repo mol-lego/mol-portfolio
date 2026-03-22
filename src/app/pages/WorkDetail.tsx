@@ -75,6 +75,14 @@ import imgYasaka10 from "../../assets/optimized/workdetail/yasaka10.jpg";
 import imgYasaka11 from "../../assets/optimized/workdetail/yasaka11.jpg";
 import imgYasaka12 from "../../assets/optimized/workdetail/yasaka12.jpg";
 import imgYasakaOriginal1 from "../../assets/optimized/workdetail/yasaka_original1.jpg";
+import imgARCardQE from "../../assets/optimized/msqe-ar-card.png";
+import imgARCardQE2x from "../../assets/optimized/msqe-ar-card@2x.png";
+import imgARCardVenice from "../../assets/optimized/venice-ar-card.png";
+import imgARCardVenice2x from "../../assets/optimized/venice-ar-card@2x.png";
+import imgARCardYasaka from "../../assets/optimized/yasaka-ar-card.png";
+import imgARCardYasaka2x from "../../assets/optimized/yasaka-ar-card@2x.png";
+import imgARCardHawaii from "../../assets/optimized/hawaii-ar-card.png";
+import imgARCardHawaii2x from "../../assets/optimized/hawaii-ar-card@2x.png";
 
 const WORKS_SEQUENCE = [
   { id: "01", title: "クイーンエリザベス号" },
@@ -109,6 +117,8 @@ const WORKS_DATA = {
     titleEn: "MS Queen Elizabeth",
     year: "2019",
     mainVisual: imgQE1,
+    arCardImage: imgARCardQE,
+    arCardImage2x: imgARCardQE2x,
     stats: [
       { label: "全長", value: "3m" },
       { label: "ピース数", value: "35,000個" },
@@ -309,6 +319,8 @@ const WORKS_DATA = {
     titleEn: "Venice",
     year: "2025",
     mainVisual: imgVenice1,
+    arCardImage: imgARCardVenice,
+    arCardImage2x: imgARCardVenice2x,
     stats: [
       { label: "サイズ", value: "1m四方" },
       { label: "ピース数", value: "50,000個" },
@@ -433,6 +445,8 @@ const WORKS_DATA = {
     titleEn: "Yasaka Shrine West Gate",
     year: "2020",
     mainVisual: imgYasaka1,
+    arCardImage: imgARCardYasaka,
+    arCardImage2x: imgARCardYasaka2x,
     stats: [
       { label: "サイズ", value: "全幅2.3m" },
       { label: "ピース数", value: "52,000個" },
@@ -569,6 +583,8 @@ const WORKS_DATA = {
     titleEn: "Hawaii Volcanoes National Park",
     year: "2020",
     mainVisual: imgHawaii2,
+    arCardImage: imgARCardHawaii,
+    arCardImage2x: imgARCardHawaii2x,
     stats: [
       { label: "サイズ", value: "直径1m" },
       { label: "ピース数", value: "10,000個" },
@@ -903,17 +919,47 @@ export const WorkDetail = () => {
             </h2>
             <a
               href={arExperiencePath}
-              className="group block bg-stone-50 hover:bg-stone-100 border border-stone-200 p-8 transition-colors text-center"
+              className="group block overflow-hidden bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors text-center"
             >
-              <div className="w-12 h-12 mx-auto border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
-                <ARIcon />
-              </div>
-              <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
-                3D / AR VIEWER
-              </span>
-              <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest group-hover:text-stone-600 transition-colors break-words">
-                3Dモデルを空間に配置する
-              </span>
+              {work.arCardImage ? (
+                <div className="relative aspect-[4/3] bg-white overflow-hidden">
+                  <img
+                    src={work.arCardImage}
+                    srcSet={work.arCardImage2x ? `${work.arCardImage}, ${work.arCardImage2x} 2x` : undefined}
+                    alt={`${work.title} の3Dモデル`}
+                    className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 px-6 pb-6 pt-12 bg-gradient-to-t from-white/92 via-white/68 to-white/0">
+                    <div className="w-12 h-12 mx-auto mb-4 border border-stone-300/80 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors bg-white/78">
+                      <ARIcon />
+                    </div>
+                    <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
+                      3D / AR VIEWER
+                    </span>
+                    <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest group-hover:text-stone-600 transition-colors break-words">
+                      3Dモデルを空間に配置する
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div className="w-12 h-12 mx-auto mt-8 border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                  <ARIcon />
+                </div>
+              )}
+              {!work.arCardImage && (
+                <div className="px-8 py-8">
+                  <div className="w-12 h-12 mx-auto mb-4 border border-stone-300 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                    <ARIcon />
+                  </div>
+                  <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
+                    3D / AR VIEWER
+                  </span>
+                  <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest group-hover:text-stone-600 transition-colors break-words">
+                    3Dモデルを空間に配置する
+                  </span>
+                </div>
+              )}
             </a>
           </FadeIn>
         </div>
@@ -945,17 +991,47 @@ export const WorkDetail = () => {
                 <FadeIn>
                   <a
                     href={arExperiencePath}
-                    className="group block bg-stone-50 hover:bg-stone-100 border border-stone-200 p-8 transition-colors text-center"
+                    className="group block overflow-hidden bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors text-center"
                   >
-                    <div className="w-12 h-12 mx-auto border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
-                      <ARIcon />
-                    </div>
-                    <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
-                      3D / AR VIEWER
-                    </span>
-                    <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest break-words">
-                      3Dモデルを空間に配置する
-                    </span>
+                    {work.arCardImage ? (
+                      <div className="relative aspect-[4/3] bg-white overflow-hidden">
+                        <img
+                          src={work.arCardImage}
+                          srcSet={work.arCardImage2x ? `${work.arCardImage}, ${work.arCardImage2x} 2x` : undefined}
+                          alt={`${work.title} の3Dモデル`}
+                          className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 px-6 pb-6 pt-12 bg-gradient-to-t from-white/92 via-white/68 to-white/0">
+                          <div className="w-12 h-12 mx-auto mb-4 border border-stone-300/80 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors bg-white/78">
+                            <ARIcon />
+                          </div>
+                          <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
+                            3D / AR VIEWER
+                          </span>
+                          <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest break-words">
+                            3Dモデルを空間に配置する
+                          </span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-12 h-12 mx-auto mt-8 border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                        <ARIcon />
+                      </div>
+                    )}
+                    {!work.arCardImage && (
+                      <div className="px-8 py-8">
+                        <div className="w-12 h-12 mx-auto mb-4 border border-stone-300 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                          <ARIcon />
+                        </div>
+                        <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
+                          3D / AR VIEWER
+                        </span>
+                        <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest break-words">
+                          3Dモデルを空間に配置する
+                        </span>
+                      </div>
+                    )}
                   </a>
                 </FadeIn>
               </div>
