@@ -621,15 +621,19 @@ const WORKS_DATA = {
 const FadeIn = ({
   children,
   delay = 0,
+  duration = 0.8,
+  viewportMargin = "0px",
 }: {
   children: React.ReactNode;
   delay?: number;
+  duration?: number;
+  viewportMargin?: string;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "0px" }}
-    transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+    viewport={{ once: true, margin: viewportMargin }}
+    transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
     className="w-full max-w-full overflow-hidden block"
   >
     {children}
@@ -1145,7 +1149,12 @@ export const WorkDetail = () => {
                   </FadeIn>
                   <div className="flex flex-col w-full max-w-full overflow-hidden">
                     {work.exhibitions.map((ex, i) => (
-                      <FadeIn key={i} delay={i * 0.1}>
+                      <FadeIn
+                        key={i}
+                        delay={i * 0.04}
+                        duration={0.45}
+                        viewportMargin="0px 0px 15% 0px"
+                      >
                         <div className="flex flex-col md:flex-row py-4 md:py-6 border-b border-stone-100 gap-2 md:gap-8 w-full overflow-hidden">
                           <span className="font-['Inter',_sans-serif] text-xs text-stone-400 tracking-widest w-32 shrink-0">
                             {ex.date}
