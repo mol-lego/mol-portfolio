@@ -250,7 +250,7 @@ const WORKS_DATA = {
       {
         date: "2023年7月~10月",
         name: "ひょうごレゴ®︎展",
-        venue: "兵庫県立兵庫県立兵庫津ミュージアム",
+        venue: "兵庫県立兵庫津ミュージアム",
       },
       {
         date: "2024年5月",
@@ -373,7 +373,7 @@ const WORKS_DATA = {
       },
       {
         date: "2026年3月",
-        name: "Japan Brrick Expo",
+        name: "Japan Brick Expo",
         venue: "国立オリンピック記念青少年総合センター（東京）",
       },
     ],

@@ -120,13 +120,13 @@ export const About = () => {
               <FadeIn delay={0.1}>
                 <div className="flex flex-col gap-6 md:gap-8 font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-700 leading-loose tracking-[0.08em] text-justify break-words">
                   <p>
-                    3メートル級の大型なものから手のひらサイズのものまで、LEGO<sup>&reg;</sup>ブロックを使った作品を制作しています。
+                    3メートル級の大型のものから手のひらサイズのものまで、LEGO<sup>&reg;</sup>ブロックを使った作品を制作しています。
                   </p>
                   <p>
                     本サイトでは、作品それぞれの写真や制作記に加えて、作品の3Dモデルを実物大で呼び出せるAR（拡張現実）による展示を導入しています。新型コロナウイルスの影響で高校最後の文化祭がオンライン開催へと変更を余儀なくされたことをきっかけに開発したものです。
                   </p>
                   <p>
-                    結局高校最後の展示機会の喪失をきっかけに制作活動から離れていましたが、2025年に作品制作を再開しました。
+                    高校最後の展示機会の喪失をきっかけに制作活動から離れていましたが、2025年に作品制作を再開しました。
                   </p>
                 </div>
               </FadeIn>
