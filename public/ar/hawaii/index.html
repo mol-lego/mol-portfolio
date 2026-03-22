@@ -19,7 +19,17 @@
     <figure class="ar-viewport">
       <model-viewer class="ar-model" poster="hawaii.png" src="hawaii.glb" ios-src="hawaii.usdz" ar ar-modes="quick-look scene-viewer webxr" auto-rotate camera-controls reveal="auto" alt="Hawaii Volcanoes">
         <button class="ar-launch" slot="ar-button" type="button" aria-label="ARで表示する">
-          <span class="ar-launch__badge">AR</span>
+          <span class="ar-launch__badge" aria-hidden="true">
+            <svg class="ar-launch__icon" viewBox="0 0 48 48" role="img" aria-hidden="true">
+              <path d="M16 8H10a2 2 0 0 0-2 2v6" />
+              <path d="M32 8h6a2 2 0 0 1 2 2v6" />
+              <path d="M40 32v6a2 2 0 0 1-2 2h-6" />
+              <path d="M16 40h-6a2 2 0 0 1-2-2v-6" />
+              <path d="m24 15 8 4.5v9L24 33l-8-4.5v-9Z" />
+              <path d="m24 15-8 4.5 8 4.5 8-4.5" />
+              <path d="M24 24v9" />
+            </svg>
+          </span>
           <span class="ar-launch__label">
             <strong>ARで表示する</strong>
             <small>実物大で部屋に置いてみる</small>
