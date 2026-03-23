@@ -1,19 +1,19 @@
+# mol-portfolio
 
-  ## Running the code
+`mol` の LEGO 作品を紹介するポートフォリオサイトです。  
+作品写真、制作記録、展示情報に加えて、一部作品では 3D / AR ビューアーで実物大表示も扱っています。
 
-  Run `npm i` to install the dependencies.
+## What This Repository Contains
 
-  Run `npm run dev` to start the development server.
+- React + Vite ベースのフロントエンド
+- 作品詳細ページ、ギャラリー、プロフィール、制作プロセス紹介
+- `public/ar/` 以下の各作品向け AR ビューアー用静的ファイル
+- OGP 用ページ生成スクリプト
 
-  ## Deploying to GitHub Pages
+## Tech Stack
 
-  Push the `main` branch to GitHub.
-
-  In the GitHub repository, open `Settings > Pages` and set:
-  - `Source`: `GitHub Actions`
-
-  After that, each push to `main` will build and deploy automatically.
-
-  This workflow builds with `VITE_BASE_PATH=/` so the deployed site works on the
-  configured custom domain.
-  
+- React
+- React Router
+- Vite
+- Tailwind CSS
+- motion
