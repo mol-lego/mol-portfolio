@@ -219,6 +219,8 @@ const WORKS_DATA = {
     media: {
       youtubeId: "H8JTmG40KX0",
       noteUrl: "https://note.com/nadalegoclub/n/nf8392ffc367e",
+      noteDescription:
+        "船体の曲面表をはじめ、設計における工夫やこだわりポイントをnoteにまとめています。",
     },
     hasAR: true,
     exhibitions: [
@@ -417,6 +419,8 @@ const WORKS_DATA = {
     ],
     media: {
       noteUrl: "https://note.com/mol_05/m/m51996852b35f",
+      noteDescription:
+        "題材の決定や全体のスケジュールから、作者4人それぞれの設計の工夫やこだわり、作品撮影などについて全7編にわたって解説しています。",
     },
     hasAR: true,
     exhibitions: [
@@ -531,6 +535,8 @@ const WORKS_DATA = {
     media: {
       youtubeId: "EfCpyw82vzI",
       noteUrl: "https://note.com/nadalegoclub/n/nb364df0a1304?magazine_key=m5d976d857aab",
+      noteDescription:
+        "作品の設計における工夫やお気に入りの部分をnoteにまとめています。コロナ禍のオンライン文化祭に向けたコンテンツとして高校三年生のときに作成した記事です。",
     },
     exhibitions: [
       {
@@ -718,6 +724,11 @@ export const WorkDetail = () => {
   } | null>(null);
   const sliderRef = useRef<Slider | null>(null);
   const isMobile = useIsMobile();
+  const noteDescription =
+    work?.media?.noteDescription ??
+    (work
+      ? `${work.title}の設計の工夫や制作中の試行錯誤、展示や撮影の裏話をnoteでまとめています。`
+      : "");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -994,7 +1005,7 @@ export const WorkDetail = () => {
                     className="group block overflow-hidden bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors text-center"
                   >
                     {work.arCardImage ? (
-                      <div className="relative aspect-[4/3] bg-white overflow-hidden">
+                      <div className="relative aspect-[16/10] bg-white overflow-hidden">
                         <img
                           src={work.arCardImage}
                           srcSet={work.arCardImage2x ? `${work.arCardImage}, ${work.arCardImage2x} 2x` : undefined}
@@ -1262,7 +1273,7 @@ export const WorkDetail = () => {
                                     この作品の制作記
                                   </span>
                                   <p className="max-w-[38rem] font-['Noto_Serif_JP',_serif] text-sm text-stone-700 leading-loose tracking-[0.08em] break-words">
-                                    {work.title}の設計意図や制作中の試行錯誤、展示や撮影の裏話をnoteでまとめています。
+                                    {noteDescription}
                                   </p>
                                 </div>
                               </div>
