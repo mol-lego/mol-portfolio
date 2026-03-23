@@ -930,27 +930,41 @@ export const WorkDetail = () => {
             </h2>
             <a
               href={arExperiencePath}
-              className="group block overflow-hidden bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors text-center"
+              className="group block bg-stone-100/80 p-1.5 text-center shadow-[0_34px_85px_-52px_rgba(28,25,23,0.44)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_42px_95px_-52px_rgba(28,25,23,0.56)]"
             >
               {work.arCardImage ? (
-                <div className="relative aspect-[4/3] bg-white overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden border border-stone-200/80 bg-white">
                   <img
                     src={work.arCardImage}
                     srcSet={work.arCardImage2x ? `${work.arCardImage}, ${work.arCardImage2x} 2x` : undefined}
                     alt={`${work.title} の3Dモデル`}
-                    className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                     loading="lazy"
                   />
-                  <div className="absolute inset-x-0 bottom-0 px-6 pb-6 pt-12 bg-gradient-to-t from-white/92 via-white/68 to-white/0">
-                    <div className="w-12 h-12 mx-auto mb-4 border border-stone-300/80 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors bg-white/78">
-                      <ARIcon />
+                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 border border-white/85 bg-white/92 px-3 py-1.5 font-['Inter',_sans-serif] text-[10px] tracking-[0.22em] text-stone-700 shadow-sm backdrop-blur-sm">
+                    <span className="inline-block h-2 w-2 rounded-full bg-stone-700" />
+                    AR - 拡張現実
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(245,245,244,0.0),rgba(245,245,244,0.92)_18%,rgba(245,245,244,0.98))] px-5 pb-5 pt-10">
+                    <div className="flex items-end justify-between gap-4">
+                      <div className="flex min-w-0 items-center gap-3 text-left">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-stone-300 bg-white/92 text-stone-700 shadow-sm transition-colors group-hover:border-stone-500 group-hover:text-stone-900">
+                          <ARIcon />
+                        </div>
+                        <div className="min-w-0">
+                          <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.24em] text-stone-500">
+                            AR / 3D VIEWER
+                          </span>
+                          <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-[0.12em] transition-colors group-hover:text-stone-700 break-words">
+                            実物大で作品を見る
+                          </span>
+                        </div>
+                      </div>
+                      <span className="inline-flex shrink-0 items-center gap-2 border-b border-stone-400 pb-1 font-['Inter',_sans-serif] text-[10px] tracking-[0.22em] text-stone-700 transition-colors group-hover:border-stone-700 group-hover:text-stone-950">
+                        OPEN
+                        <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.7} />
+                      </span>
                     </div>
-                    <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
-                      3D / AR VIEWER
-                    </span>
-                    <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest group-hover:text-stone-600 transition-colors break-words">
-                      3Dモデルを空間に配置する
-                    </span>
                   </div>
                 </div>
               ) : (
@@ -959,12 +973,12 @@ export const WorkDetail = () => {
                 </div>
               )}
               {!work.arCardImage && (
-                <div className="px-8 py-8">
+                <div className="border border-stone-200/80 bg-white px-8 py-8">
                   <div className="w-12 h-12 mx-auto mb-4 border border-stone-300 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
                     <ARIcon />
                   </div>
                   <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
-                    3D / AR VIEWER
+                    AR / 3D VIEWER
                   </span>
                   <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest group-hover:text-stone-600 transition-colors break-words">
                     3Dモデルを空間に配置する
@@ -1002,27 +1016,38 @@ export const WorkDetail = () => {
                 <FadeIn>
                   <a
                     href={arExperiencePath}
-                    className="group block overflow-hidden bg-stone-50 hover:bg-stone-100 border border-stone-200 transition-colors text-center"
+                    className="group block bg-stone-100/70 p-1.5 text-center shadow-[0_28px_72px_-50px_rgba(28,25,23,0.38)] transition-all duration-500 hover:shadow-[0_34px_80px_-48px_rgba(28,25,23,0.48)]"
                   >
                     {work.arCardImage ? (
-                      <div className="relative aspect-[16/10] bg-white overflow-hidden">
+                      <div className="relative aspect-[16/10] overflow-hidden border border-stone-200/80 bg-white">
                         <img
                           src={work.arCardImage}
                           srcSet={work.arCardImage2x ? `${work.arCardImage}, ${work.arCardImage2x} 2x` : undefined}
                           alt={`${work.title} の3Dモデル`}
-                          className="block w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                          className="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                           loading="lazy"
                         />
-                        <div className="absolute inset-x-0 bottom-0 px-6 pb-6 pt-12 bg-gradient-to-t from-white/92 via-white/68 to-white/0">
-                          <div className="w-12 h-12 mx-auto mb-4 border border-stone-300/80 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors bg-white/78">
-                            <ARIcon />
+                        <div className="absolute left-3 top-3 inline-flex items-center gap-2 border border-white/85 bg-white/92 px-2.5 py-1 font-['Inter',_sans-serif] text-[10px] tracking-[0.18em] text-stone-700 shadow-sm backdrop-blur-sm">
+                          <span className="inline-block h-2 w-2 rounded-full bg-stone-700" />
+                          AR - 拡張現実
+                        </div>
+                        <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(245,245,244,0.0),rgba(245,245,244,0.9)_20%,rgba(245,245,244,0.98))] px-4 pb-4 pt-8">
+                          <div className="flex items-center justify-between gap-3 text-left">
+                            <div className="flex min-w-0 items-center gap-3">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-stone-300 bg-white/92 text-stone-700 shadow-sm">
+                                <ARIcon />
+                              </div>
+                              <div className="min-w-0">
+                                <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.2em] text-stone-500">
+                                  AR / 3D VIEWER
+                                </span>
+                                <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-[0.1em] break-words">
+                                  実物大で作品を見る
+                                </span>
+                              </div>
+                            </div>
+                            <ArrowRight className="h-4 w-4 shrink-0 text-stone-700" strokeWidth={1.7} />
                           </div>
-                          <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
-                            3D / AR VIEWER
-                          </span>
-                          <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest break-words">
-                            3Dモデルを空間に配置する
-                          </span>
                         </div>
                       </div>
                     ) : (
@@ -1031,12 +1056,12 @@ export const WorkDetail = () => {
                       </div>
                     )}
                     {!work.arCardImage && (
-                      <div className="px-8 py-8">
+                      <div className="border border-stone-200/80 bg-white px-8 py-8">
                         <div className="w-12 h-12 mx-auto mb-4 border border-stone-300 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
                           <ARIcon />
                         </div>
                         <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
-                          3D / AR VIEWER
+                          AR / 3D VIEWER
                         </span>
                         <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest break-words">
                           3Dモデルを空間に配置する
