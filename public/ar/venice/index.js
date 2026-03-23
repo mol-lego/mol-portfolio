@@ -13,6 +13,7 @@ const arPage = document.querySelector("#ar-page");
 const backButton = document.querySelector(".ar-back");
 const modelViewer = document.querySelector(".ar-model");
 const qrContainer = document.querySelector(".ar-qr__code");
+const loadingValue = document.querySelector(".ar-loading__value");
 
 if (backButton) {
   backButton.addEventListener("click", () => {
@@ -50,6 +51,17 @@ const enableDoubleSidedRendering = () => {
   });
 };
 
+const setLoadingProgress = (progress) => {
+  const normalizedProgress = Math.max(0, Math.min(progress, 1));
+  const safeProgress = Math.max(normalizedProgress, 0.08);
+
+  arPage?.style.setProperty("--ar-progress", String(safeProgress));
+
+  if (loadingValue) {
+    loadingValue.textContent = `${Math.round(normalizedProgress * 100)}%`;
+  }
+};
+
 let vw = window.innerWidth;
 
 window.addEventListener("resize", () => {
@@ -64,7 +76,14 @@ window.addEventListener("resize", () => {
 setFillHeight();
 
 if (modelViewer) {
+  setLoadingProgress(0);
+
+  modelViewer.addEventListener("progress", (event) => {
+    setLoadingProgress(event.detail.totalProgress ?? 0);
+  });
+
   modelViewer.addEventListener("load", () => {
+    setLoadingProgress(1);
     enableDoubleSidedRendering();
     arPage?.classList.add("ar-ready");
   }, { once: true });

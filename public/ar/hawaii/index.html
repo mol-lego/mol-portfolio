@@ -18,6 +18,16 @@
       <span>BACK</span>
     </button>
     <figure class="ar-viewport">
+      <div class="ar-loading" role="status" aria-live="polite">
+        <div class="ar-loading__panel">
+          <span class="ar-loading__eyebrow">AR - 拡張現実</span>
+          <p class="ar-loading__title">3Dモデルを読み込んでいます</p>
+          <div class="ar-loading__progress" aria-hidden="true">
+            <span class="ar-loading__bar"></span>
+          </div>
+          <p class="ar-loading__value">0%</p>
+        </div>
+      </div>
       <model-viewer class="ar-model" poster="hawaii.png" src="hawaii.glb" ios-src="hawaii.usdz" ar ar-modes="quick-look scene-viewer webxr" auto-rotate camera-controls reveal="auto" alt="Hawaii Volcanoes">
         <button class="ar-launch" slot="ar-button" type="button" aria-label="ARで表示する">
           <span class="ar-launch__badge" aria-hidden="true">
