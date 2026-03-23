@@ -31,6 +31,25 @@ const setFillHeight = () => {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 };
 
+const enableDoubleSidedRendering = () => {
+  const materials = modelViewer?.model?.materials;
+
+  if (!Array.isArray(materials)) {
+    return;
+  }
+
+  materials.forEach((material) => {
+    if (typeof material?.setDoubleSided === "function") {
+      material.setDoubleSided(true);
+      return;
+    }
+
+    if (material && "doubleSided" in material) {
+      material.doubleSided = true;
+    }
+  });
+};
+
 let vw = window.innerWidth;
 
 window.addEventListener("resize", () => {
@@ -46,6 +65,7 @@ setFillHeight();
 
 if (modelViewer) {
   modelViewer.addEventListener("load", () => {
+    enableDoubleSidedRendering();
     arPage?.classList.add("ar-ready");
   }, { once: true });
 
