@@ -25,7 +25,7 @@ const SMALL_WORKS = [
   {
     id: "06",
     title: "歩道橋とタクシー",
-    subtitle: "Pedestrian Bridge",
+    subtitle: "Overpass & Taxi",
     year: "2025",
     scale: "8cm / 255ピース",
     desc: "どこにでもありそうな何気ない風景です。見る人によって想像する時間帯が変わりそうです。",
@@ -41,7 +41,7 @@ const SMALL_WORKS = [
     subtitle: "Mini Castle",
     year: "2021",
     scale: "8cm / 202ピース",
-    desc: "特にモデルはありませんが、関西人なので姫路城と大阪城を無意識に思い出していたかもしれません。活動を休止していた大学4年間で唯一の作品です。プレゼントとして作りました。",
+    desc: "特にモデルはありませんが、関西人なので姫路城と大阪城を無意識に思い出していたかもしれません。活動休止中の作品なのでこれまで未公開でした。大学4年間で唯一の作品です。",
     image: imgCastle,
     image2x: imgCastle2x,
     aspect: "aspect-square",
