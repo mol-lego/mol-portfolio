@@ -41,7 +41,7 @@ const SMALL_WORKS = [
     subtitle: "Mini Castle",
     year: "2021",
     scale: "8cm / 202ピース",
-    desc: "特にモデルはありませんが、関西人なので姫路城と大阪城を無意識に思い出していたかもしれません。活動休止中の作品で、これまでどこにも公開していませんでした。",
+    desc: "特にモデルはありませんが、関西人なので姫路城と大阪城を無意識に思い出していたかもしれません。活動を休止していた大学4年間で唯一の作品です。プレゼントとして作りました。",
     image: imgCastle,
     image2x: imgCastle2x,
     aspect: "aspect-square",
