@@ -1,0 +1,24 @@
+/* 紙面から浮き上がる模型。浮くほど紙に落ちる影が淡く広がる */
+@keyframes living-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.4deg);
+    filter: drop-shadow(0 14px 10px rgb(41 37 36 / 0.28));
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.3deg);
+    filter: drop-shadow(0 30px 22px rgb(41 37 36 / 0.16));
+  }
+}
+
+.living-float {
+  animation: living-float 7s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .living-float {
+    animation: none;
+    filter: drop-shadow(0 14px 10px rgb(41 37 36 / 0.28));
+  }
+}
