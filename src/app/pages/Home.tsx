@@ -3,8 +3,9 @@ import { Hero } from '../components/Hero';
 import { FeaturedWorks } from '../components/FeaturedWorks';
 import { LargeWorks } from '../components/LargeWorks';
 import { SmallWorks } from '../components/SmallWorks';
-import { MakingNotes } from '../components/MakingNotes';
+import { SameScale } from '../components/SameScale';
 import { ARSection } from '../components/ARSection';
+import { MakingNotes } from '../components/MakingNotes';
 import { AboutSection } from '../components/AboutSection';
 import { useDocumentTitle } from '../useDocumentTitle';
 
@@ -20,8 +21,9 @@ export const Home = () => {
         <FeaturedWorks />
         <LargeWorks />
         <SmallWorks />
-        <MakingNotes />
+        <SameScale />
         <ARSection />
+        <MakingNotes />
         <AboutSection />
       </div>
     </div>
