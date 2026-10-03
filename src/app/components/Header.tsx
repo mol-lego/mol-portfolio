@@ -98,7 +98,7 @@ export const Header = () => {
             mol
           </h2>
           <p className="font-['Inter',_sans-serif] text-[9px] md:text-[10px] tracking-[0.2em] uppercase mt-1 opacity-70">
-            ブロック作品集
+            作品集
           </p>
         </Link>
         
