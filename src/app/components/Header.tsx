@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useId, useRef } from 'react';
+import React, { useState, useEffect, useId, useLayoutEffect, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 
 import { Link, useLocation } from 'react-router';
@@ -14,6 +14,7 @@ export const Header = () => {
   const isWorksShown = isHoveringWorks || isWorksOpen;
   const worksRef = useRef<HTMLDivElement>(null);
   const worksButtonRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const menuId = useId();
   const location = useLocation();
 
@@ -65,6 +66,12 @@ export const Header = () => {
     setIsVisible(window.scrollY > (typeof window !== "undefined" ? window.innerHeight * 0.8 : 500));
   }, []);
 
+  // 画面の上に隠れているあいだは inert にし、見えないリンクやボタンに Tab で入らないようにする。
+  // React 18 は inert を属性として扱わないので、DOM に直接付け外しする
+  useLayoutEffect(() => {
+    headerRef.current?.toggleAttribute('inert', !isVisible);
+  }, [isVisible]);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     // Hide header until scrolled past the hero section
     const threshold = typeof window !== "undefined" ? window.innerHeight * 0.8 : 500;
@@ -76,7 +83,8 @@ export const Header = () => {
   });
 
   return (
-    <motion.header 
+    <motion.header
+      ref={headerRef}
       initial={{ y: -100 }}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
