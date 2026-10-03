@@ -121,7 +121,7 @@ export const About = () => {
               <FadeIn delay={0.1}>
                 <div className="flex flex-col gap-6 md:gap-8 text-sm md:text-base text-ink leading-loose tracking-[0.08em] text-justify break-words">
                   <p>
-                    3メートル級の大型のものから手のひらサイズのものまで、LEGO®ブロックを使った作品を制作しています。
+                    3メートル級の大型のものから手のひらサイズのものまで、ブロックを使った作品を制作しています。
                   </p>
                   <p>
                     現在は東大レゴ部に所属し、個人制作に加えて共同制作も行っています。中高時代は灘校レゴ同好会に所属しており、クイーンエリザベス号（3.5万ピース）や八坂神社西楼門（5.2万ピース）などの大型作品を制作・展示してきました。
@@ -182,7 +182,7 @@ export const About = () => {
                     {[
                       { src: imgQE13, src2x: imgQE132x, alt: "組み立ての様子"},
                       { src: about2, src2x: about2, alt: "アトリエ" },
-                      { src: about3, src2x: about32x, alt: "レゴ棚" },
+                      { src: about3, src2x: about32x, alt: "部品の棚" },
                       { src: about6, src2x: about62x, alt: "サグラダ・ファミリア" },
                       { src: about5, src2x: about52x, alt: "デザインした灘レゴTシャツ" },
                       { src: about4, src2x: about42x, alt: "展示会の様子" },

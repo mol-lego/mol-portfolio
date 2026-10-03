@@ -30,10 +30,7 @@ export const Footer = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col gap-1 items-center md:items-end text-center md:text-right text-xs text-ink-2">
-          <p>© {new Date().getFullYear()} mol</p>
-          <p>LEGO® はレゴ・グループの商標であり、本サイトはグループ公式のものではありません。</p>
-        </div>
+        <p className="text-xs text-ink-2">© {new Date().getFullYear()} mol</p>
       </div>
     </footer>
   );

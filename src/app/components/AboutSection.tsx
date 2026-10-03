@@ -10,7 +10,7 @@ export const AboutSection = () => {
     >
       <SectionHeading id="about-heading">作者</SectionHeading>
       <p className="mt-6 md:mt-8 text-sm md:text-base text-ink max-w-[38em]">
-        大型のものから手のひらサイズまで、LEGO® ブロックで作品を制作しています。
+        大型のものから手のひらサイズまで、ブロックで作品を制作しています。
       </p>
       <p className="mt-4 text-sm md:text-base">
         <Link to="/about" className={`text-ink ${textLinkClass}`}>

@@ -11,7 +11,7 @@ const siteDomain = readFileSync(cnamePath, "utf8").trim();
 const siteUrl = `https://${siteDomain}`;
 
 const defaultDescription =
-  "molのLEGO®︎作品をまとめています。写真や制作プロセスに加えて、ARを使って実物大で作品をご覧いただけます。";
+  "molのブロック作品をまとめています。写真や制作プロセスに加えて、ARを使って実物大で作品をご覧いただけます。";
 
 const pages = [
   {

@@ -78,7 +78,7 @@ export const works = [
     ar: "/ar/qe/index.html",
     detail: true,
     ogDescription:
-      "世界有数の豪華客船「クイーンエリザベス号」を1/100スケールで再現した大型LEGO®︎作品。",
+      "世界有数の豪華客船「クイーンエリザベス号」を1/100スケールで再現した大型のブロック作品。",
   },
   {
     id: "02",
@@ -106,7 +106,7 @@ export const works = [
     ar: "/ar/venice/index.html",
     detail: true,
     ogDescription:
-      "イタリア北部に浮かぶヴェネツィアの街並みをLEGO®︎で再現したミニフィグスケールの共同制作作品。",
+      "イタリア北部に浮かぶヴェネツィアの街並みをブロックで再現したミニフィグスケールの共同制作作品。",
   },
   {
     id: "03",
@@ -132,7 +132,7 @@ export const works = [
     ar: "/ar/yasaka/index.html",
     detail: true,
     ogDescription:
-      "京都・祇園の八坂神社 西楼門を52,000ピースのLEGO®︎ブロックで再現した大型作品。",
+      "京都・祇園の八坂神社 西楼門を52,000ピースのブロックで再現した大型作品。",
   },
   {
     id: "04",
@@ -160,7 +160,7 @@ export const works = [
     ar: "/ar/hawaii/index.html",
     detail: true,
     ogDescription:
-      "世界遺産・ハワイ火山国立公園をLEGO®︎ブロックで再現したジオラマ作品。",
+      "世界遺産・ハワイ火山国立公園をブロックで再現したジオラマ作品。",
   },
   {
     id: "05",
@@ -173,7 +173,7 @@ export const works = [
     group: "small",
     render: "bed",
     summary:
-      "味気ない入院生活もレゴの世界なら楽しくなるかな？と思って作りました。5年ぶりに公開した復帰作です。",
+      "味気ない入院生活もブロックの世界なら楽しくなるかな？と思って作りました。5年ぶりに公開した復帰作です。",
     image: {
       src: new URL("../assets/optimized/hospital-card.jpg", import.meta.url).href,
       src2x: new URL("../assets/optimized/hospital-card@2x.jpg", import.meta.url).href,
