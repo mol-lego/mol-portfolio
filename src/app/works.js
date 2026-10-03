@@ -27,7 +27,7 @@
  * @property {string} [src2x] 2x の画像（幅は width の2倍）
  * @property {number} width   1x の画像の幅（px）
  * @property {number} height  1x の画像の高さ（px）
- * @property {string} [thumbPosition] 小さな作品の一覧の正方形サムネイルで、作品が切れないようにする object-position
+ * @property {string} [thumbPosition] 正方形に切るときに作品が切れないようにする object-position（いまのトップでは使っていない）
  */
 
 /**
@@ -40,6 +40,8 @@
  * @property {{ measure?: "全長" | "全幅" | "直径" | "四方", value: string }} size 寸法
  * @property {{ count: number, approx: boolean }} pieces ピース数
  * @property {"featured" | "large" | "small"} group トップの章（代表作・大型作品・小さな作品）
+ * @property {"qe" | "venice" | "yasaka" | "hawaii" | "bed" | "overpass" | "castle" | "house"} render
+ *   レンダリング（同じカメラ・同じ床で描いた背景透過の図）のキー。寸法は src/app/renders.js
  * @property {string} summary   トップ用の一文（本人の言葉）
  * @property {WorkImage} image  トップに出す写真
  * @property {WorkImage} [mainImage] 作品詳細の主画像。OGP の画像にも使う
@@ -59,6 +61,7 @@ export const works = [
     size: { measure: "全長", value: "3m" },
     pieces: { count: 35000, approx: true },
     group: "featured",
+    render: "qe",
     summary:
       "初めて制作した大型作品。設計・組み立てに1年を費やしました。灘校レゴ同好会時代の作品です。",
     image: {
@@ -86,6 +89,7 @@ export const works = [
     size: { measure: "四方", value: "1m" },
     pieces: { count: 50000, approx: true },
     group: "featured",
+    render: "venice",
     summary:
       "灘レゴOB・現東大レゴ部の4人での合作。街並みの細部を作り込みました。東大での学祭を中心に各地で展示予定です。",
     image: {
@@ -113,6 +117,7 @@ export const works = [
     size: { measure: "全幅", value: "2.3m" },
     pieces: { count: 52000, approx: false },
     group: "large",
+    render: "yasaka",
     summary: "京都・祇園の象徴的な存在とも言える楼門。灘校レゴ同好会時代の作品。",
     image: {
       src: new URL("../assets/yasaka3.jpeg", import.meta.url).href,
@@ -138,6 +143,7 @@ export const works = [
     size: { measure: "直径", value: "1m" },
     pieces: { count: 10000, approx: true },
     group: "large",
+    render: "hawaii",
     summary:
       "ハワイ諸島の火山を再現した作品。初めてご依頼をいただいて制作した作品であり、電飾が施されています。「『レゴ®ブロック』で作った世界遺産展」に参加しました。",
     image: {
@@ -165,6 +171,7 @@ export const works = [
     size: { value: "8cm" },
     pieces: { count: 127, approx: false },
     group: "small",
+    render: "bed",
     summary:
       "味気ない入院生活もレゴの世界なら楽しくなるかな？と思って作りました。5年ぶりに公開した復帰作です。",
     image: {
@@ -185,6 +192,7 @@ export const works = [
     size: { value: "8cm" },
     pieces: { count: 255, approx: false },
     group: "small",
+    render: "overpass",
     summary:
       "どこにでもありそうな何気ない風景です。見る人によって想像する時間帯が変わりそうです。",
     image: {
@@ -205,6 +213,7 @@ export const works = [
     size: { value: "8cm" },
     pieces: { count: 202, approx: false },
     group: "small",
+    render: "castle",
     summary:
       "特にモデルはありませんが、関西人なので姫路城と大阪城を無意識に思い出していたかもしれません。活動休止中の作品なのでこれまで未公開でした。大学4年間で唯一の作品です。",
     image: {
@@ -225,6 +234,7 @@ export const works = [
     size: { value: "40cm" },
     pieces: { count: 2300, approx: false },
     group: "small",
+    render: "house",
     summary:
       "お花に囲まれたお庭でアフターヌーンティをしたい……　という思いで作りました。",
     image: {
