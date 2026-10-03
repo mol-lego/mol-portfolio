@@ -2,6 +2,7 @@ import React, { ReactNode, useLayoutEffect } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import './reducedMotion';
 
 export const Layout = ({ children }: { children?: ReactNode }) => {
   const location = useLocation();

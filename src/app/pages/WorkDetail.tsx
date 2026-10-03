@@ -16,6 +16,7 @@ import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
 import { useImagePreload } from "../useImagePreload";
 import { useIsMobile } from "../components/ui/use-mobile";
+import { usePrefersReducedMotion } from "../reducedMotion";
 
 import imgQE1 from "../../assets/optimized/workdetail/msqe1.jpg";
 import imgQE2 from "../../assets/optimized/workdetail/msqe2.jpg";
@@ -715,6 +716,7 @@ export const WorkDetail = () => {
   const work = id
     ? WORKS_DATA[id as keyof typeof WORKS_DATA]
     : null;
+  const reduceMotion = usePrefersReducedMotion();
   useDocumentTitle(work ? `mol - ${work.title}` : "mol - 作品");
   const isMainVisualReady = useImagePreload(work?.mainVisual ?? "");
   const [expandedImage, setExpandedImage] = useState<{
@@ -777,7 +779,7 @@ export const WorkDetail = () => {
     arrows: false,
     dots: false,
     infinite: true,
-    autoplay: true,
+    autoplay: !reduceMotion,
     autoplaySpeed: 2400,
     speed: 1200,
     cssEase: "cubic-bezier(0.22, 1, 0.36, 1)",
@@ -1411,7 +1413,7 @@ export const WorkDetail = () => {
           {/* トップへ戻る (モバイルでは非表示か、またはデザインを変える) */}
           <button
             onClick={() =>
-              window.scrollTo({ top: 0, behavior: "smooth" })
+              window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
             }
             className="hidden md:flex col-span-1 border-r border-stone-200 p-6 md:p-12 hover:bg-stone-50 transition-colors group flex-col items-center justify-center"
           >
@@ -1451,7 +1453,7 @@ export const WorkDetail = () => {
         {/* モバイル用トップへ戻る */}
         <button
           onClick={() =>
-            window.scrollTo({ top: 0, behavior: "smooth" })
+            window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
           }
           className="w-full flex md:hidden border-t border-stone-200 p-6 hover:bg-stone-50 transition-colors items-center justify-center gap-2 group"
         >

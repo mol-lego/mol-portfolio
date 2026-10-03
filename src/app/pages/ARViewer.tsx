@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { X, Box, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
+import { prefersReducedMotion } from "../reducedMotion";
 import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
 
@@ -33,7 +34,7 @@ export const ARViewer = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: prefersReducedMotion() ? 0 : 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
