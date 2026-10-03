@@ -14,7 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
-import { useImagePreload } from "../useImagePreload";
+import { usePhotoLoaded } from "../usePhotoLoaded";
 import { useIsMobile } from "../components/ui/use-mobile";
 import { usePrefersReducedMotion } from "../reducedMotion";
 import { detailWorks, formatCount, getWork, type Work } from "../works.js";
@@ -712,7 +712,8 @@ export const WorkDetail = () => {
   const work = getWorkDetail(id);
   const reduceMotion = usePrefersReducedMotion();
   useDocumentTitle(work ? `mol - ${work.title}` : "mol - 作品");
-  const isMainVisualReady = useImagePreload(work?.mainVisual ?? "");
+  // 本文はすぐに描き、主画像は読み込みが終わってからフェードインする
+  const { loaded: isMainVisualLoaded, photoProps: mainVisualProps } = usePhotoLoaded();
   const [expandedImage, setExpandedImage] = useState<{
     src: string;
     alt: string;
@@ -763,10 +764,6 @@ export const WorkDetail = () => {
         </Link>
       </div>
     );
-  }
-
-  if (!isMainVisualReady) {
-    return <main className="w-full min-h-screen bg-white" />;
   }
 
   const sliderSettings = {
@@ -873,7 +870,7 @@ export const WorkDetail = () => {
         {/* 6. メインビジュアル */}
         <motion.figure
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isMainVisualLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{
             duration: 1.2,
             delay: 0.2,
@@ -882,6 +879,7 @@ export const WorkDetail = () => {
           className="w-full aspect-[3/2] md:aspect-[16/9] bg-stone-100 mb-16 md:mb-24 overflow-hidden"
         >
           <img
+            {...mainVisualProps}
             src={work.mainVisual}
             alt={work.title}
             className="w-full h-full object-cover"

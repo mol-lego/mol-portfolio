@@ -7,50 +7,20 @@ import { MakingNotes } from '../components/MakingNotes';
 import { ARSection } from '../components/ARSection';
 import { AboutSection } from '../components/AboutSection';
 import { useDocumentTitle } from '../useDocumentTitle';
-import { useImagePreload } from '../useImagePreload';
-import imgHero from '../../assets/optimized/msqe1-hero.jpg';
-import imgHero2x from '../../assets/optimized/msqe1-hero@2x.jpg';
 
+// 全節を最初から描く（画像の読み込みやタイマーを待たない）
 export const Home = () => {
   useDocumentTitle("mol - 作品集");
-  const isHeroReady = useImagePreload(imgHero, {
-    srcSet: `${imgHero} 1x, ${imgHero2x} 2x`,
-    sizes: "(min-width: 768px) 1400px, 100vw",
-  });
-  const [isContentReady, setIsContentReady] = React.useState(false);
-
-  React.useEffect(() => {
-    if (!isHeroReady) {
-      setIsContentReady(false);
-      return;
-    }
-
-    const timeoutId = window.setTimeout(() => {
-      setIsContentReady(true);
-    }, 700);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [isHeroReady]);
-
-  if (!isHeroReady) {
-    return <div className="min-h-screen w-full bg-transparent" />;
-  }
 
   return (
     <div className="flex flex-col w-full bg-transparent overflow-hidden">
       <Hero />
-      {isContentReady && (
-        <>
-          <LargeWorks />
-          <SmallWorks />
-          <SameScale />
-          <MakingNotes />
-          <ARSection />
-          <AboutSection />
-        </>
-      )}
+      <LargeWorks />
+      <SmallWorks />
+      <SameScale />
+      <MakingNotes />
+      <ARSection />
+      <AboutSection />
     </div>
   );
 };

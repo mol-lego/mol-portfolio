@@ -16,7 +16,7 @@ import about52x from '../../assets/optimized/about5-gallery@2x.jpg';
 import about6 from '../../assets/optimized/about6-gallery.jpg';
 import about62x from '../../assets/optimized/about6-gallery@2x.jpg';
 import { useDocumentTitle } from '../useDocumentTitle';
-import { useImagePreload } from '../useImagePreload';
+import { usePhotoLoaded } from '../usePhotoLoaded';
 import { formatPiecesInMan, getWork } from '../works.js';
 
 const QE = getWork("01")!;
@@ -38,14 +38,8 @@ const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 export const About = () => {
   useDocumentTitle("mol - プロフィール");
   const profileSizes = "(min-width: 1024px) 420px, (min-width: 640px) 160px, 128px";
-  const isProfileReady = useImagePreload(profileImage, {
-    srcSet: `${profileImage} 1x, ${profileImage2x} 2x`,
-    sizes: profileSizes,
-  });
-
-  if (!isProfileReady) {
-    return <main className="w-full min-h-screen bg-white" />;
-  }
+  // 本文はすぐに描き、写真は読み込みが終わってからフェードインする
+  const { loaded: isProfileLoaded, photoProps } = usePhotoLoaded();
 
   return (
     <main className="w-full bg-white pb-32 pt-24 md:pt-32">
@@ -68,11 +62,12 @@ export const About = () => {
             <div className="flex flex-row lg:flex-col gap-6 lg:gap-8 items-center lg:items-start w-full">
               <motion.figure
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ opacity: isProfileLoaded ? 1 : 0 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 className="w-32 sm:w-40 lg:w-full shrink-0 aspect-square bg-stone-50 overflow-hidden relative"
               >
                 <img
+                  {...photoProps}
                   src={profileImage}
                   srcSet={`${profileImage} 1x, ${profileImage2x} 2x`}
                   sizes={profileSizes}

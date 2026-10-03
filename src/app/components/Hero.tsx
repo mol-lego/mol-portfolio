@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import imgHero from "../../assets/optimized/msqe1-hero.jpg";
 import imgHero2x from "../../assets/optimized/msqe1-hero@2x.jpg";
-import { useImagePreload } from "../useImagePreload";
+import { usePhotoLoaded } from "../usePhotoLoaded";
 import { getWork } from "../works.js";
 
 // 冒頭の写真の作品
@@ -11,10 +11,8 @@ const HERO_WORK = getWork("01")!;
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroSizes = "(min-width: 768px) 1400px, 100vw";
-  const isHeroReady = useImagePreload(imgHero, {
-    srcSet: `${imgHero} 1x, ${imgHero2x} 2x`,
-    sizes: heroSizes,
-  });
+  // 文字はすぐに描き、写真は読み込みが終わってからフェードインする
+  const { loaded: isPhotoLoaded, photoProps } = usePhotoLoaded();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -34,10 +32,8 @@ export const Hero = () => {
 
   return (
     <section ref={containerRef} className="w-full relative">
-      {!isHeroReady && <div className="min-h-[82svh] md:min-h-[90vh]" />}
-
       {/* --- Mobile Editorial Layout --- */}
-      <div className={`md:hidden w-full flex-col justify-between bg-transparent px-6 pt-28 pb-8 min-h-[82svh] ${isHeroReady ? "flex" : "hidden"}`}>
+      <div className="md:hidden w-full flex flex-col justify-between bg-transparent px-6 pt-28 pb-8 min-h-[82svh]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,15 +50,18 @@ export const Hero = () => {
 
         <motion.figure
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: isPhotoLoaded ? 1 : 0 }}
           transition={{ duration: 1.5, delay: 0.4 }}
           className="w-full flex flex-col my-auto py-12"
         >
           <div className="w-full flex items-center justify-center overflow-hidden bg-stone-100/50">
               <img
+                {...photoProps}
                 src={imgHero}
                 srcSet={`${imgHero} 1x, ${imgHero2x} 2x`}
                 sizes="100vw"
+                width={1400}
+                height={933}
               alt="MS Queen Elizabeth - Exhibition"
               className="w-full h-auto block"
               loading="eager"
@@ -101,7 +100,7 @@ export const Hero = () => {
       </div>
 
       {/* --- Desktop Editorial Layout --- */}
-      <div className={`hidden w-full max-w-[1400px] mx-auto flex-col px-12 pt-16 h-auto min-h-[90vh] pb-16 md:flex ${isHeroReady ? "" : "md:hidden"}`}>
+      <div className="hidden w-full max-w-[1400px] mx-auto flex-col px-12 pt-16 h-auto min-h-[90vh] pb-16 md:flex">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -118,7 +117,7 @@ export const Hero = () => {
 
         <motion.figure
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isPhotoLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="w-full flex flex-col"
         >
@@ -128,6 +127,7 @@ export const Hero = () => {
               className="absolute inset-0 w-full h-[120%] -top-[10%]"
             >
               <img
+                {...photoProps}
                 src={imgHero}
                 srcSet={`${imgHero} 1x, ${imgHero2x} 2x`}
                 sizes={heroSizes}
