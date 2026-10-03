@@ -97,7 +97,7 @@ export const Process = () => {
           to="/"
           className="inline-flex items-center gap-2 group"
         >
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -124,10 +124,10 @@ export const Process = () => {
                 <FadeIn delay={0.1}>
                   <div className="flex flex-col items-start gap-2 border-t border-stone-200 pt-6">
                     <div className="flex items-baseline gap-4">
-                      <span className="font-['Inter',_sans-serif] text-4xl md:text-5xl font-light text-stone-300">
+                      <span className="font-['Inter',_sans-serif] text-4xl md:text-5xl font-light text-stone-500">
                         {step.id}
                       </span>
-                      <span className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-400 tracking-[0.2em] uppercase">
+                      <span className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-500 tracking-[0.2em] uppercase">
                         {step.enTitle}
                       </span>
                     </div>

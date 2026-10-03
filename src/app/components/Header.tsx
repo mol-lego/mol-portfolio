@@ -91,7 +91,7 @@ export const Header = () => {
           <h2 className="font-['Inter',_sans-serif] text-sm md:text-base font-medium tracking-widest">
             mol
           </h2>
-          <p className="font-['Inter',_sans-serif] text-[9px] md:text-[10px] tracking-[0.2em] uppercase mt-1 opacity-70">
+          <p className="font-['Inter',_sans-serif] text-[9px] md:text-[10px] tracking-[0.2em] uppercase mt-1 opacity-75">
             作品集
           </p>
         </Link>
@@ -140,7 +140,7 @@ export const Header = () => {
                       onClick={closeWorks}
                       className="block px-4 py-2.5 text-[10px] md:text-xs font-['Noto_Serif_JP',_serif] text-gray-900 opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap"
                     >
-                      <span className="font-['Inter',_sans-serif] text-[9px] md:text-[10px] text-gray-500 mr-2 tracking-widest">{work.id}</span>
+                      <span className="font-['Inter',_sans-serif] text-[9px] md:text-[10px] text-gray-800 mr-2 tracking-widest">{work.id}</span>
                       {work.title}
                     </Link>
                   </li>

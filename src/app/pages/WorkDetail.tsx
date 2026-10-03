@@ -758,7 +758,7 @@ export const WorkDetail = () => {
         </p>
         <Link
           to="/"
-          className="mt-8 text-xs font-['Inter',_sans-serif] text-stone-400 hover:text-stone-900 transition-colors uppercase tracking-widest"
+          className="mt-8 text-xs font-['Inter',_sans-serif] text-stone-500 hover:text-stone-900 transition-colors uppercase tracking-widest"
         >
           ← Back to Home
         </Link>
@@ -816,7 +816,7 @@ export const WorkDetail = () => {
           to="/"
           className="inline-flex items-center gap-2 group"
         >
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -833,13 +833,13 @@ export const WorkDetail = () => {
           >
             {/* 2 & 3. 作品番号・カテゴリ */}
             <div className="flex flex-wrap items-baseline gap-4 mb-6 md:mb-8">
-              <span className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-400 tracking-[0.2em] whitespace-nowrap">
+              <span className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-500 tracking-[0.2em] whitespace-nowrap">
                 No.{work.id}
               </span>
               <span className="w-8 h-[1px] bg-stone-300" />
               <span className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-500 tracking-widest">
                 {work.category}
-                <span className="ml-3 font-['Inter',_sans-serif] text-[10px] md:text-xs tracking-[0.2em] opacity-60">
+                <span className="ml-3 font-['Inter',_sans-serif] text-[10px] md:text-xs tracking-[0.2em]">
                   {work.categoryEn}
                 </span>
               </span>
@@ -856,11 +856,11 @@ export const WorkDetail = () => {
                 <h1 className="font-['Noto_Serif_JP',_serif] text-3xl md:text-5xl lg:text-6xl text-stone-900 tracking-[0.05em] leading-tight mb-2 md:mb-4 break-words hyphens-auto w-full">
                   {work.title}
                 </h1>
-                <p className="font-['Inter',_sans-serif] text-sm md:text-base text-stone-400 tracking-[0.2em] font-light w-full break-words">
+                <p className="font-['Inter',_sans-serif] text-sm md:text-base text-stone-500 tracking-[0.2em] font-light w-full break-words">
                   {work.titleEn}
                 </p>
               </div>
-              <div className="font-['Inter',_sans-serif] text-2xl md:text-4xl text-stone-300 tracking-wider font-light md:pb-2 shrink-0">
+              <div className="font-['Inter',_sans-serif] text-2xl md:text-4xl text-stone-500 tracking-wider font-light md:pb-2 shrink-0">
                 {work.year}
               </div>
             </div>
@@ -893,7 +893,7 @@ export const WorkDetail = () => {
   <div className="w-full lg:w-1/3 flex flex-col gap-12 shrink-0">
     <FadeIn>
       <div className="flex flex-col w-full">
-        <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+        <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
           Data
         </h2>
 
@@ -919,7 +919,7 @@ export const WorkDetail = () => {
       {work.hasAR && (
         <div className="hidden lg:block w-full">
           <FadeIn delay={0.2}>
-            <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+            <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
               Experience
             </h2>
             <a
@@ -946,7 +946,7 @@ export const WorkDetail = () => {
                           <ARIcon />
                         </div>
                         <div className="min-w-0">
-                          <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.24em] text-stone-500">
+                          <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.24em] text-stone-600">
                             AR / 3D VIEWER
                           </span>
                           <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-[0.12em] transition-colors group-hover:text-stone-700 break-words">
@@ -1032,7 +1032,7 @@ export const WorkDetail = () => {
                                 <ARIcon />
                               </div>
                               <div className="min-w-0">
-                                <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.2em] text-stone-500">
+                                <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.2em] text-stone-600">
                                   AR / 3D VIEWER
                                 </span>
                                 <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-[0.1em] break-words">
@@ -1071,7 +1071,7 @@ export const WorkDetail = () => {
             {work.gallery && work.gallery.length > 0 && (
               <section className="w-full">
                 <FadeIn>
-                  <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-6 border-b border-stone-200 pb-4">
+                  <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-6 md:mb-6 border-b border-stone-200 pb-4">
                     Gallery
                   </h2>
                 </FadeIn>
@@ -1171,7 +1171,7 @@ export const WorkDetail = () => {
               work.behindTheScenes.length > 0 && (
                 <section className="w-full">
                   <FadeIn>
-                    <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+                    <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
                       Behind the Scenes
                     </h2>
                   </FadeIn>
@@ -1231,7 +1231,7 @@ export const WorkDetail = () => {
             {work.media && (
               <section className="w-full min-w-0 max-w-full overflow-hidden block">
                 <FadeIn>
-                  <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+                  <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
                     Process & Records
                   </h2>
                 </FadeIn>
@@ -1336,7 +1336,7 @@ export const WorkDetail = () => {
               work.exhibitions.length > 0 && (
                 <section className="w-full max-w-full overflow-hidden block">
                   <FadeIn>
-                    <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+                    <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
                       Exhibitions & Media
                     </h2>
                   </FadeIn>
@@ -1349,7 +1349,7 @@ export const WorkDetail = () => {
                         viewportMargin="0px 0px 15% 0px"
                       >
                         <div className="flex flex-col md:flex-row py-4 md:py-6 border-b border-stone-100 gap-2 md:gap-8 w-full overflow-hidden">
-                          <span className="font-['Inter',_sans-serif] text-xs text-stone-400 tracking-widest w-32 shrink-0">
+                          <span className="font-['Inter',_sans-serif] text-xs text-stone-500 tracking-widest w-32 shrink-0">
                             {ex.date}
                           </span>
                           <div className="flex flex-col gap-1 w-full overflow-hidden">
@@ -1390,7 +1390,7 @@ export const WorkDetail = () => {
                   className="w-3 h-3 text-stone-400 group-hover:text-stone-800 transition-colors"
                   strokeWidth={1.5}
                 />
-                <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
+                <span className="font-['Inter',_sans-serif] text-[10px] text-stone-500 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
                   Prev
                 </span>
               </div>
@@ -1413,7 +1413,7 @@ export const WorkDetail = () => {
               className="w-4 h-4 text-stone-400 group-hover:-translate-y-1 group-hover:text-stone-800 transition-all duration-300 mb-3"
               strokeWidth={1.5}
             />
-            <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
+            <span className="font-['Inter',_sans-serif] text-[10px] text-stone-500 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
               Back to Top
             </span>
           </button>
@@ -1425,7 +1425,7 @@ export const WorkDetail = () => {
               className="col-span-1 p-6 md:p-12 hover:bg-stone-50 transition-colors group flex flex-col items-end justify-center text-right"
             >
               <div className="flex items-center gap-2 mb-4">
-                <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
+                <span className="font-['Inter',_sans-serif] text-[10px] text-stone-500 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
                   Next
                 </span>
                 <ArrowRight
@@ -1453,7 +1453,7 @@ export const WorkDetail = () => {
             className="w-3 h-3 text-stone-400"
             strokeWidth={1.5}
           />
-          <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest">
+          <span className="font-['Inter',_sans-serif] text-[10px] text-stone-500 uppercase tracking-widest">
             Back to Top
           </span>
         </button>

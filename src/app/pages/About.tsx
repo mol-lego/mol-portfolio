@@ -49,7 +49,7 @@ export const About = () => {
           to="/"
           className="inline-flex items-center gap-2 group"
         >
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -84,7 +84,7 @@ export const About = () => {
                   <h1 className="font-['Inter',_sans-serif] text-3xl md:text-4xl font-light text-stone-900 tracking-wider">
                     mol
                   </h1>
-                  <p className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mt-1">
+                  <p className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mt-1">
                     ビルダー 
                   </p>
                 </div>
@@ -93,7 +93,7 @@ export const About = () => {
 
             <FadeIn delay={0.3}>
               <div className="flex flex-col gap-4 pt-6 lg:pt-8 border-t border-stone-100 w-full">
-                <h3 className="font-['Inter',_sans-serif] text-[10px] text-stone-400 tracking-[0.2em] uppercase">
+                <h3 className="font-['Inter',_sans-serif] text-[10px] text-stone-500 tracking-[0.2em] uppercase">
                   Links & Social
                 </h3>
                 <div className="flex flex-col gap-3 font-['Inter',_sans-serif] text-xs md:text-sm tracking-widest text-stone-600">
@@ -112,7 +112,7 @@ export const About = () => {
             {/* Concept / Statement */}
             <section className="flex flex-col gap-8 w-full">
               <FadeIn>
-                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
+                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
                   Introduction
                 </h2>
               </FadeIn>
@@ -137,7 +137,7 @@ export const About = () => {
             {/* Profile / History */}
             <section className="flex flex-col gap-8 w-full">
               <FadeIn>
-                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
+                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
                   Profile & History
                 </h2>
               </FadeIn>
@@ -155,7 +155,7 @@ export const About = () => {
                       key={i}
                       className="flex flex-col md:flex-row md:items-baseline py-6 border-b border-stone-100 gap-2 md:gap-8 w-full"
                     >
-                      <span className="font-['Inter',_sans-serif] text-sm text-stone-400 tracking-wider shrink-0 w-30">
+                      <span className="font-['Inter',_sans-serif] text-sm text-stone-500 tracking-wider shrink-0 w-30">
                         {item.year}
                       </span>
                       <span className="font-['Noto_Serif_JP',_serif] text-sm text-stone-800 tracking-wider leading-relaxed">
@@ -170,7 +170,7 @@ export const About = () => {
             {/* Gallery */}
             <section className="flex flex-col gap-8 w-full">
               <FadeIn>
-                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
+                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
                   Gallery
                 </h2>
               </FadeIn>

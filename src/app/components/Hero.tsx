@@ -73,7 +73,7 @@ export const Hero = () => {
             <span className="font-['Noto_Serif_JP',_serif] text-sm font-medium text-stone-800 tracking-[0.1em]">
               {HERO_WORK.title}
             </span>
-            <span className="font-['Inter',_sans-serif] text-[10px] tracking-widest text-stone-400 uppercase">
+            <span className="font-['Inter',_sans-serif] text-[10px] tracking-widest text-stone-500 uppercase">
               {HERO_WORK.titleEn} — {HERO_WORK.year}
             </span>
           </figcaption>
@@ -145,7 +145,7 @@ export const Hero = () => {
               <span className="font-['Noto_Serif_JP',_serif] text-base lg:text-lg font-medium text-stone-800 tracking-[0.1em]">
                 {HERO_WORK.title}
               </span>
-              <span className="font-['Inter',_sans-serif] text-xs lg:text-sm tracking-widest text-stone-400 uppercase">
+              <span className="font-['Inter',_sans-serif] text-xs lg:text-sm tracking-widest text-stone-500 uppercase">
                 {HERO_WORK.titleEn} — {HERO_WORK.year}
               </span>
             </div>
@@ -162,7 +162,7 @@ export const Hero = () => {
                   className="w-full h-1/2 bg-stone-400 absolute top-0"
                 />
               </div>
-              <span className="text-stone-400 font-['Inter',_sans-serif] text-[10px] uppercase tracking-[0.2em]">
+              <span className="text-stone-500 font-['Inter',_sans-serif] text-[10px] uppercase tracking-[0.2em]">
                 Scroll
               </span>
             </div>

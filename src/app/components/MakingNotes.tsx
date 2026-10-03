@@ -59,7 +59,7 @@ export const MakingNotes = () => {
                   ) : (
                     <ExternalLink className="w-3.5 h-3.5 md:w-4 md:h-4 text-stone-400" />
                   )}
-                  <span className="font-['Inter',_sans-serif] text-[9px] md:text-[10px] text-stone-400 tracking-widest uppercase">
+                  <span className="font-['Inter',_sans-serif] text-[9px] md:text-[10px] text-stone-500 tracking-widest uppercase">
                     {note.type} / {note.date}
                   </span>
                 </div>

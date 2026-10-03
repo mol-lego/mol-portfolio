@@ -47,7 +47,7 @@ export const Footer = () => {
         </div>
         
         <div className="flex flex-col items-center md:items-end gap-6 md:gap-2">
-          <p className="font-['Inter',_sans-serif] text-[10px] text-stone-400 tracking-[0.2em]">
+          <p className="font-['Inter',_sans-serif] text-[10px] text-stone-500 tracking-[0.2em]">
             © {new Date().getFullYear()} mol
           </p>
         </div>

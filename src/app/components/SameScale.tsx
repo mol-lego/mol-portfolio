@@ -25,7 +25,7 @@ export const ScaleCaption = ({
       {title}
     </span>
     {meta && (
-      <span className="ml-3 font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em]">
+      <span className="ml-3 font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em]">
         {meta}
       </span>
     )}

@@ -17,7 +17,7 @@ const ErrorState = ({ code, label, title, message }: ErrorStateProps) => {
     <main className="w-full bg-white pb-32 pt-24 md:pt-32">
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 mb-16 md:mb-24">
         <Link to="/" className="inline-flex items-center gap-2 group">
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -31,10 +31,10 @@ const ErrorState = ({ code, label, title, message }: ErrorStateProps) => {
           className="grid gap-12 border-t border-stone-200 pt-10 md:grid-cols-[180px_minmax(0,1fr)] md:gap-20 md:pt-14"
         >
           <div className="flex flex-col gap-2">
-            <span className="font-['Inter',_sans-serif] text-5xl md:text-7xl font-light text-stone-300 tracking-[0.08em]">
+            <span className="font-['Inter',_sans-serif] text-5xl md:text-7xl font-light text-stone-500 tracking-[0.08em]">
               {code}
             </span>
-            <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.28em] uppercase">
+            <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.28em] uppercase">
               {label}
             </span>
           </div>

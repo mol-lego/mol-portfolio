@@ -200,7 +200,7 @@ export const SmallWorks = () => {
               </button>
               
               <div className="flex flex-col gap-4 group-hover:opacity-90 transition-opacity">
-                <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] mb-1 md:mb-2 block border-b border-stone-200 pb-2">
+                <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] mb-1 md:mb-2 block border-b border-stone-200 pb-2">
                   No. {work.id}
                 </span>
 
@@ -208,7 +208,7 @@ export const SmallWorks = () => {
                   <h3 className="font-['Noto_Serif_JP',_serif] text-lg md:text-xl font-light text-stone-900 leading-tight tracking-[0.05em] whitespace-nowrap mt-1 md:mt-2">
                     {work.title}
                   </h3>
-                  <h4 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] font-light mt-1 md:mt-1.5 pl-1">
+                  <h4 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] font-light mt-1 md:mt-1.5 pl-1">
                     {work.titleEn}
                   </h4>
                 </div>
@@ -216,7 +216,7 @@ export const SmallWorks = () => {
                 <div className="w-full">
                   <div className="space-y-1 md:space-y-2 font-['Inter',_sans-serif] text-[10px] md:text-xs">
                     <div className="flex justify-between border-b border-stone-100 pb-1 md:pb-1.5">
-                      <span className="text-stone-400 uppercase tracking-widest text-[8px] md:text-[10px]">
+                      <span className="text-stone-500 uppercase tracking-widest text-[11px] leading-4">
                         Year
                       </span>
                       <span className="text-stone-700">
@@ -224,7 +224,7 @@ export const SmallWorks = () => {
                       </span>
                     </div>
                     <div className="flex justify-between border-b border-stone-100 pb-1 md:pb-1.5">
-                      <span className="text-stone-400 uppercase tracking-widest text-[8px] md:text-[10px]">
+                      <span className="text-stone-500 uppercase tracking-widest text-[11px] leading-4">
                         Scale
                       </span>
                       <span className="text-stone-700 text-right">

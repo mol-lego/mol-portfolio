@@ -45,7 +45,7 @@ export const LargeWorks = () => {
             </Link>
 
             <div className="flex flex-col gap-4">
-              <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] mb-2 md:mb-3 block border-b border-stone-200 pb-2">
+              <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.2em] mb-2 md:mb-3 block border-b border-stone-200 pb-2">
                 No. {work.id}
               </span>
 
@@ -53,7 +53,7 @@ export const LargeWorks = () => {
                 <h3 className="font-['Noto_Serif_JP',_serif] text-[clamp(1.5rem,5vw,2rem)] font-light text-stone-900 leading-tight tracking-[0.05em] whitespace-nowrap mt-1 md:mt-2">
                   {work.title}
                 </h3>
-                <h4 className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-400 tracking-[0.2em] font-light mt-1 md:mt-2 pl-1">
+                <h4 className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-500 tracking-[0.2em] font-light mt-1 md:mt-2 pl-1">
                   {work.titleEn}
                 </h4>
               </div>
@@ -61,7 +61,7 @@ export const LargeWorks = () => {
               <div className="w-full">
                 <div className="space-y-2 md:space-y-4 font-['Inter',_sans-serif] text-xs md:text-sm">
                   <div className="flex justify-between border-b border-stone-100 pb-1.5 md:pb-2">
-                    <span className="text-stone-400 uppercase tracking-widest text-[10px]">
+                    <span className="text-stone-500 uppercase tracking-widest text-[10px]">
                       Year
                     </span>
                     <span className="text-stone-700">
@@ -69,7 +69,7 @@ export const LargeWorks = () => {
                     </span>
                   </div>
                   <div className="flex justify-between border-b border-stone-100 pb-1.5 md:pb-2">
-                    <span className="text-stone-400 uppercase tracking-widest text-[10px]">
+                    <span className="text-stone-500 uppercase tracking-widest text-[10px]">
                       Scale
                     </span>
                     <span className="text-stone-700 text-right">

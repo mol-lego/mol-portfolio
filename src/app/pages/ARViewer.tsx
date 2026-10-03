@@ -130,9 +130,9 @@ export const ARViewer = () => {
                     decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent flex flex-col justify-end p-6 md:p-10">
-                    <span className="text-stone-400 text-xs tracking-widest mb-2 font-['Inter',_sans-serif]">No. {work.id}</span>
+                    <span className="text-stone-200 text-xs tracking-widest mb-2 font-['Inter',_sans-serif]">No. {work.id}</span>
                     <h2 className="text-2xl md:text-4xl font-['Noto_Serif_JP',_serif] text-stone-100 mb-1">{work.title}</h2>
-                    <h3 className="text-sm md:text-base text-stone-400 font-light mb-6 tracking-wider">{work.titleEn}</h3>
+                    <h3 className="text-sm md:text-base text-stone-300 font-light mb-6 tracking-wider">{work.titleEn}</h3>
                     
                     <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md self-start px-6 py-3 rounded-full border border-white/20 group-hover:bg-white/20 transition-colors">
                       <Box className="w-4 h-4" />
@@ -161,7 +161,7 @@ export const ARViewer = () => {
           </div>
         </div>
 
-        <p className="text-stone-500 text-xs tracking-[0.2em] uppercase mt-14 hidden md:block">
+        <p className="text-stone-400 text-xs tracking-[0.2em] uppercase mt-14 hidden md:block">
           Swipe to explore • Tap to view in AR
         </p>
       </div>
