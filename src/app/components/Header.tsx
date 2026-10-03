@@ -104,11 +104,11 @@ export const Header = () => {
           </p>
         </Link>
         
-        {/* Navigation */}
-        <nav className="pointer-events-auto flex items-center gap-6">
+        {/* Navigation（モバイルでは帯の上下の余白の内側いっぱいに伸ばし、一覧の位置の基準にする） */}
+        <nav className="pointer-events-auto flex items-center gap-6 self-stretch md:self-auto">
           <div 
             ref={worksRef}
-            className="relative flex items-center"
+            className="relative flex items-center self-stretch md:self-auto"
             // タッチの擬似的な mouseenter で開いたままにならないよう、マウスのときだけ
             onPointerEnter={(event) => event.pointerType === 'mouse' && setIsHoveringWorks(true)}
             onPointerLeave={(event) => event.pointerType === 'mouse' && setIsHoveringWorks(false)}
@@ -137,7 +137,8 @@ export const Header = () => {
                   : { opacity: 0, y: 5, pointerEvents: "none", transitionEnd: { visibility: "hidden" } }
               }
               transition={{ duration: 0.2 }}
-              className="absolute top-full right-0 md:left-1/2 md:-translate-x-1/2 w-[200px] md:w-[240px] shadow-sm border border-gray-100 rounded-sm overflow-hidden z-50 -mt-2"
+              // モバイルは帯の下端（帯の下の余白 1rem の分だけ下）から、デスクトップは WORKS の真下から出す
+              className="absolute top-[calc(100%+1rem)] md:top-full right-0 md:left-1/2 md:-translate-x-1/2 w-[200px] md:w-[240px] shadow-sm border border-gray-100 rounded-sm overflow-hidden z-50 md:-mt-2"
             >
               <div className="absolute inset-0 bg-white/80 backdrop-blur-lg" />
               <ul className="relative flex flex-col py-2">
