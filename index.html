@@ -59,6 +59,43 @@
           );
         })();
       </script>
+      <script>
+        // トップだけ、冒頭の客船の図を先に読み込み始める。冒頭の演出を再生するとき
+        // （このセッションで初めてのトップ、動きを減らす設定でない）は、最初に出す
+        // 2×4 ブロックも。ファイル名は scripts/make-renders.py の書き出しと合わせる
+        (() => {
+          const base = "%BASE_URL%";
+          const trim = (path) => path.replace(/\/index\.html$/, "/").replace(/\/+$/, "");
+          if (trim(window.location.pathname) !== trim(base)) {
+            return;
+          }
+
+          const preload = (attrs) => {
+            const link = document.createElement("link");
+            link.rel = "preload";
+            link.as = "image";
+            Object.assign(link, attrs);
+            link.setAttribute("fetchpriority", "high");
+            document.head.appendChild(link);
+          };
+
+          preload({
+            href: `${base}renders/qe-1280.webp`,
+            imageSrcset: `${base}renders/qe-1280.webp 1280w, ${base}renders/qe-2560.webp 2560w`,
+            imageSizes:
+              "(min-width: 1400px) 1304px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)",
+          });
+
+          let played = true;
+          try {
+            played = Boolean(window.sessionStorage.getItem("mol:hero-intro"));
+          } catch {}
+          const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+          if (!played && !reduced) {
+            preload({ href: `${base}renders/brick-1600.webp` });
+          }
+        })();
+      </script>
     </head>
 
     <body>

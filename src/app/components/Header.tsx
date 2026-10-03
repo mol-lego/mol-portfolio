@@ -9,6 +9,7 @@ export const Header = () => {
   const [isWorksOpen, setIsWorksOpen] = useState(false);
   const worksRef = useRef<HTMLDivElement>(null);
   const worksButtonRef = useRef<HTMLButtonElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const menuId = useId();
   const location = useLocation();
 
@@ -16,6 +17,30 @@ export const Header = () => {
   useEffect(() => {
     setIsWorksOpen(false);
   }, [location.key]);
+
+  // トップでは、冒頭の大きな mol（#hero-wordmark）が見えているあいだ、ヘッダーを地に溶かし
+  // （背景と下線なし）、ロゴの mol を出さない（mol が2つ並ばないように）
+  const isHome = location.pathname === '/';
+  const [overHero, setOverHero] = useState(isHome);
+
+  useEffect(() => {
+    if (!isHome) {
+      setOverHero(false);
+      return;
+    }
+    const update = () => {
+      const wordmark = document.getElementById('hero-wordmark');
+      const headerHeight = headerRef.current?.offsetHeight ?? 0;
+      setOverHero(Boolean(wordmark) && wordmark!.getBoundingClientRect().bottom > headerHeight);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [isHome, location.key]);
 
   useEffect(() => {
     if (!isWorksOpen) return;
@@ -51,9 +76,17 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-paper border-b border-rule">
+    <header
+      ref={headerRef}
+      data-intro-part="text"
+      className={`sticky top-0 z-40 w-full border-b ${overHero ? 'bg-transparent border-transparent' : 'bg-paper border-rule'}`}
+    >
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 h-14 md:h-16 flex justify-between items-center">
-        <Link to="/" className="text-base md:text-lg font-bold text-ink tracking-[0.04em]">
+        {/* ロゴ。改修前の指定（Inter 500、字間 0.1em） */}
+        <Link
+          to="/"
+          className={`font-wordmark text-sm md:text-base font-medium tracking-widest text-ink py-2 ${overHero ? 'invisible' : ''}`}
+        >
           mol
         </Link>
 

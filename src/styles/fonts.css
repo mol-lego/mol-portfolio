@@ -1,3 +1,7 @@
 /* 和文・欧文とも Noto Serif JP の1系統。ウェイトは 400 と 700 の2つ。
  * 書体を差し替えるときは、この読み込みと theme.css の --font-serif を変える。 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
+
+/* ロゴ「mol」（ワードマーク）だけの書体。改修前（fc16600）の指定のまま Inter を使う。
+ * text=mol で m・o・l の3字だけを読む（数 KB）。本文には使わない。 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&text=mol&display=swap');

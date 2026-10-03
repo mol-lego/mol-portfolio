@@ -8,19 +8,22 @@ import { ARSection } from '../components/ARSection';
 import { AboutSection } from '../components/AboutSection';
 import { useDocumentTitle } from '../useDocumentTitle';
 
-// 画像の読み込みを待たずに、最初から全セクションを描く（画像は各所で遅延読み込み）
+// 画像の読み込みを待たずに、最初から全セクションを描く（画像は各所で遅延読み込み）。
+// 冒頭の演出のあいだだけ、冒頭より後ろは data-intro-part="text" で透明にしておく（theme.css）
 export const Home = () => {
   useDocumentTitle("mol - 作品集");
 
   return (
     <div className="flex flex-col w-full">
       <Hero />
-      <FeaturedWorks />
-      <LargeWorks />
-      <SmallWorks />
-      <MakingNotes />
-      <ARSection />
-      <AboutSection />
+      <div data-intro-part="text" className="flex flex-col w-full">
+        <FeaturedWorks />
+        <LargeWorks />
+        <SmallWorks />
+        <MakingNotes />
+        <ARSection />
+        <AboutSection />
+      </div>
     </div>
   );
 };

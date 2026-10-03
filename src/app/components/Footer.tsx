@@ -6,7 +6,7 @@ const linkClass =
 
 export const Footer = () => {
   return (
-    <footer className="w-full border-t border-rule mt-12 relative z-10">
+    <footer data-intro-part="text" className="w-full border-t border-rule mt-12 relative z-10">
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-20 flex flex-col md:flex-row md:justify-between gap-10 md:gap-16">
         <div className="flex flex-col gap-5">
           <Link to="/" className="w-fit text-lg font-bold text-ink tracking-[0.04em]">

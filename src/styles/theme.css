@@ -17,6 +17,8 @@
 
   /* 書体。Adobe Fonts の候補に差し替えるときはここを変える（fonts.css の読み込みも） */
   --font-serif: "Noto Serif JP", serif;
+  /* ロゴ「mol」（ワードマーク）だけの書体。単一書体の例外。ヘッダー・冒頭・フッターの mol に使う */
+  --wordmark: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
 @theme inline {
@@ -24,6 +26,7 @@
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
   --color-rule: var(--rule);
+  --font-wordmark: var(--wordmark);
 }
 
 @theme {
@@ -126,4 +129,27 @@
     transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
+}
+
+/*
+ * 冒頭の演出（components/Hero.tsx）。演出のあいだ html に data-hero-intro が付き、
+ * ブロック以外（ヘッダー・ワードマーク・客船・キャプション・本文・フッター）の不透明度を
+ * Hero.tsx が毎フレーム --intro-qe と --intro-text に書く。演出が終わると属性ごと外れる。
+ */
+html[data-hero-intro] [data-intro-part="text"] {
+  opacity: var(--intro-text, 0);
+}
+
+html[data-hero-intro] [data-intro-part="qe"] {
+  opacity: var(--intro-qe, 0);
+}
+
+/* 冒頭の 2×4 ブロック。位置と幅は客船の画像に対する割合（Hero.tsx が変数で渡す） */
+.hero-brick {
+  position: absolute;
+  left: var(--brick-left);
+  top: var(--brick-top);
+  width: var(--brick-width);
+  height: auto;
+  max-width: none;
 }
