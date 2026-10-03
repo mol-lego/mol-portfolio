@@ -86,7 +86,7 @@ export const works = [
     piecesApprox: true,
     group: "large",
     summary:
-      "灘レゴOB・現東大レゴ部の4人での合作。緻密な街並みの表現にはこだわりがたくさん。東大での学祭を中心に各地で展示予定です。",
+      "灘レゴOB・現東大レゴ部の4人での合作。街並みの窓・扉だけで100種類を超えるデザインを使っています。東大の駒場祭をはじめ各地で展示しました。",
     card: {
       src: new URL("../assets/optimized/venice1-card.jpg", import.meta.url).href,
       src2x: new URL("../assets/optimized/venice1-card@2x.jpg", import.meta.url).href,
