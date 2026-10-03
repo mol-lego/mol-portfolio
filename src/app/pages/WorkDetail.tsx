@@ -314,8 +314,8 @@ const WORKS_DATA = {
   },
   "02": {
     id: "02",
-    category: "共同制作",
-    categoryEn: "COLLABORATION",
+    category: "大型作品",
+    categoryEn: "LARGE SCALE",
     prefix: "水の都",
     title: "ヴェネツィア",
     titleEn: "Venice",
@@ -583,8 +583,8 @@ const WORKS_DATA = {
   },
   "04": {
     id: "04",
-    category: "ジオラマ",
-    categoryEn: "DIORAMA",
+    category: "大型作品",
+    categoryEn: "LARGE SCALE",
     title: "ハワイ火山国立公園",
     titleEn: "Hawaii Volcanoes National Park",
     year: "2020",

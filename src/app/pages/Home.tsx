@@ -1,6 +1,5 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
-import { FeaturedWorks } from '../components/FeaturedWorks';
 import { LargeWorks } from '../components/LargeWorks';
 import { SmallWorks } from '../components/SmallWorks';
 import { MakingNotes } from '../components/MakingNotes';
@@ -43,7 +42,6 @@ export const Home = () => {
       <Hero />
       {isContentReady && (
         <>
-          <FeaturedWorks />
           <LargeWorks />
           <SmallWorks />
           <MakingNotes />

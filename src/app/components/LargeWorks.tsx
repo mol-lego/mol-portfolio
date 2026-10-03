@@ -1,11 +1,37 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
+import imgQE from '../../assets/optimized/msqe2-card.jpg';
+import imgQE2x from '../../assets/optimized/msqe2-card@2x.jpg';
+import imgVenezia from '../../assets/optimized/venice1-card.jpg';
+import imgVenezia2x from '../../assets/optimized/venice1-card@2x.jpg';
 import imgYasaka from '../../assets/yasaka3.jpeg';
 import imgHawaii from '../../assets/optimized/hawaii1-card.jpg';
 import imgHawaii2x from '../../assets/optimized/hawaii1-card@2x.jpg';
 
 const LARGE_WORKS = [
+  {
+    id: "01",
+    title: "クイーンエリザベス号",
+    subtitle: "MS Queen Elizabeth",
+    year: "2019",
+    scale: "全長3m / 約35,000ピース",
+    desc: "初めて制作した大型作品。設計・組み立てに1年を費やしました。灘校レゴ同好会時代の作品です。",
+    image: imgQE,
+    image2x: imgQE2x,
+    linkText: "YouTube メイキング"
+  },
+  {
+    id: "02",
+    title: "ヴェネツィア",
+    subtitle: "Venice",
+    year: "2025",
+    scale: "1m四方 / 約50,000ピース",
+    desc: "灘レゴOB・現東大レゴ部の4人での合作。緻密な街並みの表現にはこだわりがたくさん。東大での学祭を中心に各地で展示予定です。",
+    image: imgVenezia,
+    image2x: imgVenezia2x,
+    linkText: "制作記 note"
+  },
   {
     id: "03",
     title: "八坂神社 西楼門",
@@ -52,7 +78,7 @@ export const LargeWorks = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px" }}
-            transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: (idx % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="group cursor-pointer"
           >
             <Link to={`/work/${work.id}`} className="block aspect-[4/3] w-full overflow-hidden bg-stone-100 mb-8 relative">
