@@ -16,6 +16,7 @@ import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
 import { useImagePreload } from "../useImagePreload";
 import { useIsMobile } from "../useIsMobile";
+import { usePrefersReducedMotion } from "../reducedMotion";
 import { detailWorks, formatCount, formatYear, getWork, type Work } from "../works.js";
 
 import imgQE2 from "../../assets/optimized/workdetail/msqe2.jpg";
@@ -724,6 +725,7 @@ export const WorkDetail = ({ workId }: { workId: string }) => {
           stats: buildStats(workData, detail),
         }
       : null;
+  const reduceMotion = usePrefersReducedMotion();
   useDocumentTitle(work ? `mol - ${work.title}` : "mol - 作品");
   const isMainVisualReady = useImagePreload(work?.mainVisual ?? "");
   const [expandedImage, setExpandedImage] = useState<{
@@ -786,7 +788,7 @@ export const WorkDetail = ({ workId }: { workId: string }) => {
     arrows: false,
     dots: false,
     infinite: true,
-    autoplay: true,
+    autoplay: !reduceMotion,
     autoplaySpeed: 2400,
     speed: 1200,
     cssEase: "cubic-bezier(0.22, 1, 0.36, 1)",
@@ -1420,7 +1422,7 @@ export const WorkDetail = ({ workId }: { workId: string }) => {
           {/* トップへ戻る (モバイルでは非表示か、またはデザインを変える) */}
           <button
             onClick={() =>
-              window.scrollTo({ top: 0, behavior: "smooth" })
+              window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
             }
             className="hidden md:flex col-span-1 border-r border-rule p-6 md:p-12 hover:bg-ink/[0.03] transition-colors group flex-col items-center justify-center"
           >
@@ -1460,7 +1462,7 @@ export const WorkDetail = ({ workId }: { workId: string }) => {
         {/* モバイル用トップへ戻る */}
         <button
           onClick={() =>
-            window.scrollTo({ top: 0, behavior: "smooth" })
+            window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })
           }
           className="w-full flex md:hidden border-t border-rule p-6 hover:bg-ink/[0.03] transition-colors items-center justify-center gap-2 group"
         >

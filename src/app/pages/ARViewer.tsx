@@ -7,6 +7,7 @@ import { X, Box, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
+import { prefersReducedMotion } from "../reducedMotion";
 import { arWorks } from "../works.js";
 
 import imgQueenElizabeth from "../../assets/optimized/msqe1-hero.jpg";
@@ -42,7 +43,7 @@ export const ARViewer = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: prefersReducedMotion() ? 0 : 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,

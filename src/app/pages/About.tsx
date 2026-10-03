@@ -15,6 +15,7 @@ import about5 from '../../assets/optimized/about5-gallery.jpg';
 import about52x from '../../assets/optimized/about5-gallery@2x.jpg';
 import about6 from '../../assets/optimized/about6-gallery.jpg';
 import about62x from '../../assets/optimized/about6-gallery@2x.jpg';
+import "../reducedMotion";
 import { useDocumentTitle } from '../useDocumentTitle';
 import { useImagePreload } from '../useImagePreload';
 

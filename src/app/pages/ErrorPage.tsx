@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, isRouteErrorResponse, useRouteError } from "react-router";
-import { motion } from "motion/react";
 import { useDocumentTitle } from "../useDocumentTitle";
 
 type ErrorStateProps = {
@@ -24,10 +23,7 @@ const ErrorState = ({ code, label, title, message }: ErrorStateProps) => {
       </div>
 
       <section className="w-full max-w-[1400px] mx-auto px-6 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        <div
           className="grid gap-12 border-t border-rule pt-10 md:grid-cols-[180px_minmax(0,1fr)] md:gap-20 md:pt-14"
         >
           <div className="flex flex-col gap-2">
@@ -70,7 +66,7 @@ const ErrorState = ({ code, label, title, message }: ErrorStateProps) => {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
     </main>
   );

@@ -11,6 +11,7 @@ import imgProcess6 from "../../assets/optimized/process/process6.jpg";
 import imgVenice1 from "../../assets/optimized/workdetail/venice1.jpg";
 import imgVenice12 from "../../assets/optimized/process/venice12.jpg";
 import imgQE4 from "../../assets/optimized/workdetail/msqe4.jpg";
+import "../reducedMotion";
 import { useDocumentTitle } from "../useDocumentTitle";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
