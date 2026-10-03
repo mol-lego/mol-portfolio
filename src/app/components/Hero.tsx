@@ -31,11 +31,14 @@ const QE_SIZES =
 
 /* ---------- 冒頭の演出 ---------- */
 
-// 時間（ms）。白い画面にブロックだけ → 縮みながら船首へ → 後半で客船 → 文字
-const HOLD = 400;
+// 時間（ms）。白い画面にブロックだけ → 縮みながら船首へ → 縮む途中から客船 → 文字
+const HOLD = 300;
 const MOVE = 1400;
-const QE_FADE = 600;
-const TEXT_FADE = 400;
+// 客船は、縮小の時間の 40% から 80% のあいだに現れる（ブロックがまだブロックに見えるうちに。
+// 1440px の画面ではブロックの幅がおよそ 280px → 30px のあいだ）
+const QE_FROM = 0.4;
+const QE_TO = 0.8;
+const TEXT_FADE = 300;
 const MOVE_END = HOLD + MOVE;
 const END = MOVE_END + TEXT_FADE;
 
@@ -93,7 +96,7 @@ const cubicBezier = (x1: number, y1: number, x2: number, y2: number) => {
   };
 };
 
-const easeMove = cubicBezier(0.7, 0, 0.2, 1);
+const easeMove = cubicBezier(0.55, 0, 0.15, 1);
 
 /** 最初のブロックの幅（画面幅に対する割合）。1440px で 36%、390px で 60%、その間は直線で */
 const startWidthRatio = (viewportWidth: number) =>
@@ -141,12 +144,13 @@ const useHeroIntro = (
 
     const setFrame = (elapsed: number) => {
       // 位置と幅を同じ進み具合で動かす。transform ではなく width を変えて、毎コマその大きさで描く
-      const progress = easeMove(clamp01((elapsed - HOLD) / MOVE));
+      const time = clamp01((elapsed - HOLD) / MOVE);
+      const progress = easeMove(time);
       const mix = (from: number, to: number) => from + (to - from) * progress;
       brickStyle.left = `${mix(start.left, end.left)}px`;
       brickStyle.top = `${mix(start.top, end.top)}px`;
       brickStyle.width = `${mix(start.width, end.width)}px`;
-      root.style.setProperty("--intro-qe", String(clamp01((elapsed - (MOVE_END - QE_FADE)) / QE_FADE)));
+      root.style.setProperty("--intro-qe", String(clamp01((time - QE_FROM) / (QE_TO - QE_FROM))));
       root.style.setProperty("--intro-text", String(clamp01((elapsed - MOVE_END) / TEXT_FADE)));
     };
 

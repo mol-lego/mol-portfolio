@@ -5,7 +5,9 @@ import { formatSize, formatYear, worksInGroup } from "../works.js";
 import { SectionHeading, textLinkClass } from "./WorkCaption";
 import { Brick } from "./Brick";
 
-const SMALL_WORKS = worksInGroup("small");
+// 帯に置く作品。夢の家（投影の幅 50cm・高さ 25cm）は帯の高さを決めてしまい、ほかの作品の上が
+// 大きく空くので外す。帯の高さはいちばん高い歩道橋とタクシー（約 15cm）で決まる
+const BAND_WORKS = worksInGroup("small").filter((work) => work.render !== "house");
 
 /**
  * 1つの作品の場所。幅は外接直方体を写した矩形の実寸（CSS の cm）、高さは床の基準点
@@ -44,7 +46,8 @@ const actualImageStyle = (render: Render): React.CSSProperties => ({
 });
 
 /**
- * 実物大（改修前の AR の節の位置）。小さな作品のレンダリングを CSS の cm で実寸の幅に置く。
+ * 実物大（改修前の AR の節の位置）。小さな作品（夢の家を除く3点）のレンダリングを
+ * CSS の cm で実寸の幅に置く。
  * CSS の 1cm は 96dpi 換算の 37.8px なので、画面上ではほぼ実物の大きさになる。
  * 床（底面の中心）の高さを揃え、投影した矩形の間を 2cm にした 1 本の横スクロールの帯。
  * 先頭に 2×4 ブロックも同じく 1:1 で置く。
@@ -80,7 +83,7 @@ export const ARSection = () => {
             />
           </ActualItem>
 
-          {SMALL_WORKS.map((work) => {
+          {BAND_WORKS.map((work) => {
             const render = getRender(work.render);
             return (
               <ActualItem
