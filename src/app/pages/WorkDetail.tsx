@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
 import { usePhotoLoaded } from "../usePhotoLoaded";
-import { useIsMobile } from "../components/ui/use-mobile";
+import { useIsMobile } from "../useIsMobile";
 import { usePrefersReducedMotion } from "../reducedMotion";
 import { detailWorks, formatCount, getWork, type Work } from "../works.js";
 
