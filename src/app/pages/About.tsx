@@ -98,7 +98,7 @@ export const About = () => {
                   Links & Social
                 </h3>
                 <div className="flex flex-col gap-3 text-xs md:text-sm tracking-widest text-ink-2">
-                  <a href="https://x.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors w-fit">Twitter (X)</a>
+                  <a href="https://x.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors w-fit">X</a>
                   <a href="https://www.instagram.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors w-fit">Instagram</a>
                   <a href="https://www.youtube.com/@mamorutanabe1136" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors w-fit">YouTube</a>
                   <a href="mailto:contact@mamorutanabe.com" className="hover:text-ink transition-colors w-fit">Contact</a>

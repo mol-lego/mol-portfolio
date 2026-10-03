@@ -1,60 +1,32 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link } from 'react-router';
+
+const linkClass =
+  'text-sm text-ink underline underline-offset-[0.3em] decoration-1 decoration-ink-2/60 hover:decoration-ink';
 
 export const Footer = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const handleGoHome = () => {
-    navigate('/', {
-      state: location.pathname === '/' ? { refreshHomeAt: Date.now() } : null,
-    });
-  };
-
   return (
-    <footer className="w-full bg-stone-50 py-32 px-6 md:px-12 mt-12 border-t border-stone-200 flex flex-col items-center justify-center relative overflow-hidden">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-16"
-      >
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-8">
-          <button
-            type="button"
-            onClick={handleGoHome}
-            className="font-['Inter',_sans-serif] text-4xl md:text-6xl font-light text-stone-900 tracking-wider"
-          >
+    <footer className="w-full border-t border-rule mt-12 relative z-10">
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-20 flex flex-col md:flex-row md:justify-between gap-10 md:gap-16">
+        <div className="flex flex-col gap-5">
+          <Link to="/" className="w-fit text-lg font-bold text-ink tracking-[0.04em]">
             mol
-          </button>
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-6">
-            <Link to="/about" className="group flex items-center gap-4 text-stone-500 hover:text-stone-900 transition-colors">
-              <span className="font-['Inter',_sans-serif] text-xs font-medium tracking-[0.2em] uppercase">
-                About me
-              </span>
-              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300 ease-out" strokeWidth={1.5} />
-            </Link>
-            <Link to="/process" className="group flex items-center gap-4 text-stone-500 hover:text-stone-900 transition-colors">
-              <span className="font-['Inter',_sans-serif] text-xs font-medium tracking-[0.2em] uppercase">
-                Creation Process
-              </span>
-              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300 ease-out" strokeWidth={1.5} />
-            </Link>
-          </div>
+          </Link>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <li><Link to="/about" className={linkClass}>About</Link></li>
+            <li><Link to="/process" className={linkClass}>Process</Link></li>
+            <li><a href="https://x.com/mol_lego" target="_blank" rel="noopener noreferrer" className={linkClass}>X</a></li>
+            <li><a href="https://www.instagram.com/mol_lego" target="_blank" rel="noopener noreferrer" className={linkClass}>Instagram</a></li>
+            <li><a href="https://www.youtube.com/@mamorutanabe1136" target="_blank" rel="noopener noreferrer" className={linkClass}>YouTube</a></li>
+            <li><a href="mailto:contact@mamorutanabe.com" className={linkClass}>Contact</a></li>
+          </ul>
         </div>
-        
-        <div className="flex flex-col items-center md:items-end gap-6 md:gap-2">
-          <p className="font-['Inter',_sans-serif] text-[10px] text-stone-400 tracking-[0.2em]">
-            © {new Date().getFullYear()} mol
-          </p>
-          <p className="font-['Inter',_sans-serif] text-[10px] text-stone-400 tracking-[0.1em]">
-            LEGO<sup>&reg;</sup>はレゴ・グループの商標であり, 本サイトはグループ公式のものではありません.
-          </p>
+
+        <div className="flex flex-col gap-1 md:items-end md:text-right text-xs text-ink-2">
+          <p>© {new Date().getFullYear()} mol</p>
+          <p>LEGO® はレゴ・グループの商標であり、本サイトはグループ公式のものではありません。</p>
         </div>
-      </motion.div>
+      </div>
     </footer>
   );
 };
