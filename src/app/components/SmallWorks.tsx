@@ -16,7 +16,7 @@ const SMALL_WORKS = [
     subtitle: "Hospital Bed",
     year: "2025",
     scale: "8cm / 127ピース",
-    desc: "味気ない入院生活もレゴの世界なら楽しくなるかな？と思って作りました。5年ぶりに公開した復帰作です。",
+    desc: "味気ない入院生活もブロックの世界なら楽しくなるかな？と思って作りました。5年ぶりに公開した復帰作です。",
     image: imgBedroom,
     image2x: imgBedroom2x,
     aspect: "aspect-square",

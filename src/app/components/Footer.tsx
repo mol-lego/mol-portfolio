@@ -50,9 +50,6 @@ export const Footer = () => {
           <p className="font-['Inter',_sans-serif] text-[10px] text-stone-400 tracking-[0.2em]">
             © {new Date().getFullYear()} mol
           </p>
-          <p className="font-['Inter',_sans-serif] text-[10px] text-stone-400 tracking-[0.1em]">
-            LEGO<sup>&reg;</sup>はレゴ・グループの商標であり, 本サイトはグループ公式のものではありません.
-          </p>
         </div>
       </motion.div>
     </footer>

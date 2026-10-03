@@ -32,7 +32,7 @@ export const AboutSection = () => {
       </Link>
       
       <p className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-600 leading-loose tracking-wide font-light max-w-2xl mx-auto mb-16">
-        大型のものから手のひらサイズまで、LEGO<sup>&reg;</sup>ブロックで作品を制作しています。
+        大型のものから手のひらサイズまで、ブロックで作品を制作しています。
       </p>
 
       <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center border-t border-stone-200 pt-16 font-['Inter',_sans-serif] text-xs tracking-widest uppercase text-stone-500">

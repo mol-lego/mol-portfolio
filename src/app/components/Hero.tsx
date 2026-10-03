@@ -44,7 +44,7 @@ export const Hero = () => {
             mol
           </h1>
           <p className="font-['Inter',_sans-serif] text-[10px] tracking-[0.2em] uppercase mt-4 text-stone-500 pl-1">
-            LEGO<sup>&reg;</sup>作品集
+            ブロック作品集
           </p>
         </motion.div>
 
@@ -108,7 +108,7 @@ export const Hero = () => {
             mol
           </h1>
           <p className="font-['Inter',_sans-serif] text-sm lg:text-base tracking-[0.2em] uppercase mt-6 text-stone-500 pl-2">
-            LEGO<sup>&reg;</sup>作品集
+            ブロック作品集
           </p>
         </motion.div>
 
