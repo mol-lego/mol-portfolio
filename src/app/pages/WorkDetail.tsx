@@ -154,7 +154,7 @@ const WORK_DETAILS: Record<string, WorkDetailContent> = {
     sliderGallery: [
       {
         url: imgQE15,
-        caption: "実際のクイーン・エリザベス号",
+        caption: "実際のクイーンエリザベス号",
       },
       { url: imgQE5, 
         caption: "船尾から" 
@@ -278,10 +278,10 @@ const WORK_DETAILS: Record<string, WorkDetailContent> = {
         venue: "近鉄百貨店 奈良店",
       },
       {
-        date: "2021年1月~2月",
+        date: "2021年1月〜2月",
         name: "ホテル ナビオス横浜 長期展示",
         venue: "ナビオス横浜",
-        remarks: "ロビーにて2ヶ月間展示",
+        remarks: "ロビーにて2か月間展示",
       },
       {
         date: "2021年6月",
@@ -299,7 +299,7 @@ const WORK_DETAILS: Record<string, WorkDetailContent> = {
         venue: "灘中学校・高等学校",
       },
       {
-        date: "2023年7月~10月",
+        date: "2023年7月〜10月",
         name: "ひょうごレゴ®︎展",
         venue: "兵庫県立兵庫津ミュージアム",
       },
@@ -332,7 +332,7 @@ const WORK_DETAILS: Record<string, WorkDetailContent> = {
     overview: [
       "イタリア北部に浮かぶヴェネツィアをミニフィグスケールで再現しました。ゴンドラでの移動のために運河が張り巡らされた街並みは、息を呑むような美しさです。",
       "複雑で入り組んだ街並みを再現すべく、ヴェネツィアらしい情景を凝縮したオリジナルの地図を作成しました。単純な構造にならないよう多様なデザインを考え出し、窓・扉だけで100種類を超えます。",
-      "灘校レゴ同好会にかつて所属していたmol, autumn, tsuki, maruがみんな東大レゴ部に揃ったことをきっかけに始まった合作企画で、4人で分担して設計・制作をしました。初めての共同制作による作品です。",
+      "灘校レゴ同好会にかつて所属していたmol、autumn、tsuki、maruがみんな東大レゴ部に揃ったことをきっかけに始まった合作企画で、4人で分担して設計・制作をしました。初めての共同制作による作品です。",
     ],
     gallery: [
       {
@@ -514,7 +514,7 @@ const WORK_DETAILS: Record<string, WorkDetailContent> = {
       },
       {
         url: imgYasaka11,
-        caption: "運搬中に大破したことも(笑)"
+        caption: "運搬中に大破したことも（笑）"
       }
 
     ],
@@ -630,32 +630,32 @@ const WORK_DETAILS: Record<string, WorkDetailContent> = {
     ],
     exhibitions: [
       {
-        date: "2020年2月~3月",
+        date: "2020年2月〜3月",
         name: "『レゴ®ブロック』で作った世界遺産展 PART-4",
         venue: "渋谷PARCO（東京）",
       },
       {
-        date: "2020年6月~8月",
+        date: "2020年6月〜8月",
         name: "『レゴ®ブロック』で作った世界遺産展 PART-4",
         venue: "広島PARCO（広島）",
       },
       {
-        date: "2020年8月~9月",
+        date: "2020年8月〜9月",
         name: "『レゴ®ブロック』で作った世界遺産展 PART-4",
         venue: "名古屋PARCO（愛知）",
       },
       {
-        date: "2020年10月~12月",
+        date: "2020年10月〜12月",
         name: "『レゴ®ブロック』で作った世界遺産展 PART-4",
         venue: "富岡製糸場（群馬）",
       },
       {
-        date: "2021年6月~7月",
+        date: "2021年6月〜7月",
         name: "『レゴ®ブロック』で作った世界遺産展 PART-4",
         venue: "仙台PARCO（宮城）",
       },
       {
-        date: "2021年6月~7月",
+        date: "2021年6月〜7月",
         name: "『レゴ®ブロック』で作った世界遺産展 PART-4 FINAL",
         venue: "心斎橋PARCO（大阪）",
       },
@@ -834,7 +834,7 @@ export const WorkDetail = () => {
             {/* 2 & 3. 作品番号・カテゴリ */}
             <div className="flex flex-wrap items-baseline gap-4 mb-6 md:mb-8">
               <span className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-500 tracking-[0.2em] whitespace-nowrap">
-                No.{work.id}
+                No. {work.id}
               </span>
               <span className="w-8 h-[1px] bg-stone-300" />
               <span className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-500 tracking-widest">

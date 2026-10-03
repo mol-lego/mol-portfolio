@@ -37,7 +37,7 @@ export const AboutSection = () => {
 
       <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center border-t border-stone-200 pt-16 font-['Inter',_sans-serif] text-xs tracking-widest uppercase text-stone-500">
         <Link to="/about" className="hover:text-stone-900 transition-colors">About Me</Link>
-        <a href="https://x.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors">Twitter (X)</a>
+        <a href="https://x.com/mol_lego" target="_blank" rel="noopener noreferrer" aria-label="X（旧 Twitter）" className="hover:text-stone-900 transition-colors">X</a>
         <a href="https://www.instagram.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors">Instagram</a>
         <a href="mailto:contact@mamorutanabe.com" className="hover:text-stone-900 transition-colors">Contact</a>
       </div>

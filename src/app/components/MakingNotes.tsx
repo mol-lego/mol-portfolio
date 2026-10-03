@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Youtube, ExternalLink } from 'lucide-react';
 
+// 新しい順
 const NOTES = [
   {
     type: 'note',
@@ -12,17 +13,17 @@ const NOTES = [
   },
   {
     type: 'youtube',
-    title: 'クイーンエリザベス号 - メイキング映像',
-    desc: '3ヶ月にわたる13名がかりの組み立ての様子を1000倍速でご覧いただけます。',
-    date: '2019.04.20',
-    href: 'https://www.youtube.com/watch?v=H8JTmG40KX0',
-  },
-  {
-    type: 'youtube',
-    title: '八坂神社西楼門 - メイキング映像',
+    title: '八坂神社 西楼門 - メイキング映像',
     desc: '5万ピースを使った和風建築の再現作品です。組み立ての様子を1000倍速にしました。',
     date: '2020.04.12',
     href: 'https://www.youtube.com/watch?v=EfCpyw82vzI',
+  },
+  {
+    type: 'youtube',
+    title: 'クイーンエリザベス号 - メイキング映像',
+    desc: '3か月にわたる13名がかりの組み立ての様子を1000倍速でご覧いただけます。',
+    date: '2019.04.20',
+    href: 'https://www.youtube.com/watch?v=H8JTmG40KX0',
   },
 ];
 

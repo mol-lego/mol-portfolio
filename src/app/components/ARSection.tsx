@@ -17,7 +17,7 @@ export const ARSection = () => {
             AR で実物の大きさに
           </h3>
           <p className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-500 leading-loose tracking-wide font-light max-w-md">
-            実物を見ることが難しい大型作品も、AR - 拡張現実を用いて実物大で目の前に呼び出すことができます。スマートフォンで開くと、部屋の中に置いて見られます。
+            実物を見ることが難しい大型作品も、AR（拡張現実）を用いて実物大で目の前に呼び出すことができます。スマートフォンで開くと、部屋の中に置いて見られます。
           </p>
 
           <Link to="/ar-viewer" className="mt-12 md:mt-16 group inline-flex items-center gap-6 px-8 py-4 border border-stone-300 hover:border-stone-900 transition-colors">
