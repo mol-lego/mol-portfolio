@@ -6,9 +6,6 @@
  * ここだけに書く。Header・トップの各節・作品詳細・About・AR ビューア・OGP の生成
  * （scripts/generate-social-pages.mjs）は、このファイルから読む。
  *
- * 暫定の値（作品詳細ページの記載に合わせたもの。本人の確認待ち）:
- * ハワイ火山国立公園の year、八坂神社 西楼門の size と pieces、八坂神社 西楼門とハワイ火山国立公園の titleEn。
- *
  * ブラウザ（Vite）と Node（ビルド後の OGP 生成）の両方から読むため、JSDoc の型を付けた
  * JavaScript で書く。画像は new URL("…", import.meta.url) で指す。Vite はビルド時に公開用の URL に
  * 置き換え、Node ではファイルの場所（file:// の URL）になる。new URL の第1引数は文字列のまま書く
@@ -105,10 +102,12 @@ export const works = [
     id: "03",
     slug: "yasaka",
     title: "八坂神社 西楼門",
-    titleEn: "Yasaka Shrine West Gate",
+    titleEn: "Yasaka Shrine West Gate", // 本人確認済み（2026-10-03）
     year: 2020,
+    // 設計データ（Stud.io の「八坂 Full-2.io」）の部品の形状から実測した外接直方体（2026-10-03）:
+    // 幅 233.6 × 奥行 85.1 × 高さ 65.4 cm（1 LDU = 0.4 mm）。全幅は門を正面から見た左右で、両脇の翼廊を含む
     size: "全幅2.3m",
-    pieces: 52000,
+    pieces: 52000, // 本人確認済み（2026-10-03）
     piecesApprox: false,
     group: "large",
     summary: "京都・祇園の象徴的な存在とも言える楼門。灘校レゴ同好会時代の作品。",
@@ -129,8 +128,8 @@ export const works = [
     id: "04",
     slug: "hawaii",
     title: "ハワイ火山国立公園",
-    titleEn: "Hawaii Volcanoes National Park",
-    year: 2020,
+    titleEn: "Hawaii Volcanoes National Park", // 本人確認済み（2026-10-03）
+    year: 2020, // 本人確認済み（2026-10-03）
     size: "直径1m",
     pieces: 10000,
     piecesApprox: true,
