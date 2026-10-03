@@ -42,10 +42,10 @@ export const MakingNotes = () => {
   return (
     <section
       aria-labelledby="notes-heading"
-      className="px-6 md:px-12 w-full max-w-[1400px] mx-auto py-16 md:py-24"
+      className="px-6 md:px-12 w-full max-w-[1400px] mx-auto py-24 md:py-40 border-t border-rule"
     >
       <SectionHeading id="notes-heading">制作の記録</SectionHeading>
-      <p className="mt-4 text-sm md:text-base text-ink max-w-[38em]">
+      <p className="mt-6 md:mt-8 text-sm md:text-base text-ink max-w-[38em]">
         組み立ての過程、設計の様子や題材の選定、チームでの制作風景などについて映像や文章で記録しています。
       </p>
 

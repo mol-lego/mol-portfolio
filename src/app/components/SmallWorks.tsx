@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { formatCaption, imageSrcSet, smallWorksSizeRange, worksInGroup, type Work } from '../works.js';
-import { SectionHeading, WorkCaption, WorkSummary } from './WorkCaption';
+import { SectionHeading, WorkFacts, WorkSummary, WorkTitle } from './WorkCaption';
 
 const SMALL_WORKS = worksInGroup("small");
 
@@ -104,6 +104,17 @@ const ExpandedImage = ({ work, onClose }: { work: Work; onClose: () => void }) =
   );
 };
 
+/**
+ * 改修前（fc16600）の段違いの配置。9 列の格子に 5・4・4・5 列で置き、上下にずらす。
+ * 写真の比率もそのまま（正方形・3:4・正方形・4:3）。キーは works.js の slug。
+ */
+const SMALL_LAYOUT: Record<string, { aspect: string; span: string; offset: string }> = {
+  "hospital-bed": { aspect: "aspect-square", span: "md:col-span-5", offset: "" },
+  "overpass-taxi": { aspect: "aspect-[3/4]", span: "md:col-span-4", offset: "md:mt-24" },
+  "mini-castle": { aspect: "aspect-square", span: "md:col-span-4", offset: "md:-mt-12" },
+  "dream-house": { aspect: "aspect-[4/3]", span: "md:col-span-5", offset: "md:mt-40" },
+};
+
 export const SmallWorks = () => {
   const [expandedWork, setExpandedWork] = useState<Work | null>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
@@ -122,41 +133,42 @@ export const SmallWorks = () => {
   return (
     <section
       aria-labelledby="small-heading"
-      className="px-6 md:px-12 w-full max-w-[1400px] mx-auto py-16 md:py-24"
+      className="px-6 md:px-12 w-full max-w-[1400px] mx-auto py-24 md:py-40 border-t border-rule"
     >
       <SectionHeading id="small-heading">小さな作品</SectionHeading>
-      <p className="mt-2 text-sm text-ink-2">大きさ {smallWorksSizeRange()}</p>
+      <p className="mt-2 mb-6 md:mb-8 text-sm text-ink-2">大きさ {smallWorksSizeRange()}</p>
 
-      <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 lg:gap-x-10 gap-y-12 md:gap-y-16 items-start">
-        {SMALL_WORKS.map((work) => (
-          <article key={work.id}>
-            <button
-              type="button"
-              onClick={(event) => openExpanded(work, event.currentTarget)}
-              aria-haspopup="dialog"
-              aria-label={`${work.title}の写真を拡大表示`}
-              className="block w-1/2 sm:w-full cursor-zoom-in"
-            >
-              <img
-                src={work.image.src}
-                srcSet={imageSrcSet(work.image)}
-                sizes="(min-width: 1400px) 300px, (min-width: 1024px) 22vw, (min-width: 768px) 30vw, (min-width: 640px) 45vw, 50vw"
-                alt={`${work.title}（${work.titleEn}）`}
-                width={work.image.width}
-                height={work.image.height}
-                style={{ objectPosition: work.image.thumbPosition }}
-                className="block w-full h-auto aspect-square object-cover bg-ink/5"
-                loading="lazy"
-                decoding="async"
-              />
-            </button>
+      <div className="grid grid-cols-1 md:grid-cols-9 gap-y-16 md:gap-x-12 lg:gap-x-24">
+        {SMALL_WORKS.map((work) => {
+          const layout = SMALL_LAYOUT[work.slug] ?? { aspect: "aspect-square", span: "md:col-span-4", offset: "" };
+          return (
+            <article key={work.id} className={`flex flex-col ${layout.span} ${layout.offset}`}>
+              <button
+                type="button"
+                onClick={(event) => openExpanded(work, event.currentTarget)}
+                aria-haspopup="dialog"
+                aria-label={`${work.title}の写真を拡大表示`}
+                className={`block w-full overflow-hidden bg-ink/5 mb-6 ${layout.aspect} cursor-zoom-in`}
+              >
+                <img
+                  src={work.image.src}
+                  srcSet={imageSrcSet(work.image)}
+                  sizes="(min-width: 1400px) 620px, (min-width: 768px) 45vw, calc(100vw - 48px)"
+                  alt={`${work.title}（${work.titleEn}）`}
+                  width={work.image.width}
+                  height={work.image.height}
+                  className="block w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
 
-            <div className="mt-3">
-              <WorkCaption work={work} size="sm" />
-              <WorkSummary work={work} small className="mt-2" />
-            </div>
-          </article>
-        ))}
+              <WorkTitle work={work} size="small" />
+              <WorkFacts work={work} className="mt-2 md:mt-3" />
+              <WorkSummary work={work} className="mt-4 md:mt-5" />
+            </article>
+          );
+        })}
       </div>
 
       {expandedWork && <ExpandedImage work={expandedWork} onClose={closeExpanded} />}
