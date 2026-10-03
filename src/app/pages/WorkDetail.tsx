@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
 import { useImagePreload } from "../useImagePreload";
-import { useIsMobile } from "../components/ui/use-mobile";
+import { useIsMobile } from "../useIsMobile";
 
 import imgQE1 from "../../assets/optimized/workdetail/msqe1.jpg";
 import imgQE2 from "../../assets/optimized/workdetail/msqe2.jpg";
