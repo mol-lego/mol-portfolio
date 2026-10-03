@@ -1,3 +1,5 @@
+import { getWork } from "./works.js";
+
 const basePath =
   import.meta.env.BASE_URL === "/"
     ? ""
@@ -5,17 +7,11 @@ const basePath =
 
 const withBase = (path: string) => `${basePath}${path}`;
 
-const AR_STATIC_PATHS: Record<string, string> = {
-  "01": "/ar/qe/index.html",
-  "02": "/ar/venice/index.html",
-  "03": "/ar/yasaka/index.html",
-  "04": "/ar/hawaii/index.html",
-};
-
 export const getAppPath = (path: string) => withBase(path);
 
+// AR の静的ページのパスは works.js の ar に置いている
 export const getARStaticPath = (id: string) => {
-  const path = AR_STATIC_PATHS[id];
+  const path = getWork(id)?.ar;
   return path ? withBase(path) : null;
 };
 

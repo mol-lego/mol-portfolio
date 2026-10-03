@@ -7,6 +7,7 @@ import { X, Box, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { useDocumentTitle } from "../useDocumentTitle";
 import { getARStaticUrl, getAppPath } from "../arPaths";
+import { arWorks } from "../works.js";
 
 import imgQueenElizabeth from "../../assets/optimized/msqe1-hero.jpg";
 import imgQueenElizabeth2x from "../../assets/optimized/msqe1-hero@2x.jpg";
@@ -15,16 +16,24 @@ import imgVenezia2x from "../../assets/optimized/venice1-card@2x.jpg";
 import imgYasaka from "../../assets/optimized/workdetail/yasaka1.jpg";
 import imgHawaii from "../../assets/optimized/hawaii1-card.jpg";
 import imgHawaii2x from "../../assets/optimized/hawaii1-card@2x.jpg";
-import imgBedroom from "../../assets/optimized/hospital-card.jpg";
-import imgBedroom2x from "../../assets/optimized/hospital-card@2x.jpg";
 
-const AR_WORKS = [
-  { id: "01", title: "クイーンエリザベス号", subtitle: "MS Queen Elizabeth", image: imgQueenElizabeth, image2x: imgQueenElizabeth2x },
-  { id: "02", title: "ヴェネツィア", subtitle: "Venice", image: imgVenezia, image2x: imgVenezia2x },
-  { id: "03", title: "八坂神社 西楼門", subtitle: "Yasaka Shrine", image: imgYasaka, image2x: imgYasaka },
-  { id: "04", title: "ハワイ火山国立公園", subtitle: "Hawaii Volcanoes", image: imgHawaii, image2x: imgHawaii2x },
-  { id: "05", title: "病院の一室", subtitle: "Hospital Room", image: imgBedroom, image2x: imgBedroom2x },
-];
+// AR ビューアの写真（このページだけの選び方）。キーは works.js の slug
+const AR_IMAGES: Record<string, { image: string; image2x: string }> = {
+  "queen-elizabeth": { image: imgQueenElizabeth, image2x: imgQueenElizabeth2x },
+  venice: { image: imgVenezia, image2x: imgVenezia2x },
+  yasaka: { image: imgYasaka, image2x: imgYasaka },
+  hawaii: { image: imgHawaii, image2x: imgHawaii2x },
+};
+
+// 作品名と AR の有無は works.js から読む
+const AR_WORKS = arWorks
+  .filter((work) => AR_IMAGES[work.slug])
+  .map((work) => ({
+    id: work.id,
+    title: work.title,
+    subtitle: work.titleEn,
+    ...AR_IMAGES[work.slug],
+  }));
 
 export const ARViewer = () => {
   const navigate = useNavigate();

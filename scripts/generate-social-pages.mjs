@@ -1,5 +1,7 @@
 import { cpSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { detailWorks } from "../src/app/works.js";
 
 const rootDir = resolve(".");
 const distDir = resolve(rootDir, "dist");
@@ -38,52 +40,22 @@ const pages = [
   },
 ];
 
-const works = [
-  {
-    id: "01",
-    title: "クイーンエリザベス号",
-    description:
-      "世界有数の豪華客船「クイーンエリザベス号」を1/100スケールで再現した大型LEGO®︎作品。",
-    ogImageSource: "src/assets/optimized/workdetail/msqe1.jpg",
-    ogImagePath: "/og/work-01.jpg",
-    width: 1800,
-    height: 1200,
+// 作品詳細ページの OGP は src/app/works.js から作る（画像は作品詳細の主画像）
+const works = detailWorks.map((work) => {
+  if (!work.mainImage || !work.ogDescription) {
+    throw new Error(`works.js の ${work.slug} に mainImage と ogDescription がありません`);
+  }
+  return {
+    id: work.id,
+    title: work.title,
+    description: work.ogDescription,
+    ogImageSource: fileURLToPath(work.mainImage.src),
+    ogImagePath: `/og/work-${work.id}.jpg`,
+    width: work.mainImage.width,
+    height: work.mainImage.height,
     imageType: "image/jpeg",
-  },
-  {
-    id: "02",
-    title: "ヴェネツィア",
-    description:
-      "イタリア北部に浮かぶヴェネツィアの街並みをLEGO®︎で再現したミニフィグスケールの共同制作作品。",
-    ogImageSource: "src/assets/optimized/workdetail/venice1.jpg",
-    ogImagePath: "/og/work-02.jpg",
-    width: 1800,
-    height: 1200,
-    imageType: "image/jpeg",
-  },
-  {
-    id: "03",
-    title: "八坂神社 西楼門",
-    description:
-      "京都・祇園の八坂神社 西楼門を52,000ピースのLEGO®︎ブロックで再現した大型作品。",
-    ogImageSource: "src/assets/optimized/workdetail/yasaka1.jpg",
-    ogImagePath: "/og/work-03.jpg",
-    width: 1800,
-    height: 1199,
-    imageType: "image/jpeg",
-  },
-  {
-    id: "04",
-    title: "ハワイ火山国立公園",
-    description:
-      "世界遺産・ハワイ火山国立公園をLEGO®︎ブロックで再現したジオラマ作品。",
-    ogImageSource: "src/assets/optimized/workdetail/hawaii2.jpg",
-    ogImagePath: "/og/work-04.jpg",
-    width: 1800,
-    height: 1200,
-    imageType: "image/jpeg",
-  },
-];
+  };
+});
 
 const escapeHtml = (value) =>
   value
