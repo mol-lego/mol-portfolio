@@ -91,13 +91,13 @@ export const Process = () => {
   ];
 
   return (
-    <main className="w-full bg-white pb-32 pt-24 min-h-screen">
+    <main className="w-full pb-32 pt-24 min-h-screen">
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 mb-16">
         <Link
           to="/"
           className="inline-flex items-center gap-2 group"
         >
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="text-xs text-ink-2 group-hover:text-ink tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -106,10 +106,10 @@ export const Process = () => {
       <article className="w-full max-w-[1200px] mx-auto px-6 md:px-12">
         <FadeIn>
           <div className="flex flex-col gap-6 mb-24 md:mb-32 max-w-[800px]">
-            <h1 className="font-['Inter',_sans-serif] text-3xl md:text-4xl font-light text-stone-900 tracking-wider uppercase">
+            <h1 className="text-3xl md:text-4xl text-ink tracking-wider uppercase">
               Creation Process
             </h1>
-            <p className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-600 tracking-[0.08em] leading-relaxed">
+            <p className="text-sm md:text-base text-ink-2 tracking-[0.08em] leading-relaxed">
               展示会でよくご質問をいただく「どのようにして作品を作っているのか」という手順について解説します。<br className="hidden md:block"/>
               パソコンでの設計から、世界中からパーツを集めて組み立てるまでの過程をご覧ください。
             </p>
@@ -122,22 +122,22 @@ export const Process = () => {
               {/* Left Column: Text Content */}
               <div className="flex flex-col gap-6 md:gap-8 w-full md:w-[40%] md:sticky md:top-32">
                 <FadeIn delay={0.1}>
-                  <div className="flex flex-col items-start gap-2 border-t border-stone-200 pt-6">
+                  <div className="flex flex-col items-start gap-2 border-t border-rule pt-6">
                     <div className="flex items-baseline gap-4">
-                      <span className="font-['Inter',_sans-serif] text-4xl md:text-5xl font-light text-stone-300">
+                      <span className="text-4xl md:text-5xl text-ink-2">
                         {step.id}
                       </span>
-                      <span className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-400 tracking-[0.2em] uppercase">
+                      <span className="text-xs md:text-sm text-ink-2 tracking-[0.2em] uppercase">
                         {step.enTitle}
                       </span>
                     </div>
-                    <h2 className="font-['Noto_Serif_JP',_serif] text-xl md:text-2xl text-stone-900 tracking-wider mt-4">
+                    <h2 className="text-xl md:text-2xl text-ink tracking-wider mt-4">
                       {step.jpTitle}
                     </h2>
                   </div>
                 </FadeIn>
                 <FadeIn delay={0.2}>
-                  <p className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-600 leading-loose tracking-[0.08em] text-justify">
+                  <p className="text-sm md:text-base text-ink-2 leading-loose tracking-[0.08em] text-justify">
                     {step.desc}
                   </p>
                 </FadeIn>
@@ -148,7 +148,7 @@ export const Process = () => {
                 <FadeIn delay={0.3}>
                   <div className={`grid gap-4 md:gap-6 w-full ${step.images.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
                     {step.images.map((img, i) => (
-                      <figure key={i} className={`w-full ${step.images.length > 1 ? 'aspect-[4/3] md:aspect-[3/4]' : 'aspect-[4/3] md:aspect-[4/3]'} bg-stone-50 overflow-hidden relative group`}>
+                      <figure key={i} className={`w-full ${step.images.length > 1 ? 'aspect-[4/3] md:aspect-[3/4]' : 'aspect-[4/3] md:aspect-[4/3]'} bg-ink/5 overflow-hidden relative group`}>
                         <img
                           src={img}
                           alt={`${step.jpTitle} - image ${i + 1}`}

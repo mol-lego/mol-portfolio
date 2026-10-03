@@ -756,12 +756,12 @@ export const WorkDetail = () => {
   if (!work) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen px-6">
-        <p className="font-['Noto_Serif_JP',_serif] text-stone-500 tracking-widest">
+        <p className="text-ink-2 tracking-widest">
           作品が見つかりません
         </p>
         <Link
           to="/"
-          className="mt-8 text-xs font-['Inter',_sans-serif] text-stone-400 hover:text-stone-900 transition-colors uppercase tracking-widest"
+          className="mt-8 text-xs text-ink-2 hover:text-ink transition-colors uppercase tracking-widest"
         >
           ← Back to Home
         </Link>
@@ -770,7 +770,7 @@ export const WorkDetail = () => {
   }
 
   if (!isMainVisualReady) {
-    return <main className="w-full min-h-screen bg-white" />;
+    return <main className="w-full min-h-screen" />;
   }
 
   const sliderSettings = {
@@ -816,14 +816,14 @@ export const WorkDetail = () => {
     `/ar-experience/${work.id}?back=${encodeURIComponent(getAppPath(`/work/${work.id}`))}`;
 
   return (
-    <main className="w-full bg-white pb-32">
+    <main className="w-full pb-32">
       {/* 1. 戻る導線 */}
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-12 md:pt-16">
         <Link
           to="/"
           className="inline-flex items-center gap-2 group"
         >
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="text-xs text-ink-2 group-hover:text-ink tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -840,13 +840,13 @@ export const WorkDetail = () => {
           >
             {/* 2 & 3. 作品番号・カテゴリ */}
             <div className="flex flex-wrap items-baseline gap-4 mb-6 md:mb-8">
-              <span className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-400 tracking-[0.2em] whitespace-nowrap">
+              <span className="text-xs md:text-sm text-ink-2 tracking-[0.2em] whitespace-nowrap">
                 No.{work.id}
               </span>
-              <span className="w-8 h-[1px] bg-stone-300" />
-              <span className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-500 tracking-widest">
+              <span className="w-8 h-[1px] bg-rule" />
+              <span className="text-xs md:text-sm text-ink-2 tracking-widest">
                 {work.category}
-                <span className="ml-3 font-['Inter',_sans-serif] text-[10px] md:text-xs tracking-[0.2em] opacity-60">
+                <span className="ml-3 text-xs tracking-[0.2em]">
                   {work.categoryEn}
                 </span>
               </span>
@@ -856,18 +856,18 @@ export const WorkDetail = () => {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 w-full">
               <div className="flex-1 w-full">
                 {(work as any).prefix && (
-                  <span className="font-['Noto_Serif_JP',_serif] text-base md:text-lg text-stone-700 tracking-widest block mb-1">
+                  <span className="text-base md:text-lg text-ink tracking-widest block mb-1">
                     {(work as any).prefix}
                   </span>
                 )}
-                <h1 className="font-['Noto_Serif_JP',_serif] text-3xl md:text-5xl lg:text-6xl text-stone-900 tracking-[0.05em] leading-tight mb-2 md:mb-4 break-words hyphens-auto w-full">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl text-ink tracking-[0.05em] leading-tight mb-2 md:mb-4 break-words hyphens-auto w-full">
                   {work.title}
                 </h1>
-                <p className="font-['Inter',_sans-serif] text-sm md:text-base text-stone-400 tracking-[0.2em] font-light w-full break-words">
+                <p className="text-sm md:text-base text-ink-2 tracking-[0.2em] w-full break-words">
                   {work.titleEn}
                 </p>
               </div>
-              <div className="font-['Inter',_sans-serif] text-2xl md:text-4xl text-stone-300 tracking-wider font-light md:pb-2 shrink-0">
+              <div className="text-2xl md:text-4xl text-ink-2 tracking-wider md:pb-2 shrink-0">
                 {work.year}
               </div>
             </div>
@@ -883,14 +883,14 @@ export const WorkDetail = () => {
             delay: 0.2,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="w-full aspect-[3/2] md:aspect-[16/9] bg-stone-100 mb-16 md:mb-24 overflow-hidden"
+          className="w-full aspect-[3/2] md:aspect-[16/9] bg-ink/5 mb-16 md:mb-24 overflow-hidden"
         >
           <img
             src={work.mainVisual}
             alt={work.title}
             className="w-full h-full object-cover"
             loading="eager"
-            fetchPriority="high"
+            {...{ fetchpriority: "high" }}
           />
         </motion.figure>
 
@@ -899,7 +899,7 @@ export const WorkDetail = () => {
   <div className="w-full lg:w-1/3 flex flex-col gap-12 shrink-0">
     <FadeIn>
       <div className="flex flex-col w-full">
-        <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+        <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-rule pb-4">
           Data
         </h2>
 
@@ -907,12 +907,12 @@ export const WorkDetail = () => {
           {work.stats?.map((stat, i) => (
             <div
               key={i}
-              className="flex items-start gap-4 md:gap-6 py-4 border-b border-stone-100 w-full"
+              className="flex items-start gap-4 md:gap-6 py-4 border-b border-rule w-full"
             >
-              <dt className="shrink-0 w-20 md:w-24 font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-500 tracking-wider">
+              <dt className="shrink-0 w-20 md:w-24 text-xs md:text-sm text-ink-2 tracking-wider">
                 {stat.label}
               </dt>
-              <dd className="min-w-0 flex-1 font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-900 tracking-wider text-right break-words">
+              <dd className="min-w-0 flex-1 text-xs md:text-sm text-ink tracking-wider text-right break-words">
                 {stat.value}
               </dd>
             </div>
@@ -925,15 +925,15 @@ export const WorkDetail = () => {
       {work.hasAR && (
         <div className="hidden lg:block w-full">
           <FadeIn delay={0.2}>
-            <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+            <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-rule pb-4">
               Experience
             </h2>
             <a
               href={arExperiencePath}
-              className="group block bg-stone-100/80 p-1.5 text-center shadow-[0_34px_85px_-52px_rgba(28,25,23,0.44)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_42px_95px_-52px_rgba(28,25,23,0.56)]"
+              className="group block bg-ink/5 p-1.5 text-center shadow-[0_34px_85px_-52px_rgba(28,25,23,0.44)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_42px_95px_-52px_rgba(28,25,23,0.56)]"
             >
               {work.arCardImage ? (
-                <div className="relative aspect-[4/3] overflow-hidden border border-stone-200/80 bg-white">
+                <div className="relative aspect-[4/3] overflow-hidden border border-rule bg-white">
                   <img
                     src={work.arCardImage}
                     srcSet={work.arCardImage2x ? `${work.arCardImage}, ${work.arCardImage2x} 2x` : undefined}
@@ -941,26 +941,26 @@ export const WorkDetail = () => {
                     className="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
                     loading="lazy"
                   />
-                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 border border-white/85 bg-white/92 px-3 py-1.5 font-['Inter',_sans-serif] text-[10px] tracking-[0.22em] text-stone-700 shadow-sm backdrop-blur-sm">
-                    <span className="inline-block h-2 w-2 rounded-full bg-stone-700" />
+                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 border border-white/85 bg-white/92 px-3 py-1.5 text-xs tracking-[0.22em] text-ink shadow-sm">
+                    <span className="inline-block h-2 w-2 rounded-full bg-ink" />
                     AR - 拡張現実
                   </div>
                   <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(245,245,244,0.0),rgba(245,245,244,0.92)_18%,rgba(245,245,244,0.98))] px-5 pb-5 pt-10">
                     <div className="flex items-end justify-between gap-4">
                       <div className="flex min-w-0 items-center gap-3 text-left">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-stone-300 bg-white/92 text-stone-700 shadow-sm transition-colors group-hover:border-stone-500 group-hover:text-stone-900">
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-rule bg-white/92 text-ink shadow-sm transition-colors group-hover:border-ink-2 group-hover:text-ink">
                           <ARIcon />
                         </div>
                         <div className="min-w-0">
-                          <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.24em] text-stone-500">
+                          <span className="block text-xs tracking-[0.24em] text-ink-2">
                             AR / 3D VIEWER
                           </span>
-                          <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-[0.12em] transition-colors group-hover:text-stone-700 break-words">
+                          <span className="block text-sm text-ink tracking-[0.12em] transition-colors group-hover:text-ink break-words">
                             実物大で作品を見る
                           </span>
                         </div>
                       </div>
-                      <span className="inline-flex shrink-0 items-center gap-2 border-b border-stone-400 pb-1 font-['Inter',_sans-serif] text-[10px] tracking-[0.22em] text-stone-700 transition-colors group-hover:border-stone-700 group-hover:text-stone-950">
+                      <span className="inline-flex shrink-0 items-center gap-2 border-b border-ink-2 pb-1 text-xs tracking-[0.22em] text-ink transition-colors group-hover:border-ink group-hover:text-ink">
                         OPEN
                         <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.7} />
                       </span>
@@ -968,19 +968,19 @@ export const WorkDetail = () => {
                   </div>
                 </div>
               ) : (
-                <div className="w-12 h-12 mx-auto mt-8 border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                <div className="w-12 h-12 mx-auto mt-8 border border-rule rounded-full flex items-center justify-center mb-4 text-ink-2 group-hover:text-ink group-hover:border-ink-2 transition-colors">
                   <ARIcon />
                 </div>
               )}
               {!work.arCardImage && (
-                <div className="border border-stone-200/80 bg-white px-8 py-8">
-                  <div className="w-12 h-12 mx-auto mb-4 border border-stone-300 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                <div className="border border-rule bg-white px-8 py-8">
+                  <div className="w-12 h-12 mx-auto mb-4 border border-rule rounded-full flex items-center justify-center text-ink-2 group-hover:text-ink group-hover:border-ink-2 transition-colors">
                     <ARIcon />
                   </div>
-                  <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
+                  <span className="block text-xs tracking-[0.2em] text-ink-2 mb-2">
                     AR / 3D VIEWER
                   </span>
-                  <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest group-hover:text-stone-600 transition-colors break-words">
+                  <span className="block text-sm text-ink tracking-widest group-hover:text-ink-2 transition-colors break-words">
                     3Dモデルを空間に配置する
                   </span>
                 </div>
@@ -1002,7 +1002,7 @@ export const WorkDetail = () => {
                 {work.overview?.map((text, i) => (
                   <p
                     key={i}
-                    className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-700 leading-loose tracking-[0.08em] text-justify break-words hyphens-auto w-full"
+                    className="text-sm md:text-base text-ink leading-loose tracking-[0.08em] text-justify break-words hyphens-auto w-full"
                   >
                     {text}
                   </p>
@@ -1016,10 +1016,10 @@ export const WorkDetail = () => {
                 <FadeIn>
                   <a
                     href={arExperiencePath}
-                    className="group block bg-stone-100/70 p-1.5 text-center shadow-[0_28px_72px_-50px_rgba(28,25,23,0.38)] transition-all duration-500 hover:shadow-[0_34px_80px_-48px_rgba(28,25,23,0.48)]"
+                    className="group block bg-ink/5 p-1.5 text-center shadow-[0_28px_72px_-50px_rgba(28,25,23,0.38)] transition-all duration-500 hover:shadow-[0_34px_80px_-48px_rgba(28,25,23,0.48)]"
                   >
                     {work.arCardImage ? (
-                      <div className="relative aspect-[16/10] overflow-hidden border border-stone-200/80 bg-white">
+                      <div className="relative aspect-[16/10] overflow-hidden border border-rule bg-white">
                         <img
                           src={work.arCardImage}
                           srcSet={work.arCardImage2x ? `${work.arCardImage}, ${work.arCardImage2x} 2x` : undefined}
@@ -1027,43 +1027,43 @@ export const WorkDetail = () => {
                           className="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                           loading="lazy"
                         />
-                        <div className="absolute left-3 top-3 inline-flex items-center gap-2 border border-white/85 bg-white/92 px-2.5 py-1 font-['Inter',_sans-serif] text-[10px] tracking-[0.18em] text-stone-700 shadow-sm backdrop-blur-sm">
-                          <span className="inline-block h-2 w-2 rounded-full bg-stone-700" />
+                        <div className="absolute left-3 top-3 inline-flex items-center gap-2 border border-white/85 bg-white/92 px-2.5 py-1 text-xs tracking-[0.18em] text-ink shadow-sm">
+                          <span className="inline-block h-2 w-2 rounded-full bg-ink" />
                           AR - 拡張現実
                         </div>
                         <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(245,245,244,0.0),rgba(245,245,244,0.9)_20%,rgba(245,245,244,0.98))] px-4 pb-4 pt-8">
                           <div className="flex items-center justify-between gap-3 text-left">
                             <div className="flex min-w-0 items-center gap-3">
-                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-stone-300 bg-white/92 text-stone-700 shadow-sm">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-rule bg-white/92 text-ink shadow-sm">
                                 <ARIcon />
                               </div>
                               <div className="min-w-0">
-                                <span className="block font-['Inter',_sans-serif] text-[10px] tracking-[0.2em] text-stone-500">
+                                <span className="block text-xs tracking-[0.2em] text-ink-2">
                                   AR / 3D VIEWER
                                 </span>
-                                <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-[0.1em] break-words">
+                                <span className="block text-sm text-ink tracking-[0.1em] break-words">
                                   実物大で作品を見る
                                 </span>
                               </div>
                             </div>
-                            <ArrowRight className="h-4 w-4 shrink-0 text-stone-700" strokeWidth={1.7} />
+                            <ArrowRight className="h-4 w-4 shrink-0 text-ink" strokeWidth={1.7} />
                           </div>
                         </div>
                       </div>
                     ) : (
-                      <div className="w-12 h-12 mx-auto mt-8 border border-stone-300 rounded-full flex items-center justify-center mb-4 text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                      <div className="w-12 h-12 mx-auto mt-8 border border-rule rounded-full flex items-center justify-center mb-4 text-ink-2 group-hover:text-ink group-hover:border-ink-2 transition-colors">
                         <ARIcon />
                       </div>
                     )}
                     {!work.arCardImage && (
-                      <div className="border border-stone-200/80 bg-white px-8 py-8">
-                        <div className="w-12 h-12 mx-auto mb-4 border border-stone-300 rounded-full flex items-center justify-center text-stone-500 group-hover:text-stone-800 group-hover:border-stone-500 transition-colors">
+                      <div className="border border-rule bg-white px-8 py-8">
+                        <div className="w-12 h-12 mx-auto mb-4 border border-rule rounded-full flex items-center justify-center text-ink-2 group-hover:text-ink group-hover:border-ink-2 transition-colors">
                           <ARIcon />
                         </div>
-                        <span className="block font-['Inter',_sans-serif] text-xs tracking-[0.2em] text-stone-500 mb-2">
+                        <span className="block text-xs tracking-[0.2em] text-ink-2 mb-2">
                           AR / 3D VIEWER
                         </span>
-                        <span className="block font-['Noto_Serif_JP',_serif] text-sm text-stone-900 tracking-widest break-words">
+                        <span className="block text-sm text-ink tracking-widest break-words">
                           3Dモデルを空間に配置する
                         </span>
                       </div>
@@ -1077,7 +1077,7 @@ export const WorkDetail = () => {
             {work.gallery && work.gallery.length > 0 && (
               <section className="w-full">
                 <FadeIn>
-                  <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-6 border-b border-stone-200 pb-4">
+                  <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-6 md:mb-6 border-b border-rule pb-4">
                     Gallery
                   </h2>
                 </FadeIn>
@@ -1090,7 +1090,7 @@ export const WorkDetail = () => {
                         <button
                           type="button"
                           onClick={() => openExpandedImage(img.url, img.caption, img.caption)}
-                          className="w-full bg-stone-100 aspect-[4/3] md:aspect-[3/2] overflow-hidden cursor-default md:cursor-zoom-in"
+                          className="w-full bg-ink/5 aspect-[4/3] md:aspect-[3/2] overflow-hidden cursor-default md:cursor-zoom-in"
                           aria-label={`${img.caption} を拡大表示`}
                         >
                           <img
@@ -1101,7 +1101,7 @@ export const WorkDetail = () => {
                           />
                         </button>
                         {img.caption && (
-                          <figcaption className="font-['Noto_Serif_JP',_serif] text-[10px] md:text-xs text-stone-500 tracking-wider px-1">
+                          <figcaption className="text-xs text-ink-2 tracking-wider px-1">
                             {img.caption}
                           </figcaption>
                         )}
@@ -1119,7 +1119,7 @@ export const WorkDetail = () => {
                           <button
                             type="button"
                             onClick={() => scrollSlider("prev")}
-                            className="absolute left-4 top-[calc(50%-2rem)] z-10 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white text-stone-800 shadow-sm border border-stone-200 transition-colors rounded-full backdrop-blur-sm"
+                            className="absolute left-4 top-[calc(50%-2rem)] z-10 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white text-ink shadow-sm border border-rule transition-colors rounded-full"
                             aria-label="Previous slide"
                           >
                             <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
@@ -1128,7 +1128,7 @@ export const WorkDetail = () => {
                           <button
                             type="button"
                             onClick={() => scrollSlider("next")}
-                            className="absolute right-4 top-[calc(50%-2rem)] z-10 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white text-stone-800 shadow-sm border border-stone-200 transition-colors rounded-full backdrop-blur-sm"
+                            className="absolute right-4 top-[calc(50%-2rem)] z-10 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white text-ink shadow-sm border border-rule transition-colors rounded-full"
                             aria-label="Next slide"
                           >
                             <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
@@ -1147,7 +1147,7 @@ export const WorkDetail = () => {
                                 <button
                                   type="button"
                                   onClick={() => openExpandedImage(img.url, img.caption, img.caption)}
-                                  className="w-full bg-stone-100 aspect-[4/3] md:aspect-[3/2] overflow-hidden cursor-default md:cursor-zoom-in"
+                                  className="w-full bg-ink/5 aspect-[4/3] md:aspect-[3/2] overflow-hidden cursor-default md:cursor-zoom-in"
                                   aria-label={`${img.caption} を拡大表示`}
                                 >
                                   <img
@@ -1158,7 +1158,7 @@ export const WorkDetail = () => {
                                   />
                                 </button>
                                 {img.caption && (
-                                  <figcaption className="font-['Noto_Serif_JP',_serif] text-[10px] md:text-xs text-stone-500 tracking-wider px-1">
+                                  <figcaption className="text-xs text-ink-2 tracking-wider px-1">
                                     {img.caption}
                                   </figcaption>
                                 )}
@@ -1177,7 +1177,7 @@ export const WorkDetail = () => {
               work.behindTheScenes.length > 0 && (
                 <section className="w-full">
                   <FadeIn>
-                    <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+                    <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-rule pb-4">
                       Behind the Scenes
                     </h2>
                   </FadeIn>
@@ -1185,10 +1185,10 @@ export const WorkDetail = () => {
                     {work.behindTheScenes.map((item, i) => (
                       <FadeIn key={i} delay={0.1}>
                         <div className="flex flex-col w-full">
-                          <h3 className="font-['Noto_Serif_JP',_serif] text-base md:text-lg text-stone-900 tracking-widest mb-4 break-words hyphens-auto w-full">
+                          <h3 className="text-base md:text-lg text-ink tracking-widest mb-4 break-words hyphens-auto w-full">
                             {item.title}
                           </h3>
-                          <p className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-600 leading-loose tracking-[0.08em] text-justify break-words hyphens-auto w-full">
+                          <p className="text-sm md:text-base text-ink-2 leading-loose tracking-[0.08em] text-justify break-words hyphens-auto w-full">
                             {item.content}
                           </p>
                         </div>
@@ -1209,7 +1209,7 @@ export const WorkDetail = () => {
                                 <button
                                   type="button"
                                   onClick={() => openExpandedImage(img.url, img.caption, img.caption)}
-                                  className="w-full bg-stone-100 aspect-[4/3] md:aspect-[3/2] overflow-hidden cursor-default md:cursor-zoom-in"
+                                  className="w-full bg-ink/5 aspect-[4/3] md:aspect-[3/2] overflow-hidden cursor-default md:cursor-zoom-in"
                                   aria-label={`${img.caption} を拡大表示`}
                                 >
                                   <img
@@ -1220,7 +1220,7 @@ export const WorkDetail = () => {
                                   />
                                 </button>
                                 {img.caption && (
-                                  <figcaption className="font-['Noto_Serif_JP',_serif] text-[10px] md:text-xs text-stone-500 tracking-wider px-1">
+                                  <figcaption className="text-xs text-ink-2 tracking-wider px-1">
                                     {img.caption}
                                   </figcaption>
                                 )}
@@ -1237,7 +1237,7 @@ export const WorkDetail = () => {
             {work.media && (
               <section className="w-full min-w-0 max-w-full overflow-hidden block">
                 <FadeIn>
-                  <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+                  <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-rule pb-4">
                     Process & Records
                   </h2>
                 </FadeIn>
@@ -1245,7 +1245,7 @@ export const WorkDetail = () => {
                   {/* YouTube Embed */}
                   {work.media.youtubeId && (
                     <FadeIn delay={0.1}>
-                      <div className="w-full aspect-video bg-stone-100 relative">
+                      <div className="w-full aspect-video bg-ink/5 relative">
                         {/* 実際の環境では iframe を使用 */}
                         <iframe
                           width="100%"
@@ -1258,7 +1258,7 @@ export const WorkDetail = () => {
                           className="absolute inset-0 w-full h-full"
                         ></iframe>
                       </div>
-                      <p className="font-['Noto_Serif_JP',_serif] text-[10px] md:text-xs text-stone-500 tracking-wider mt-3 px-1">
+                      <p className="text-xs text-ink-2 tracking-wider mt-3 px-1">
                         制作過程の記録映像
                       </p>
                     </FadeIn>
@@ -1271,10 +1271,10 @@ export const WorkDetail = () => {
                         href={work.media.noteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group block overflow-hidden border border-stone-300 bg-stone-50 shadow-[0_24px_60px_-42px_rgba(28,25,23,0.45)] transition-all duration-300 hover:border-stone-400 hover:shadow-[0_28px_70px_-40px_rgba(28,25,23,0.5)]"
+                        className="group block overflow-hidden border border-rule bg-ink/[0.02] shadow-[0_24px_60px_-42px_rgba(28,25,23,0.45)] transition-all duration-300 hover:border-ink-2 hover:shadow-[0_28px_70px_-40px_rgba(28,25,23,0.5)]"
                       >
                         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
-                          <div className="relative aspect-[16/10] overflow-hidden border-b border-stone-300 md:order-2 md:aspect-auto md:min-h-[320px] md:border-b-0 md:border-l">
+                          <div className="relative aspect-[16/10] overflow-hidden border-b border-rule md:order-2 md:aspect-auto md:min-h-[320px] md:border-b-0 md:border-l">
                             <img
                               src={work.mainVisual}
                               alt=""
@@ -1282,7 +1282,7 @@ export const WorkDetail = () => {
                               aria-hidden="true"
                             />
                             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,25,23,0.08),rgba(28,25,23,0.02)_38%,rgba(250,250,249,0.14))]" />
-                            <div className="absolute left-4 top-4 inline-flex items-center border border-white/70 bg-white/88 px-3 py-1 font-['Inter',_sans-serif] text-[10px] md:text-xs tracking-[0.2em] text-stone-600 shadow-sm backdrop-blur-sm">
+                            <div className="absolute left-4 top-4 inline-flex items-center border border-white/70 bg-white/88 px-3 py-1 text-xs tracking-[0.2em] text-ink-2 shadow-sm">
                               note article
                             </div>
                           </div>
@@ -1290,19 +1290,19 @@ export const WorkDetail = () => {
                           <div className="flex flex-col gap-6 p-6 md:order-1 md:justify-between md:p-9">
                             <div className="flex items-start justify-between gap-6">
                               <div className="flex min-w-0 flex-col gap-3">
-                                <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs uppercase tracking-[0.2em] text-stone-500">
+                                <span className="text-xs uppercase tracking-[0.2em] text-ink-2">
                                   Read the Story
                                 </span>
                                 <div className="flex flex-col gap-3">
-                                  <span className="font-['Noto_Serif_JP',_serif] text-lg md:text-[1.45rem] text-stone-900 tracking-[0.08em] break-words leading-snug">
+                                  <span className="text-lg md:text-[1.45rem] text-ink tracking-[0.08em] break-words leading-snug">
                                     この作品の制作記
                                   </span>
-                                  <p className="max-w-[38rem] font-['Noto_Serif_JP',_serif] text-sm text-stone-700 leading-loose tracking-[0.08em] break-words">
+                                  <p className="max-w-[38rem] text-sm text-ink leading-loose tracking-[0.08em] break-words">
                                     {noteDescription}
                                   </p>
                                 </div>
                               </div>
-                              <div className="hidden md:flex h-12 w-12 shrink-0 items-center justify-center border border-stone-300 bg-white text-stone-400 shadow-sm group-hover:text-stone-900 group-hover:border-stone-400 transition-colors">
+                              <div className="hidden md:flex h-12 w-12 shrink-0 items-center justify-center border border-rule bg-white text-ink-2 shadow-sm group-hover:text-ink group-hover:border-ink-2 transition-colors">
                                 <ExternalLink
                                   className="w-4 h-4"
                                   strokeWidth={1.5}
@@ -1310,12 +1310,12 @@ export const WorkDetail = () => {
                               </div>
                             </div>
 
-                            <div className="flex items-center justify-between gap-4 border-t border-stone-300/80 pt-4">
-                              <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs tracking-[0.2em] text-stone-500">
+                            <div className="flex items-center justify-between gap-4 border-t border-rule pt-4">
+                              <span className="text-xs tracking-[0.2em] text-ink-2">
                                 Open in note
                               </span>
-                              <div className="flex items-center gap-2 text-stone-700 group-hover:text-stone-950 transition-colors">
-                                <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs uppercase tracking-[0.22em]">
+                              <div className="flex items-center gap-2 text-ink group-hover:text-ink transition-colors">
+                                <span className="text-xs uppercase tracking-[0.22em]">
                                   View Article
                                 </span>
                                 <ExternalLink
@@ -1342,7 +1342,7 @@ export const WorkDetail = () => {
               work.exhibitions.length > 0 && (
                 <section className="w-full max-w-full overflow-hidden block">
                   <FadeIn>
-                    <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-stone-200 pb-4">
+                    <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-6 md:mb-8 border-b border-rule pb-4">
                       Exhibitions & Media
                     </h2>
                   </FadeIn>
@@ -1354,18 +1354,18 @@ export const WorkDetail = () => {
                         duration={0.45}
                         viewportMargin="0px 0px 15% 0px"
                       >
-                        <div className="flex flex-col md:flex-row py-4 md:py-6 border-b border-stone-100 gap-2 md:gap-8 w-full overflow-hidden">
-                          <span className="font-['Inter',_sans-serif] text-xs text-stone-400 tracking-widest w-32 shrink-0">
+                        <div className="flex flex-col md:flex-row py-4 md:py-6 border-b border-rule gap-2 md:gap-8 w-full overflow-hidden">
+                          <span className="text-xs text-ink-2 tracking-widest w-32 shrink-0">
                             {ex.date}
                           </span>
                           <div className="flex flex-col gap-1 w-full overflow-hidden">
-                            <span className="font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-800 tracking-wider break-words hyphens-auto w-full">
+                            <span className="text-sm md:text-base text-ink tracking-wider break-words hyphens-auto w-full">
                               {ex.name}
                             </span>
-                            <span className="font-['Noto_Serif_JP',_serif] text-xs text-stone-500 tracking-wider break-words hyphens-auto w-full">
+                            <span className="text-xs text-ink-2 tracking-wider break-words hyphens-auto w-full">
                               {ex.venue}
                               {ex.remarks && (
-                                <span className="ml-2 before:content-['|'] before:mr-2 before:text-stone-300">
+                                <span className="ml-2 before:content-['|'] before:mr-2 before:text-ink-2">
                                   {" "}
                                   {ex.remarks}
                                 </span>
@@ -1383,29 +1383,29 @@ export const WorkDetail = () => {
       </article>
 
       {/* 15. 他作品への回遊導線 */}
-      <nav className="w-full max-w-[100vw] border-t border-stone-200 mt-32 md:mt-48 overflow-hidden block">
+      <nav className="w-full max-w-[100vw] border-t border-rule mt-32 md:mt-48 overflow-hidden block">
         <div className="w-full max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-3 overflow-hidden block">
           {/* 前の作品へ */}
           {prevWork ? (
             <Link
               to={`/work/${prevWork.id}`}
-              className="col-span-1 border-r border-stone-200 p-6 md:p-12 hover:bg-stone-50 transition-colors group flex flex-col justify-center"
+              className="col-span-1 border-r border-rule p-6 md:p-12 hover:bg-ink/[0.03] transition-colors group flex flex-col justify-center"
             >
               <div className="flex items-center gap-2 mb-4">
                 <ArrowLeft
-                  className="w-3 h-3 text-stone-400 group-hover:text-stone-800 transition-colors"
+                  className="w-3 h-3 text-ink-2 group-hover:text-ink transition-colors"
                   strokeWidth={1.5}
                 />
-                <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
+                <span className="text-xs text-ink-2 uppercase tracking-widest group-hover:text-ink transition-colors">
                   Prev
                 </span>
               </div>
-              <span className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-800 tracking-widest break-words line-clamp-2">
+              <span className="text-xs md:text-sm text-ink tracking-widest break-words line-clamp-2">
                 {prevWork.title}
               </span>
             </Link>
           ) : (
-            <div className="col-span-1 border-r border-stone-200 p-6 md:p-12 bg-stone-50/50" />
+            <div className="col-span-1 border-r border-rule p-6 md:p-12 bg-ink/[0.02]" />
           )}
 
           {/* トップへ戻る (モバイルでは非表示か、またはデザインを変える) */}
@@ -1413,13 +1413,13 @@ export const WorkDetail = () => {
             onClick={() =>
               window.scrollTo({ top: 0, behavior: "smooth" })
             }
-            className="hidden md:flex col-span-1 border-r border-stone-200 p-6 md:p-12 hover:bg-stone-50 transition-colors group flex-col items-center justify-center"
+            className="hidden md:flex col-span-1 border-r border-rule p-6 md:p-12 hover:bg-ink/[0.03] transition-colors group flex-col items-center justify-center"
           >
             <ArrowUp
-              className="w-4 h-4 text-stone-400 group-hover:-translate-y-1 group-hover:text-stone-800 transition-all duration-300 mb-3"
+              className="w-4 h-4 text-ink-2 group-hover:-translate-y-1 group-hover:text-ink transition-all duration-300 mb-3"
               strokeWidth={1.5}
             />
-            <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
+            <span className="text-xs text-ink-2 uppercase tracking-widest group-hover:text-ink transition-colors">
               Back to Top
             </span>
           </button>
@@ -1428,23 +1428,23 @@ export const WorkDetail = () => {
           {nextWork ? (
             <Link
               to={`/work/${nextWork.id}`}
-              className="col-span-1 p-6 md:p-12 hover:bg-stone-50 transition-colors group flex flex-col items-end justify-center text-right"
+              className="col-span-1 p-6 md:p-12 hover:bg-ink/[0.03] transition-colors group flex flex-col items-end justify-center text-right"
             >
               <div className="flex items-center gap-2 mb-4">
-                <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest group-hover:text-stone-800 transition-colors">
+                <span className="text-xs text-ink-2 uppercase tracking-widest group-hover:text-ink transition-colors">
                   Next
                 </span>
                 <ArrowRight
-                  className="w-3 h-3 text-stone-400 group-hover:text-stone-800 transition-colors"
+                  className="w-3 h-3 text-ink-2 group-hover:text-ink transition-colors"
                   strokeWidth={1.5}
                 />
               </div>
-              <span className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-800 tracking-widest break-words line-clamp-2">
+              <span className="text-xs md:text-sm text-ink tracking-widest break-words line-clamp-2">
                 {nextWork.title}
               </span>
             </Link>
           ) : (
-            <div className="col-span-1 p-6 md:p-12 bg-stone-50/50" />
+            <div className="col-span-1 p-6 md:p-12 bg-ink/[0.02]" />
           )}
         </div>
 
@@ -1453,13 +1453,13 @@ export const WorkDetail = () => {
           onClick={() =>
             window.scrollTo({ top: 0, behavior: "smooth" })
           }
-          className="w-full flex md:hidden border-t border-stone-200 p-6 hover:bg-stone-50 transition-colors items-center justify-center gap-2 group"
+          className="w-full flex md:hidden border-t border-rule p-6 hover:bg-ink/[0.03] transition-colors items-center justify-center gap-2 group"
         >
           <ArrowUp
-            className="w-3 h-3 text-stone-400"
+            className="w-3 h-3 text-ink-2"
             strokeWidth={1.5}
           />
-          <span className="font-['Inter',_sans-serif] text-[10px] text-stone-400 uppercase tracking-widest">
+          <span className="text-xs text-ink-2 uppercase tracking-widest">
             Back to Top
           </span>
         </button>
@@ -1467,7 +1467,7 @@ export const WorkDetail = () => {
 
       {expandedImage && (
         <motion.div
-          className="hidden md:flex fixed inset-0 z-[200] items-center justify-center bg-stone-950/88 px-10 py-10"
+          className="hidden md:flex fixed inset-0 z-[200] items-center justify-center bg-ink/90 px-10 py-10"
           onClick={() => setExpandedImage(null)}
           role="dialog"
           aria-modal="true"
@@ -1480,7 +1480,7 @@ export const WorkDetail = () => {
           <button
             type="button"
             onClick={() => setExpandedImage(null)}
-            className="absolute right-6 top-6 font-['Inter',_sans-serif] text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors"
+            className="absolute right-6 top-6 text-xs tracking-[0.2em] uppercase text-paper/70 hover:text-paper transition-colors"
             aria-label="拡大表示を閉じる"
           >
             Close
@@ -1506,7 +1506,7 @@ export const WorkDetail = () => {
               />
             </button>
             {expandedImage.caption && (
-              <p className="font-['Noto_Serif_JP',_serif] text-xs tracking-wider text-white/75">
+              <p className="text-xs tracking-wider text-paper/75">
                 {expandedImage.caption}
               </p>
             )}

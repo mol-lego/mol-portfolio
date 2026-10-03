@@ -40,18 +40,18 @@ export const About = () => {
   });
 
   if (!isProfileReady) {
-    return <main className="w-full min-h-screen bg-white" />;
+    return <main className="w-full min-h-screen" />;
   }
 
   return (
-    <main className="w-full bg-white pb-32 pt-24 md:pt-32">
+    <main className="w-full pb-32 pt-24 md:pt-32">
       {/* 1. 戻る導線 */}
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 mb-16 md:mb-24">
         <Link
           to="/"
           className="inline-flex items-center gap-2 group"
         >
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="text-xs text-ink-2 group-hover:text-ink tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -66,7 +66,7 @@ export const About = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="w-32 sm:w-40 lg:w-full shrink-0 aspect-square bg-stone-50 overflow-hidden relative"
+                className="w-32 sm:w-40 lg:w-full shrink-0 aspect-square bg-ink/5 overflow-hidden relative"
               >
                 <img
                   src={profileImage}
@@ -76,16 +76,16 @@ export const About = () => {
                   className="w-full h-full object-cover"
                   loading="eager"
                   decoding="async"
-                  fetchPriority="high"
+                  {...{ fetchpriority: "high" }}
                 />
               </motion.figure>
 
               <FadeIn delay={0.2}>
                 <div className="flex flex-col gap-2">
-                  <h1 className="font-['Inter',_sans-serif] text-3xl md:text-4xl font-light text-stone-900 tracking-wider">
+                  <h1 className="text-3xl md:text-4xl text-ink tracking-wider">
                     mol
                   </h1>
-                  <p className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mt-1">
+                  <p className="text-xs text-ink-2 tracking-[0.2em] uppercase mt-1">
                     ビルダー 
                   </p>
                 </div>
@@ -93,34 +93,34 @@ export const About = () => {
             </div>
 
             <FadeIn delay={0.3}>
-              <div className="flex flex-col gap-4 pt-6 lg:pt-8 border-t border-stone-100 w-full">
-                <h3 className="font-['Inter',_sans-serif] text-[10px] text-stone-400 tracking-[0.2em] uppercase">
+              <div className="flex flex-col gap-4 pt-6 lg:pt-8 border-t border-rule w-full">
+                <h3 className="text-xs text-ink-2 tracking-[0.2em] uppercase">
                   Links & Social
                 </h3>
-                <div className="flex flex-col gap-3 font-['Inter',_sans-serif] text-xs md:text-sm tracking-widest text-stone-600">
-                  <a href="https://x.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors w-fit">Twitter (X)</a>
-                  <a href="https://www.instagram.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors w-fit">Instagram</a>
-                  <a href="https://www.youtube.com/@mamorutanabe1136" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 transition-colors w-fit">YouTube</a>
-                  <a href="mailto:contact@mamorutanabe.com" className="hover:text-stone-900 transition-colors w-fit">Contact</a>
+                <div className="flex flex-col gap-3 text-xs md:text-sm tracking-widest text-ink-2">
+                  <a href="https://x.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors w-fit">Twitter (X)</a>
+                  <a href="https://www.instagram.com/mol_lego" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors w-fit">Instagram</a>
+                  <a href="https://www.youtube.com/@mamorutanabe1136" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors w-fit">YouTube</a>
+                  <a href="mailto:contact@mamorutanabe.com" className="hover:text-ink transition-colors w-fit">Contact</a>
                 </div>
               </div>
             </FadeIn>
           </div>
 
           {/* 右側：バイオグラフィー・コンセプト */}
-          <div className="w-full lg:w-2/3 flex flex-col gap-24 md:gap-32 mt-8 lg:mt-0 pt-8 lg:pt-0 border-t border-stone-200 lg:border-none">
+          <div className="w-full lg:w-2/3 flex flex-col gap-24 md:gap-32 mt-8 lg:mt-0 pt-8 lg:pt-0 border-t border-rule lg:border-none">
             
             {/* Concept / Statement */}
             <section className="flex flex-col gap-8 w-full">
               <FadeIn>
-                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
+                <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-4 border-b border-rule pb-4">
                   Introduction
                 </h2>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <div className="flex flex-col gap-6 md:gap-8 font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-700 leading-loose tracking-[0.08em] text-justify break-words">
+                <div className="flex flex-col gap-6 md:gap-8 text-sm md:text-base text-ink leading-loose tracking-[0.08em] text-justify break-words">
                   <p>
-                    3メートル級の大型のものから手のひらサイズのものまで、LEGO<sup>&reg;</sup>ブロックを使った作品を制作しています。
+                    3メートル級の大型のものから手のひらサイズのものまで、LEGO®ブロックを使った作品を制作しています。
                   </p>
                   <p>
                     現在は東大レゴ部に所属し、個人制作に加えて共同制作も行っています。中高時代は灘校レゴ同好会に所属しており、クイーンエリザベス号（3.5万ピース）や八坂神社西楼門（5.2万ピース）などの大型作品を制作・展示してきました。
@@ -138,7 +138,7 @@ export const About = () => {
             {/* Profile / History */}
             <section className="flex flex-col gap-8 w-full">
               <FadeIn>
-                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
+                <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-4 border-b border-rule pb-4">
                   Profile & History
                 </h2>
               </FadeIn>
@@ -154,12 +154,12 @@ export const About = () => {
                   ].map((item, i) => (
                     <div
                       key={i}
-                      className="flex flex-col md:flex-row md:items-baseline py-6 border-b border-stone-100 gap-2 md:gap-8 w-full"
+                      className="flex flex-col md:flex-row md:items-baseline py-6 border-b border-rule gap-2 md:gap-8 w-full"
                     >
-                      <span className="font-['Inter',_sans-serif] text-sm text-stone-400 tracking-wider shrink-0 w-30">
+                      <span className="text-sm text-ink-2 tracking-wider shrink-0 w-30">
                         {item.year}
                       </span>
-                      <span className="font-['Noto_Serif_JP',_serif] text-sm text-stone-800 tracking-wider leading-relaxed">
+                      <span className="text-sm text-ink tracking-wider leading-relaxed">
                         {item.text}
                       </span>
                     </div>
@@ -171,7 +171,7 @@ export const About = () => {
             {/* Gallery */}
             <section className="flex flex-col gap-8 w-full">
               <FadeIn>
-                <h2 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] uppercase mb-4 border-b border-stone-200 pb-4">
+                <h2 className="text-xs text-ink-2 tracking-[0.2em] uppercase mb-4 border-b border-rule pb-4">
                   Gallery
                 </h2>
               </FadeIn>
@@ -186,7 +186,7 @@ export const About = () => {
                       { src: about5, src2x: about52x, alt: "デザインした灘レゴTシャツ" },
                       { src: about4, src2x: about42x, alt: "展示会の様子" },
                     ].map((image, index) => (
-                      <figure key={index} className="w-full bg-stone-100 overflow-hidden group">
+                      <figure key={index} className="w-full bg-ink/5 overflow-hidden group">
                         <img
                           src={image.src}
                           srcSet={`${image.src} 1x, ${image.src2x} 2x`}

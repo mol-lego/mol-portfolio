@@ -11,7 +11,7 @@ export const Layout = ({ children }: { children?: ReactNode }) => {
   }, [location.key]);
 
   return (
-    <div className="min-h-screen bg-[#fcfbf9] text-[#222222] selection:bg-stone-300 selection:text-stone-900 flex flex-col font-['Inter',_sans-serif] relative overflow-x-hidden">
+    <div className="min-h-screen bg-paper text-ink flex flex-col relative overflow-x-hidden">
       {/* Paper noise texture overlay */}
       <div 
         className="pointer-events-none fixed inset-0 z-50 opacity-[0.03] mix-blend-multiply" 

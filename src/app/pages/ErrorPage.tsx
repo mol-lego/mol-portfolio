@@ -14,10 +14,10 @@ const ErrorState = ({ code, label, title, message }: ErrorStateProps) => {
   useDocumentTitle(`mol - ${code}`);
 
   return (
-    <main className="w-full bg-white pb-32 pt-24 md:pt-32">
+    <main className="w-full pb-32 pt-24 md:pt-32">
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 mb-16 md:mb-24">
         <Link to="/" className="inline-flex items-center gap-2 group">
-          <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 group-hover:text-stone-900 tracking-widest uppercase transition-colors">
+          <span className="text-xs text-ink-2 group-hover:text-ink tracking-widest uppercase transition-colors">
             ← Back to Home
           </span>
         </Link>
@@ -28,43 +28,43 @@ const ErrorState = ({ code, label, title, message }: ErrorStateProps) => {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="grid gap-12 border-t border-stone-200 pt-10 md:grid-cols-[180px_minmax(0,1fr)] md:gap-20 md:pt-14"
+          className="grid gap-12 border-t border-rule pt-10 md:grid-cols-[180px_minmax(0,1fr)] md:gap-20 md:pt-14"
         >
           <div className="flex flex-col gap-2">
-            <span className="font-['Inter',_sans-serif] text-5xl md:text-7xl font-light text-stone-300 tracking-[0.08em]">
+            <span className="text-5xl md:text-7xl text-ink-2 tracking-[0.08em]">
               {code}
             </span>
-            <span className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.28em] uppercase">
+            <span className="text-xs text-ink-2 tracking-[0.28em] uppercase">
               {label}
             </span>
           </div>
 
           <div className="flex flex-col gap-8 md:gap-10">
             <div className="flex flex-col gap-4 md:gap-6">
-              <h1 className="font-['Noto_Serif_JP',_serif] text-3xl md:text-5xl text-stone-900 tracking-[0.06em] leading-tight">
+              <h1 className="text-3xl md:text-5xl text-ink tracking-[0.06em] leading-tight">
                 {title}
               </h1>
-              <p className="max-w-2xl font-['Noto_Serif_JP',_serif] text-sm md:text-base text-stone-600 leading-loose tracking-[0.08em]">
+              <p className="max-w-2xl text-sm md:text-base text-ink-2 leading-loose tracking-[0.08em]">
                 {message}
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 border-t border-stone-100 pt-8 md:flex-row md:items-center md:gap-10">
+            <div className="flex flex-col gap-4 border-t border-rule pt-8 md:flex-row md:items-center md:gap-10">
               <Link
                 to="/"
-                className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.22em] uppercase hover:text-stone-900 transition-colors"
+                className="text-xs text-ink-2 tracking-[0.22em] uppercase hover:text-ink transition-colors"
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.22em] uppercase hover:text-stone-900 transition-colors"
+                className="text-xs text-ink-2 tracking-[0.22em] uppercase hover:text-ink transition-colors"
               >
                 About
               </Link>
               <Link
                 to="/process"
-                className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-500 tracking-[0.22em] uppercase hover:text-stone-900 transition-colors"
+                className="text-xs text-ink-2 tracking-[0.22em] uppercase hover:text-ink transition-colors"
               >
                 Process
               </Link>

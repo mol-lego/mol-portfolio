@@ -91,16 +91,16 @@ export const ARViewer = () => {
 
   return (
     <div 
-      className="min-h-screen bg-stone-900 text-stone-100 flex flex-col font-['Inter',_sans-serif] relative overflow-hidden"
+      className="min-h-screen bg-ink text-paper flex flex-col relative overflow-hidden"
       onWheel={handleWheel}
     >
       {/* Header */}
-      <header className="absolute top-0 left-0 w-full p-6 z-50 flex justify-between items-center bg-gradient-to-b from-stone-900/80 to-transparent">
+      <header className="absolute top-0 left-0 w-full p-6 z-50 flex justify-between items-center bg-gradient-to-b from-ink/80 to-transparent">
         <div className="flex items-center gap-2">
-          <Box className="w-5 h-5 text-stone-300" />
-          <span className="text-xs tracking-[0.2em] font-medium text-stone-300">AR VIEWER</span>
+          <Box className="w-5 h-5 text-paper/80" />
+          <span className="text-xs tracking-[0.2em] text-paper/80">AR VIEWER</span>
         </div>
-        <Link to="/" className="w-10 h-10 rounded-full bg-stone-800/50 backdrop-blur-md flex items-center justify-center hover:bg-stone-700 transition-colors">
+        <Link to="/" className="w-10 h-10 rounded-full bg-paper/10 flex items-center justify-center hover:bg-paper/20 transition-colors">
           <X className="w-5 h-5" />
         </Link>
       </header>
@@ -126,14 +126,14 @@ export const ARViewer = () => {
                     className="w-full h-full object-cover"
                     decoding="async"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent flex flex-col justify-end p-6 md:p-10">
-                    <span className="text-stone-400 text-xs tracking-widest mb-2 font-['Inter',_sans-serif]">No. {work.id}</span>
-                    <h2 className="text-2xl md:text-4xl font-['Noto_Serif_JP',_serif] text-stone-100 mb-1">{work.title}</h2>
-                    <h3 className="text-sm md:text-base text-stone-400 font-light mb-6 tracking-wider">{work.subtitle}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent flex flex-col justify-end p-6 md:p-10">
+                    <span className="text-paper/70 text-xs tracking-widest mb-2">No. {work.id}</span>
+                    <h2 className="text-2xl md:text-4xl text-paper mb-1">{work.title}</h2>
+                    <h3 className="text-sm md:text-base text-paper/70 mb-6 tracking-wider">{work.subtitle}</h3>
                     
-                    <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md self-start px-6 py-3 rounded-full border border-white/20 group-hover:bg-white/20 transition-colors">
+                    <div className="inline-flex items-center gap-3 bg-paper/10 self-start px-6 py-3 rounded-full border border-paper/20 group-hover:bg-paper/20 transition-colors">
                       <Box className="w-4 h-4" />
-                      <span className="text-xs font-medium tracking-widest">TAP TO VIEW IN AR</span>
+                      <span className="text-xs tracking-widest">TAP TO VIEW IN AR</span>
                     </div>
                   </div>
                 </motion.div>
@@ -143,22 +143,22 @@ export const ARViewer = () => {
           <div className="pointer-events-none absolute inset-y-0 left-0 right-0 z-10 flex items-center justify-between px-2 md:px-4">
             <button
               onClick={() => sliderRef.current?.slickPrev()}
-              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full border border-stone-700 bg-stone-800/80 backdrop-blur-md transition-colors hover:bg-stone-700/90 active:bg-stone-700 md:h-14 md:w-14"
+              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full border border-paper/20 bg-ink/80 transition-colors hover:bg-ink active:bg-ink md:h-14 md:w-14"
               aria-label="前の作品"
             >
-              <ChevronLeft className="h-6 w-6 text-stone-300" />
+              <ChevronLeft className="h-6 w-6 text-paper/80" />
             </button>
             <button
               onClick={() => sliderRef.current?.slickNext()}
-              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full border border-stone-700 bg-stone-800/80 backdrop-blur-md transition-colors hover:bg-stone-700/90 active:bg-stone-700 md:h-14 md:w-14"
+              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full border border-paper/20 bg-ink/80 transition-colors hover:bg-ink active:bg-ink md:h-14 md:w-14"
               aria-label="次の作品"
             >
-              <ChevronRight className="h-6 w-6 text-stone-300" />
+              <ChevronRight className="h-6 w-6 text-paper/80" />
             </button>
           </div>
         </div>
 
-        <p className="text-stone-500 text-xs tracking-[0.2em] uppercase mt-14 hidden md:block">
+        <p className="text-paper/70 text-xs tracking-[0.2em] uppercase mt-14 hidden md:block">
           Swipe to explore • Tap to view in AR
         </p>
       </div>
@@ -168,8 +168,8 @@ export const ARViewer = () => {
         .ar-slider .slick-slide { transition: all 0.3s ease; opacity: 0.5; transform: scale(0.9); }
         .ar-slider .slick-center { opacity: 1; transform: scale(1); }
         .ar-slider .slick-dots { bottom: -42px; }
-        .ar-slider .slick-dots li button:before { color: #a8a29e; font-size: 8px; }
-        .ar-slider .slick-dots li.slick-active button:before { color: #fff; }
+        .ar-slider .slick-dots li button:before { color: var(--paper); font-size: 8px; }
+        .ar-slider .slick-dots li.slick-active button:before { color: var(--paper); }
       `}} />
     </div>
   );
