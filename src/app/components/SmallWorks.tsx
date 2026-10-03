@@ -8,6 +8,9 @@ import imgCastle from '../../assets/optimized/castle-card.jpg';
 import imgCastle2x from '../../assets/optimized/castle-card@2x.jpg';
 import imgHouse from '../../assets/optimized/dreamhouse-card.jpg';
 import imgHouse2x from '../../assets/optimized/dreamhouse-card@2x.jpg';
+import { BRICK, FLOOR_GAP_CM, getRender, renderSize, renderSrc, renderSrcSet, type Render } from '../renderImages';
+import { Brick } from './Brick';
+import { ScaleCaption } from './SameScale';
 
 const SMALL_WORKS = [
   {
@@ -62,6 +65,130 @@ const SMALL_WORKS = [
     offset: "md:mt-40"
   }
 ];
+
+// 実物大の帯に置く作品（レンダリングのキー）。夢の家（投影の幅 50cm・高さ 25cm）は帯の高さを
+// 決めてしまい、ほかの作品の上が大きく空くので外す。帯の高さは歩道橋とタクシー（約 15cm）で決まる
+const BAND = [
+  { id: "05", render: "bed" },
+  { id: "06", render: "overpass" },
+  { id: "07", render: "castle" },
+];
+
+/**
+ * 実物大の帯の1つの場所。幅は外接直方体を写した矩形の実寸（CSS の cm）、高さは床の基準点
+ * （底面の中心）まで。帯の中で下端を揃えるので、全作品の基準点が同じ高さ＝同じ床に並ぶ。
+ * 画像は左右の余白の分だけ外へ出し、手前側と影は下へはみ出す。キャプションはその下に置く。
+ */
+const ActualItem = ({
+  render,
+  caption,
+  children,
+}: {
+  render: Render;
+  caption: React.ReactNode;
+  children: React.ReactNode;
+}) => (
+  <figure className="row-span-2 grid grid-rows-subgrid">
+    <div
+      className="relative self-end"
+      style={{ width: `${render.proj_w_cm}cm`, height: `${render.ref_cm.y}cm` }}
+    >
+      {children}
+    </div>
+    <figcaption
+      className="whitespace-nowrap"
+      style={{ paddingTop: `${render.h_cm - render.ref_cm.y + 0.3}cm` }}
+    >
+      {caption}
+    </figcaption>
+  </figure>
+);
+
+/** 作品の画像を、余白の分だけ左へ出して実寸の幅で置く */
+const actualImageStyle = (render: Render): React.CSSProperties => ({
+  left: `${-render.margin_cm}cm`,
+  width: `${render.w_cm}cm`,
+});
+
+/**
+ * 実物大。小さな作品（夢の家を除く3点）と 2×4 ブロックのレンダリングを CSS の cm で実寸の幅に置く。
+ * CSS の 1cm は 96dpi 換算の 37.8px なので、画面上ではほぼ実物の大きさになる。
+ * 床（底面の中心）の高さを揃え、投影した矩形の間を 2cm にした 1 本の横スクロールの帯。
+ */
+const ActualSizeBand = () => (
+  <div className="mt-24 md:mt-40">
+    <div className="flex items-center gap-6 mb-6 md:mb-8">
+      <div className="flex flex-col gap-1">
+        <h3 className="font-['Inter',_sans-serif] text-xs md:text-sm font-medium tracking-[0.3em] uppercase text-stone-900">
+          Actual Size
+        </h3>
+        <p className="font-['Noto_Serif_JP',_serif] text-[10px] md:text-xs text-stone-500 tracking-widest">
+          実物大
+        </p>
+      </div>
+      <div className="h-[1px] bg-stone-300 flex-1" />
+    </div>
+
+    <p className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-600 leading-relaxed tracking-[0.08em] font-light">
+      画面上でほぼ実物の大きさです（96dpi 換算）。横にスクロールできます。
+    </p>
+
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      role="region"
+      aria-label="実物大の作品（横にスクロールできます）"
+      tabIndex={0}
+      className="mt-8 md:mt-12 overflow-x-auto"
+    >
+      <div
+        className="grid grid-flow-col auto-cols-max grid-rows-[auto_auto] w-max pl-[1cm] pr-[1cm] pb-6"
+        style={{ columnGap: `${FLOOR_GAP_CM}cm` }}
+      >
+        <ActualItem render={BRICK} caption={<ScaleCaption title="2×4 ブロック" />}>
+          <Brick
+            className="absolute top-0 h-auto max-w-none"
+            style={actualImageStyle(BRICK)}
+            sizes="150px"
+            label="2×4 ブロック"
+            loading="lazy"
+          />
+        </ActualItem>
+
+        {BAND.map(({ id, render: key }) => {
+          const work = SMALL_WORKS.find((item) => item.id === id)!;
+          const render = getRender(key);
+          return (
+            <ActualItem
+              key={id}
+              render={render}
+              caption={
+                <ScaleCaption
+                  title={work.title}
+                  meta={`${work.year} / ${work.scale.split(" / ")[0]}`}
+                />
+              }
+            >
+              <img
+                src={renderSrc(render)}
+                srcSet={renderSrcSet(render)}
+                sizes={`${render.w_cm.toFixed(2)}cm`}
+                {...renderSize(render)}
+                alt={`${work.title}（${work.subtitle}）を斜め上から見た図`}
+                className="absolute top-0 h-auto max-w-none"
+                style={actualImageStyle(render)}
+                loading="lazy"
+                decoding="async"
+              />
+            </ActualItem>
+          );
+        })}
+      </div>
+    </motion.div>
+  </div>
+);
 
 export const SmallWorks = () => {
   const [expandedImage, setExpandedImage] = useState<{
@@ -174,6 +301,8 @@ export const SmallWorks = () => {
             </motion.article>
           ))}
         </div>
+
+        <ActualSizeBand />
       </section>
 
       {expandedImage && (

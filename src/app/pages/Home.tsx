@@ -2,6 +2,7 @@ import React from 'react';
 import { Hero } from '../components/Hero';
 import { LargeWorks } from '../components/LargeWorks';
 import { SmallWorks } from '../components/SmallWorks';
+import { SameScale } from '../components/SameScale';
 import { MakingNotes } from '../components/MakingNotes';
 import { ARSection } from '../components/ARSection';
 import { AboutSection } from '../components/AboutSection';
@@ -44,6 +45,7 @@ export const Home = () => {
         <>
           <LargeWorks />
           <SmallWorks />
+          <SameScale />
           <MakingNotes />
           <ARSection />
           <AboutSection />

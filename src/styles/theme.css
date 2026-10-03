@@ -206,3 +206,19 @@
     line-height: 1.7;
   }
 }
+
+/*
+ * 「同じ縮尺で」の客船の段の演出（components/SameScale.tsx）。
+ * JS が段に data-scale-intro="pending" を付けているあいだだけ、2×4 ブロックを大きく箱の中央に置き
+ * （位置と幅は要素の style の --intro-*）、客船を透明にする。属性がなければ、要素の style の
+ * ままの終わりの状態（実縮尺のブロックと客船）になる。
+ */
+[data-scale-intro="pending"] .scale-intro-brick {
+  left: var(--intro-left) !important;
+  top: var(--intro-top) !important;
+  width: var(--intro-w) !important;
+}
+
+[data-scale-intro="pending"] .scale-intro-qe {
+  opacity: 0;
+}
