@@ -16,16 +16,18 @@ import imgVenezia2x from "../../assets/optimized/venice1-card@2x.jpg";
 import imgYasaka from "../../assets/optimized/workdetail/yasaka1.jpg";
 import imgHawaii from "../../assets/optimized/hawaii1-card.jpg";
 import imgHawaii2x from "../../assets/optimized/hawaii1-card@2x.jpg";
-import imgBedroom from "../../assets/optimized/hospital-card.jpg";
-import imgBedroom2x from "../../assets/optimized/hospital-card@2x.jpg";
+import { arWorks } from "../works.js";
 
-const AR_WORKS = [
-  { id: "01", title: "クイーンエリザベス号", subtitle: "MS Queen Elizabeth", image: imgQueenElizabeth, image2x: imgQueenElizabeth2x },
-  { id: "02", title: "ヴェネツィア", subtitle: "Venice", image: imgVenezia, image2x: imgVenezia2x },
-  { id: "03", title: "八坂神社 西楼門", subtitle: "Yasaka Shrine", image: imgYasaka, image2x: imgYasaka },
-  { id: "04", title: "ハワイ火山国立公園", subtitle: "Hawaii Volcanoes", image: imgHawaii, image2x: imgHawaii2x },
-  { id: "05", title: "病院の一室", subtitle: "Hospital Room", image: imgBedroom, image2x: imgBedroom2x },
-];
+// AR ビューアの写真（slug ごと）
+const AR_IMAGES: Record<string, { image: string; image2x: string }> = {
+  qe: { image: imgQueenElizabeth, image2x: imgQueenElizabeth2x },
+  venice: { image: imgVenezia, image2x: imgVenezia2x },
+  yasaka: { image: imgYasaka, image2x: imgYasaka },
+  hawaii: { image: imgHawaii, image2x: imgHawaii2x },
+};
+
+// AR のある作品だけを並べる
+const AR_WORKS = arWorks.map((work) => ({ ...work, ...AR_IMAGES[work.slug] }));
 
 export const ARViewer = () => {
   const navigate = useNavigate();
@@ -130,7 +132,7 @@ export const ARViewer = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent flex flex-col justify-end p-6 md:p-10">
                     <span className="text-stone-400 text-xs tracking-widest mb-2 font-['Inter',_sans-serif]">No. {work.id}</span>
                     <h2 className="text-2xl md:text-4xl font-['Noto_Serif_JP',_serif] text-stone-100 mb-1">{work.title}</h2>
-                    <h3 className="text-sm md:text-base text-stone-400 font-light mb-6 tracking-wider">{work.subtitle}</h3>
+                    <h3 className="text-sm md:text-base text-stone-400 font-light mb-6 tracking-wider">{work.titleEn}</h3>
                     
                     <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md self-start px-6 py-3 rounded-full border border-white/20 group-hover:bg-white/20 transition-colors">
                       <Box className="w-4 h-4" />

@@ -17,8 +17,8 @@ import { getARStaticUrl, getAppPath } from "../arPaths";
 import { useImagePreload } from "../useImagePreload";
 import { useIsMobile } from "../components/ui/use-mobile";
 import { usePrefersReducedMotion } from "../reducedMotion";
+import { detailWorks, formatCount, getWork, type Work } from "../works.js";
 
-import imgQE1 from "../../assets/optimized/workdetail/msqe1.jpg";
 import imgQE2 from "../../assets/optimized/workdetail/msqe2.jpg";
 import imgQE3 from "../../assets/optimized/workdetail/msqe3.jpg";
 import imgQE4 from "../../assets/optimized/workdetail/msqe4.jpg";
@@ -34,7 +34,6 @@ import imgQE13 from "../../assets/optimized/workdetail/msqe13.jpg";
 import imgQE14 from "../../assets/optimized/workdetail/msqe14.jpg";
 import imgQE15 from "../../assets/optimized/workdetail/msqe15.jpg";
 import imgQE16 from "../../assets/optimized/workdetail/msqe16.jpg";
-import imgVenice1 from "../../assets/optimized/workdetail/venice1.jpg";
 import imgVenice2 from "../../assets/optimized/workdetail/venice2.jpg";
 import imgVenice3 from "../../assets/optimized/workdetail/venice3.jpg";
 import imgVenice4 from "../../assets/optimized/workdetail/venice4.jpg";
@@ -52,7 +51,6 @@ import imgVenice16 from "../../assets/optimized/workdetail/venice16.jpg";
 import imgVeniceOriginal1 from "../../assets/optimized/workdetail/venice_original1.jpg";
 import imgVeniceOriginal2 from "../../assets/optimized/workdetail/venice_original2.jpg";
 import imgHawaii1 from "../../assets/optimized/workdetail/hawaii1.jpg";
-import imgHawaii2 from "../../assets/optimized/workdetail/hawaii2.jpg";
 import imgHawaii3 from "../../assets/optimized/workdetail/hawaii3.jpg";
 import imgHawaii4 from "../../assets/optimized/workdetail/hawaii4.jpg";
 import imgHawaii5 from "../../assets/optimized/workdetail/hawaii5.jpg";
@@ -63,7 +61,6 @@ import imgHawaii9 from "../../assets/optimized/workdetail/hawaii9.jpg";
 import imgHawaii10 from "../../assets/optimized/workdetail/hawaii10.jpg";
 import imgHawaii11 from "../../assets/optimized/workdetail/hawaii11.jpg";
 import imgHawaii12 from "../../assets/optimized/workdetail/hawaii12.jpg";
-import imgYasaka1 from "../../assets/optimized/workdetail/yasaka1.jpg";
 import imgYasaka2 from "../../assets/optimized/workdetail/yasaka2.jpg";
 import imgYasaka3 from "../../assets/optimized/workdetail/yasaka3.jpg";
 import imgYasaka4 from "../../assets/optimized/workdetail/yasaka4.jpg";
@@ -85,13 +82,6 @@ import imgARCardYasaka2x from "../../assets/optimized/yasaka-ar-card@2x.png";
 import imgARCardHawaii from "../../assets/optimized/hawaii-ar-card.png";
 import imgARCardHawaii2x from "../../assets/optimized/hawaii-ar-card@2x.png";
 
-const WORKS_SEQUENCE = [
-  { id: "01", title: "クイーンエリザベス号" },
-  { id: "02", title: "ヴェネツィア" },
-  { id: "03", title: "八坂神社西楼門" },
-  { id: "04", title: "ハワイ火山国立公園" },
-];
-
 const ARIcon = () => (
   <svg
     viewBox="0 0 48 48"
@@ -108,22 +98,40 @@ const ARIcon = () => (
   </svg>
 );
 
-const WORKS_DATA = {
-  "01": {
-    id: "01",
-    category: "大型作品",
-    categoryEn: "LARGE SCALE",
+type Photo = { url: string; caption: string; span?: string };
+
+type Exhibition = { date: string; name: string; venue: string; remarks?: string };
+
+/**
+ * 作品詳細ページだけに出す中身（slug ごと）。作品名・英題・完成年・寸法・ピース数・主画像・
+ * AR のページは works.js から読む。
+ */
+type WorkDetailContent = {
+  prefix?: string;
+  arCardImage?: string;
+  arCardImage2x?: string;
+  /** データの表で、寸法・ピース数・完成年のあとに並べる行 */
+  extraStats: { label: string; value: string }[];
+  overview: string[];
+  gallery: Photo[];
+  sliderGallery: Photo[];
+  behindTheScenes: { title: string; content: string }[];
+  behindTheScenesGallery: Photo[];
+  media?: { youtubeId?: string; noteUrl?: string; noteDescription?: string };
+  exhibitions: Exhibition[];
+};
+
+// 作品詳細のある作品の区分（作品詳細があるのは大型作品だけ）
+const CATEGORY: Partial<Record<Work["group"], { ja: string; en: string }>> = {
+  large: { ja: "大型作品", en: "LARGE SCALE" },
+};
+
+const WORK_DETAILS: Record<string, WorkDetailContent> = {
+  qe: {
     prefix: "豪華客船",
-    title: "クイーンエリザベス号",
-    titleEn: "MS Queen Elizabeth",
-    year: "2019",
-    mainVisual: imgQE1,
     arCardImage: imgARCardQE,
     arCardImage2x: imgARCardQE2x,
-    stats: [
-      { label: "全長", value: "3m" },
-      { label: "ピース数", value: "35,000個" },
-      { label: "完成年", value: "2019年" },
+    extraStats: [
       { label: "制作期間", value: "1年" },
       { label: "所要時間", value: "300時間" },
     ],
@@ -223,7 +231,6 @@ const WORKS_DATA = {
       noteDescription:
         "船体の曲面表をはじめ、設計における工夫やこだわりポイントをnoteにまとめています。",
     },
-    hasAR: true,
     exhibitions: [
       {
         date: "2019年5月",
@@ -313,21 +320,11 @@ const WORKS_DATA = {
       },
     ],
   },
-  "02": {
-    id: "02",
-    category: "大型作品",
-    categoryEn: "LARGE SCALE",
+  venice: {
     prefix: "水の都",
-    title: "ヴェネツィア",
-    titleEn: "Venice",
-    year: "2025",
-    mainVisual: imgVenice1,
     arCardImage: imgARCardVenice,
     arCardImage2x: imgARCardVenice2x,
-    stats: [
-      { label: "サイズ", value: "1m四方" },
-      { label: "ピース数", value: "50,000個" },
-      { label: "完成年", value: "2025年" },
+    extraStats: [
       { label: "制作期間", value: "半年" },
       { label: "所要時間", value: "のべ1000時間" },
       { label: "制作体制", value: "4名での合作" },
@@ -423,7 +420,6 @@ const WORKS_DATA = {
       noteDescription:
         "題材の決定や全体のスケジュールから、作者4人それぞれの設計の工夫やこだわり、作品撮影などについて全7編にわたって解説しています。",
     },
-    hasAR: true,
     exhibitions: [
       {
         date: "2025年11月",
@@ -442,20 +438,10 @@ const WORKS_DATA = {
       },
     ],
   },
-  "03": {
-    id: "03",
-    category: "大型作品",
-    categoryEn: "LARGE SCALE",
-    title: "八坂神社 西楼門",
-    titleEn: "Yasaka Shrine West Gate",
-    year: "2020",
-    mainVisual: imgYasaka1,
+  yasaka: {
     arCardImage: imgARCardYasaka,
     arCardImage2x: imgARCardYasaka2x,
-    stats: [
-      { label: "サイズ", value: "全幅2.3m" },
-      { label: "ピース数", value: "52,000個" },
-      { label: "完成年", value: "2020年" },
+    extraStats: [
       { label: "制作期間", value: "1年" },
       { label: "所要時間", value: "200時間" },
     ],
@@ -532,7 +518,6 @@ const WORKS_DATA = {
       }
 
     ],
-    hasAR: true,
     media: {
       youtubeId: "EfCpyw82vzI",
       noteUrl: "https://note.com/nadalegoclub/n/nb364df0a1304?magazine_key=m5d976d857aab",
@@ -582,20 +567,10 @@ const WORKS_DATA = {
       },
     ],
   },
-  "04": {
-    id: "04",
-    category: "大型作品",
-    categoryEn: "LARGE SCALE",
-    title: "ハワイ火山国立公園",
-    titleEn: "Hawaii Volcanoes National Park",
-    year: "2020",
-    mainVisual: imgHawaii2,
+  hawaii: {
     arCardImage: imgARCardHawaii,
     arCardImage2x: imgARCardHawaii2x,
-    stats: [
-      { label: "サイズ", value: "直径1m" },
-      { label: "ピース数", value: "10,000個" },
-      { label: "完成年", value: "2020年" },
+    extraStats: [
       { label: "所要時間", value: "140時間" },
     ],
     overview: [
@@ -653,7 +628,6 @@ const WORKS_DATA = {
         caption: "作品のために作った専用の等高線図",
       },
     ],
-    hasAR: true,
     exhibitions: [
       {
         date: "2020年2月~3月",
@@ -711,11 +685,31 @@ const FadeIn = ({
   </motion.div>
 );
 
+/** works.js の作品と、作品詳細の中身を合わせる。作品詳細のない作品は null */
+const getWorkDetail = (id: string | undefined) => {
+  const base = getWork(id);
+  const content = base?.detail ? WORK_DETAILS[base.slug] : undefined;
+  const category = base && CATEGORY[base.group];
+  if (!base || !base.main || !content || !category) return null;
+  return {
+    ...base,
+    ...content,
+    category: category.ja,
+    categoryEn: category.en,
+    mainVisual: base.main.src,
+    hasAR: Boolean(base.ar),
+    stats: [
+      { label: "サイズ", value: base.size },
+      { label: "ピース数", value: `${formatCount(base.pieces)}個` },
+      { label: "完成年", value: `${base.year}年` },
+      ...content.extraStats,
+    ],
+  };
+};
+
 export const WorkDetail = () => {
   const { id } = useParams();
-  const work = id
-    ? WORKS_DATA[id as keyof typeof WORKS_DATA]
-    : null;
+  const work = getWorkDetail(id);
   const reduceMotion = usePrefersReducedMotion();
   useDocumentTitle(work ? `mol - ${work.title}` : "mol - 作品");
   const isMainVisualReady = useImagePreload(work?.mainVisual ?? "");
@@ -804,14 +798,14 @@ export const WorkDetail = () => {
     setExpandedImage({ src, alt, caption });
   };
 
-  const currentIndex = WORKS_SEQUENCE.findIndex(
+  const currentIndex = detailWorks.findIndex(
     (w) => w.id === work.id,
   );
   const prevWork =
-    currentIndex > 0 ? WORKS_SEQUENCE[currentIndex - 1] : null;
+    currentIndex > 0 ? detailWorks[currentIndex - 1] : null;
   const nextWork =
-    currentIndex < WORKS_SEQUENCE.length - 1
-      ? WORKS_SEQUENCE[currentIndex + 1]
+    currentIndex < detailWorks.length - 1
+      ? detailWorks[currentIndex + 1]
       : null;
   const arExperiencePath =
     getARStaticUrl(work.id, getAppPath(`/work/${work.id}`)) ??
@@ -857,9 +851,9 @@ export const WorkDetail = () => {
             {/* 4. 作品タイトル & 5. 制作年 */}
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 w-full">
               <div className="flex-1 w-full">
-                {(work as any).prefix && (
+                {work.prefix && (
                   <span className="font-['Noto_Serif_JP',_serif] text-base md:text-lg text-stone-700 tracking-widest block mb-1">
-                    {(work as any).prefix}
+                    {work.prefix}
                   </span>
                 )}
                 <h1 className="font-['Noto_Serif_JP',_serif] text-3xl md:text-5xl lg:text-6xl text-stone-900 tracking-[0.05em] leading-tight mb-2 md:mb-4 break-words hyphens-auto w-full">

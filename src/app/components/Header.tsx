@@ -2,6 +2,7 @@ import React, { useState, useEffect, useId, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 
 import { Link, useLocation } from 'react-router';
+import { detailWorks } from '../works.js';
 
 export const Header = () => {
   const { scrollY } = useScroll();
@@ -59,13 +60,6 @@ export const Header = () => {
       closeWorks();
     }
   };
-
-  const worksList = [
-    { id: "01", title: "クイーンエリザベス号" },
-    { id: "02", title: "ヴェネツィア" },
-    { id: "03", title: "八坂神社 西楼門" },
-    { id: "04", title: "ハワイ火山国立公園" },
-  ];
 
   useEffect(() => {
     setIsVisible(window.scrollY > (typeof window !== "undefined" ? window.innerHeight * 0.8 : 500));
@@ -139,7 +133,7 @@ export const Header = () => {
             >
               <div className="absolute inset-0 bg-white/80 backdrop-blur-lg" />
               <ul className="relative flex flex-col py-2">
-                {worksList.map(work => (
+                {detailWorks.map(work => (
                   <li key={work.id}>
                     <Link 
                       to={`/work/${work.id}`} 

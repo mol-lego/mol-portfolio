@@ -1,78 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import imgBedroom from '../../assets/optimized/hospital-card.jpg';
-import imgBedroom2x from '../../assets/optimized/hospital-card@2x.jpg';
-import imgHighway from '../../assets/optimized/overpass-card.jpg';
-import imgHighway2x from '../../assets/optimized/overpass-card@2x.jpg';
-import imgCastle from '../../assets/optimized/castle-card.jpg';
-import imgCastle2x from '../../assets/optimized/castle-card@2x.jpg';
-import imgHouse from '../../assets/optimized/dreamhouse-card.jpg';
-import imgHouse2x from '../../assets/optimized/dreamhouse-card@2x.jpg';
 import { BRICK, FLOOR_GAP_CM, getRender, renderSize, renderSrc, renderSrcSet, type Render } from '../renderImages';
+import { cardSrcSet, formatScale, smallWorksSizeRange, worksInGroup } from '../works.js';
 import { Brick } from './Brick';
 import { ScaleCaption } from './SameScale';
 
-const SMALL_WORKS = [
-  {
-    id: "05",
-    title: "病院のベッド",
-    subtitle: "Hospital Bed",
-    year: "2025",
-    scale: "8cm / 127ピース",
-    desc: "味気ない入院生活もブロックの世界なら楽しくなるかな？と思って作りました。5年ぶりに公開した復帰作です。",
-    image: imgBedroom,
-    image2x: imgBedroom2x,
-    aspect: "aspect-square",
-    colSpan: "md:col-span-5"
-  },
-  {
-    id: "06",
-    title: "歩道橋とタクシー",
-    subtitle: "Overpass & Taxi",
-    year: "2025",
-    scale: "8cm / 255ピース",
-    desc: "どこにでもありそうな何気ない風景です。見る人によって想像する時間帯が変わりそうです。",
-    image: imgHighway,
-    image2x: imgHighway2x,
-    aspect: "aspect-[3/4]",
-    colSpan: "md:col-span-4",
-    offset: "md:mt-24"
-  },
-  {
-    id: "07",
-    title: "小さなお城",
-    subtitle: "Mini Castle",
-    year: "2021",
-    scale: "8cm / 202ピース",
-    desc: "特にモデルはありませんが、関西人なので姫路城と大阪城を無意識に思い出していたかもしれません。活動休止中の作品なのでこれまで未公開でした。大学4年間で唯一の作品です。",
-    image: imgCastle,
-    image2x: imgCastle2x,
-    aspect: "aspect-square",
-    colSpan: "md:col-span-4",
-    offset: "md:-mt-12"
-  },
-  {
-    id: "08",
-    title: "夢の家",
-    subtitle: "Dream House",
-    year: "2025",
-    scale: "40cm / 2,300ピース",
-    desc: "お花に囲まれたお庭でアフターヌーンティをしたい……　という思いで作りました。",
-    image: imgHouse,
-    image2x: imgHouse2x,
-    aspect: "aspect-[4/3]",
-    colSpan: "md:col-span-5",
-    offset: "md:mt-40"
-  }
-];
+// 写真の縦横比と、格子の中の幅・ずらし（slug ごと）
+const LAYOUT: Record<string, { aspect: string; colSpan: string; offset?: string }> = {
+  bed: { aspect: "aspect-square", colSpan: "md:col-span-5" },
+  overpass: { aspect: "aspect-[3/4]", colSpan: "md:col-span-4", offset: "md:mt-24" },
+  castle: { aspect: "aspect-square", colSpan: "md:col-span-4", offset: "md:-mt-12" },
+  house: { aspect: "aspect-[4/3]", colSpan: "md:col-span-5", offset: "md:mt-40" },
+};
 
-// 実物大の帯に置く作品（レンダリングのキー）。夢の家（投影の幅 50cm・高さ 25cm）は帯の高さを
+const SMALL_WORKS = worksInGroup('small').map((work) => ({ ...work, ...LAYOUT[work.slug] }));
+
+// 実物大の帯に置く作品（slug。renders.js のキーと同じ）。夢の家（投影の幅 50cm・高さ 25cm）は帯の高さを
 // 決めてしまい、ほかの作品の上が大きく空くので外す。帯の高さは歩道橋とタクシー（約 15cm）で決まる
-const BAND = [
-  { id: "05", render: "bed" },
-  { id: "06", render: "overpass" },
-  { id: "07", render: "castle" },
-];
+const BAND = ["bed", "overpass", "castle"];
 
 /**
  * 実物大の帯の1つの場所。幅は外接直方体を写した矩形の実寸（CSS の cm）、高さは床の基準点
@@ -157,26 +102,21 @@ const ActualSizeBand = () => (
           />
         </ActualItem>
 
-        {BAND.map(({ id, render: key }) => {
-          const work = SMALL_WORKS.find((item) => item.id === id)!;
-          const render = getRender(key);
+        {BAND.map((slug) => {
+          const work = SMALL_WORKS.find((item) => item.slug === slug)!;
+          const render = getRender(slug);
           return (
             <ActualItem
-              key={id}
+              key={slug}
               render={render}
-              caption={
-                <ScaleCaption
-                  title={work.title}
-                  meta={`${work.year} / ${work.scale.split(" / ")[0]}`}
-                />
-              }
+              caption={<ScaleCaption title={work.title} meta={`${work.year} / ${work.size}`} />}
             >
               <img
                 src={renderSrc(render)}
                 srcSet={renderSrcSet(render)}
                 sizes={`${render.w_cm.toFixed(2)}cm`}
                 {...renderSize(render)}
-                alt={`${work.title}（${work.subtitle}）を斜め上から見た図`}
+                alt={`${work.title}（${work.titleEn}）を斜め上から見た図`}
                 className="absolute top-0 h-auto max-w-none"
                 style={actualImageStyle(render)}
                 loading="lazy"
@@ -193,7 +133,7 @@ const ActualSizeBand = () => (
 export const SmallWorks = () => {
   const [expandedImage, setExpandedImage] = useState<{
     src: string;
-    src2x: string;
+    src2x?: string;
     alt: string;
   } | null>(null);
 
@@ -225,7 +165,7 @@ export const SmallWorks = () => {
               Small Works
             </h2>
             <p className="font-['Noto_Serif_JP',_serif] text-[10px] md:text-xs text-stone-500 tracking-widest">
-              10〜30cmくらいの小さな作品
+              {smallWorksSizeRange()}くらいの小さな作品
             </p>
           </div>
           <div className="h-[1px] bg-stone-300 flex-1" />
@@ -244,13 +184,13 @@ export const SmallWorks = () => {
             >
               <button
                 type="button"
-                onClick={() => setExpandedImage({ src: work.image, src2x: work.image2x, alt: work.title })}
+                onClick={() => setExpandedImage({ src: work.card.src, src2x: work.card.src2x, alt: work.title })}
                 className={`w-full overflow-hidden bg-stone-100 mb-6 ${work.aspect} relative text-left cursor-zoom-in`}
                 aria-label={`${work.title} を拡大表示`}
               >
                 <img
-                  src={work.image}
-                  srcSet={`${work.image} 1x, ${work.image2x} 2x`}
+                  src={work.card.src}
+                  srcSet={cardSrcSet(work.card)}
                   sizes="(min-width: 768px) 45vw, 100vw"
                   alt={work.title}
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
@@ -269,7 +209,7 @@ export const SmallWorks = () => {
                     {work.title}
                   </h3>
                   <h4 className="font-['Inter',_sans-serif] text-[10px] md:text-xs text-stone-400 tracking-[0.2em] font-light mt-1 md:mt-1.5 pl-1">
-                    {work.subtitle}
+                    {work.titleEn}
                   </h4>
                 </div>
 
@@ -288,13 +228,13 @@ export const SmallWorks = () => {
                         Scale
                       </span>
                       <span className="text-stone-700 text-right">
-                        {work.scale}
+                        {formatScale(work)}
                       </span>
                     </div>
                   </div>
 
                   <p className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-600 mt-4 md:mt-5 leading-relaxed tracking-[0.08em] font-light text-justify">
-                    {work.desc}
+                    {work.summary}
                   </p>
                 </div>
               </div>
@@ -314,7 +254,7 @@ export const SmallWorks = () => {
             <figure className="flex max-w-[90vw] flex-col items-center gap-4">
             <img
               src={expandedImage.src}
-              srcSet={`${expandedImage.src} 1x, ${expandedImage.src2x} 2x`}
+              srcSet={cardSrcSet(expandedImage)}
               sizes="100vw"
               alt={expandedImage.alt}
               className="h-auto max-h-[72vh] max-w-[90vw] object-contain shadow-2xl md:max-h-[78vh] md:max-w-[80vw]"

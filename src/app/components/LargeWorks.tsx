@@ -1,60 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router';
-import imgQE from '../../assets/optimized/msqe2-card.jpg';
-import imgQE2x from '../../assets/optimized/msqe2-card@2x.jpg';
-import imgVenezia from '../../assets/optimized/venice1-card.jpg';
-import imgVenezia2x from '../../assets/optimized/venice1-card@2x.jpg';
-import imgYasaka from '../../assets/yasaka3.jpeg';
-import imgHawaii from '../../assets/optimized/hawaii1-card.jpg';
-import imgHawaii2x from '../../assets/optimized/hawaii1-card@2x.jpg';
+import { cardSrcSet, formatScale, worksInGroup } from '../works.js';
 
-const LARGE_WORKS = [
-  {
-    id: "01",
-    title: "クイーンエリザベス号",
-    subtitle: "MS Queen Elizabeth",
-    year: "2019",
-    scale: "全長3m / 約35,000ピース",
-    desc: "初めて制作した大型作品。設計・組み立てに1年を費やしました。灘校レゴ同好会時代の作品です。",
-    image: imgQE,
-    image2x: imgQE2x,
-    linkText: "YouTube メイキング"
-  },
-  {
-    id: "02",
-    title: "ヴェネツィア",
-    subtitle: "Venice",
-    year: "2025",
-    scale: "1m四方 / 約50,000ピース",
-    desc: "灘レゴOB・現東大レゴ部の4人での合作。緻密な街並みの表現にはこだわりがたくさん。東大での学祭を中心に各地で展示予定です。",
-    image: imgVenezia,
-    image2x: imgVenezia2x,
-    linkText: "制作記 note"
-  },
-  {
-    id: "03",
-    title: "八坂神社 西楼門",
-    subtitle: "Yasaka Shrine",
-    year: "2020",
-    scale: "2.5m / 約50,000ピース",
-    desc: "京都・祇園の象徴的な存在とも言える楼門。灘校レゴ同好会時代の作品。",
-    image: imgYasaka,
-    image2x: imgYasaka,
-    linkText: "YouTube メイキング"
-  },
-  {
-    id: "04",
-    title: "ハワイ火山国立公園",
-    subtitle: "Hawaii Volcanoes",
-    year: "2021",
-    scale: "直径1m / 約10,000ピース",
-    desc: "ハワイ諸島の火山を再現した作品。初めてご依頼をいただいて制作した作品であり、電飾が施されています。「『レゴ®ブロック』で作った世界遺産展」に参加しました。",
-    image: imgHawaii,
-    image2x: imgHawaii2x,
-    linkText: ""
-  }
-];
+const LARGE_WORKS = worksInGroup('large');
 
 export const LargeWorks = () => {
   return (
@@ -83,8 +32,8 @@ export const LargeWorks = () => {
           >
             <Link to={`/work/${work.id}`} className="block aspect-[4/3] w-full overflow-hidden bg-stone-100 mb-8 relative">
               <img
-                src={work.image}
-                srcSet={`${work.image} 1x, ${work.image2x} 2x`}
+                src={work.card.src}
+                srcSet={cardSrcSet(work.card)}
                 sizes="(min-width: 768px) 50vw, 100vw"
                 alt={work.title}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -105,7 +54,7 @@ export const LargeWorks = () => {
                   {work.title}
                 </h3>
                 <h4 className="font-['Inter',_sans-serif] text-xs md:text-sm text-stone-400 tracking-[0.2em] font-light mt-1 md:mt-2 pl-1">
-                  {work.subtitle}
+                  {work.titleEn}
                 </h4>
               </div>
 
@@ -124,13 +73,13 @@ export const LargeWorks = () => {
                       Scale
                     </span>
                     <span className="text-stone-700 text-right">
-                      {work.scale}
+                      {formatScale(work)}
                     </span>
                   </div>
                 </div>
 
                 <p className="font-['Noto_Serif_JP',_serif] text-xs md:text-sm text-stone-600 mt-4 md:mt-5 leading-relaxed tracking-[0.08em] font-light text-justify">
-                  {work.desc}
+                  {work.summary}
                 </p>
 
                 <Link

@@ -3,6 +3,10 @@ import { motion, useScroll, useTransform } from "motion/react";
 import imgHero from "../../assets/optimized/msqe1-hero.jpg";
 import imgHero2x from "../../assets/optimized/msqe1-hero@2x.jpg";
 import { useImagePreload } from "../useImagePreload";
+import { getWork } from "../works.js";
+
+// 冒頭の写真の作品
+const HERO_WORK = getWork("01")!;
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -68,10 +72,10 @@ export const Hero = () => {
           </div>
           <figcaption className="mt-6 flex flex-col gap-2 pl-1 border-l border-stone-200 ml-1 py-1 px-3">
             <span className="font-['Noto_Serif_JP',_serif] text-sm font-medium text-stone-800 tracking-[0.1em]">
-              クイーンエリザベス号
+              {HERO_WORK.title}
             </span>
             <span className="font-['Inter',_sans-serif] text-[10px] tracking-widest text-stone-400 uppercase">
-              MS Queen Elizabeth — 2019
+              {HERO_WORK.titleEn} — {HERO_WORK.year}
             </span>
           </figcaption>
         </motion.figure>
@@ -139,10 +143,10 @@ export const Hero = () => {
           <figcaption className="mt-8 flex justify-between items-end shrink-0">
             <div className="flex flex-col gap-2 border-l border-stone-200 pl-4 py-1">
               <span className="font-['Noto_Serif_JP',_serif] text-base lg:text-lg font-medium text-stone-800 tracking-[0.1em]">
-                クイーンエリザベス号
+                {HERO_WORK.title}
               </span>
               <span className="font-['Inter',_sans-serif] text-xs lg:text-sm tracking-widest text-stone-400 uppercase">
-                MS Queen Elizabeth — 2019
+                {HERO_WORK.titleEn} — {HERO_WORK.year}
               </span>
             </div>
             

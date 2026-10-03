@@ -9,6 +9,7 @@ import {
   renderSrc,
   renderSrcSet,
 } from "../renderImages";
+import { getWorkBySlug, type Work } from "../works.js";
 import { Brick } from "./Brick";
 
 /** 作品名　年 / 寸法（「同じ縮尺で」と「実物大」の各図の下に置く1行） */
@@ -31,13 +32,8 @@ export const ScaleCaption = ({
   </>
 );
 
-// 大型作品4点（大きい順）。値は LargeWorks.tsx と同じ（寸法は Scale の「/」より前）
-const ROWS = [
-  { id: "01", render: "qe", title: "クイーンエリザベス号", subtitle: "MS Queen Elizabeth", year: "2019", size: "全長3m" },
-  { id: "03", render: "yasaka", title: "八坂神社 西楼門", subtitle: "Yasaka Shrine", year: "2020", size: "2.5m" },
-  { id: "02", render: "venice", title: "ヴェネツィア", subtitle: "Venice", year: "2025", size: "1m四方" },
-  { id: "04", render: "hawaii", title: "ハワイ火山国立公園", subtitle: "Hawaii Volcanoes", year: "2021", size: "直径1m" },
-];
+// 大型作品4点（大きい順。slug は renders.js のキーと同じ）
+const ROWS = ["qe", "yasaka", "venice", "hawaii"].map(getWorkBySlug);
 
 // いちばん大きい客船を本文の幅いっぱいにし、ほかは同じ縮尺で縮める
 const BASE = getRender("qe");
@@ -202,8 +198,6 @@ const useBrickIntro = (
   }, [inView, rowRef, frameRef, brickRef, qeRef]);
 };
 
-type Row = (typeof ROWS)[number];
-
 /** 1段: 作品のレンダリングと、左端の床の 2×4 ブロック、その下のキャプション */
 const RowBody = ({
   work,
@@ -211,12 +205,12 @@ const RowBody = ({
   qeRef,
   brickRef,
 }: {
-  work: Row;
+  work: Work;
   frameRef?: React.Ref<HTMLDivElement>;
   qeRef?: React.Ref<HTMLImageElement>;
   brickRef?: React.Ref<HTMLImageElement>;
 }) => {
-  const render = getRender(work.render);
+  const render = getRender(work.slug);
   const ratio = render.w_cm / BASE.w_cm;
   const isIntro = Boolean(brickRef);
 
@@ -229,7 +223,7 @@ const RowBody = ({
           srcSet={renderSrcSet(render)}
           sizes={`(min-width: 1400px) ${Math.round(1304 * ratio)}px, (min-width: 768px) calc((100vw - 96px) * ${ratio.toFixed(3)}), calc((100vw - 48px) * ${ratio.toFixed(3)})`}
           {...renderSize(render)}
-          alt={`${work.title}（${work.subtitle}）を斜め上から見た図`}
+          alt={`${work.title}（${work.titleEn}）を斜め上から見た図`}
           className={`block w-full h-auto${isIntro ? " scale-intro-qe" : ""}`}
           loading="lazy"
           decoding="async"

@@ -17,6 +17,10 @@ import about6 from '../../assets/optimized/about6-gallery.jpg';
 import about62x from '../../assets/optimized/about6-gallery@2x.jpg';
 import { useDocumentTitle } from '../useDocumentTitle';
 import { useImagePreload } from '../useImagePreload';
+import { formatPiecesInMan, getWork } from '../works.js';
+
+const QE = getWork("01")!;
+const YASAKA = getWork("03")!;
 
 // Aboutページ専用のフェードインコンポーネント
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
@@ -123,7 +127,7 @@ export const About = () => {
                     3メートル級の大型のものから手のひらサイズのものまで、ブロックを使った作品を制作しています。
                   </p>
                   <p>
-                    現在は東大レゴ部に所属し、個人制作に加えて共同制作も行っています。中高時代は灘校レゴ同好会に所属しており、クイーンエリザベス号（3.5万ピース）や八坂神社西楼門（5.2万ピース）などの大型作品を制作・展示してきました。
+                    現在は東大レゴ部に所属し、個人制作に加えて共同制作も行っています。中高時代は灘校レゴ同好会に所属しており、{QE.title}（{formatPiecesInMan(QE)}）や{YASAKA.title}（{formatPiecesInMan(YASAKA)}）などの大型作品を制作・展示してきました。
                   </p>
                   <p>
                     本サイトでは、作品それぞれの写真や制作記、メイキング映像などに加えて、作品の3Dモデルを実物大で呼び出せるAR（拡張現実）による展示を導入しています。新型コロナウイルスの影響で高校最後の文化祭がオンライン開催へと変更を余儀なくされたことをきっかけに開発したものです。
