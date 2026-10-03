@@ -27,7 +27,7 @@
  * @property {string} [src2x] 2x の画像（幅は width の2倍）
  * @property {number} width   1x の画像の幅（px）
  * @property {number} height  1x の画像の高さ（px）
- * @property {string} [aspect] トップで切り抜くときの縦横比（CSS の aspect-ratio）
+ * @property {string} [thumbPosition] 小さな作品の一覧の正方形サムネイルで、作品が切れないようにする object-position
  */
 
 /**
@@ -172,7 +172,7 @@ export const works = [
       src2x: new URL("../assets/optimized/hospital-card@2x.jpg", import.meta.url).href,
       width: 900,
       height: 600,
-      aspect: "1 / 1",
+      thumbPosition: "50% 50%",
     },
     detail: false,
   },
@@ -192,7 +192,7 @@ export const works = [
       src2x: new URL("../assets/optimized/overpass-card@2x.jpg", import.meta.url).href,
       width: 466,
       height: 700,
-      aspect: "3 / 4",
+      thumbPosition: "50% 55%",
     },
     detail: false,
   },
@@ -212,7 +212,7 @@ export const works = [
       src2x: new URL("../assets/optimized/castle-card@2x.jpg", import.meta.url).href,
       width: 900,
       height: 600,
-      aspect: "1 / 1",
+      thumbPosition: "50% 50%",
     },
     detail: false,
   },
@@ -232,7 +232,8 @@ export const works = [
       src2x: new URL("../assets/optimized/dreamhouse-card@2x.jpg", import.meta.url).href,
       width: 900,
       height: 600,
-      aspect: "4 / 3",
+      // 横に広い庭は正方形に収まらないため、家を残して右端の庭を切る
+      thumbPosition: "30% 50%",
     },
     detail: false,
   },

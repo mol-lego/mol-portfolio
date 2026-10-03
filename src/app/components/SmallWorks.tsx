@@ -144,8 +144,8 @@ export const SmallWorks = () => {
                 alt={`${work.title}（${work.titleEn}）`}
                 width={work.image.width}
                 height={work.image.height}
-                style={{ aspectRatio: work.image.aspect }}
-                className="block w-full h-auto object-cover bg-ink/5"
+                style={{ objectPosition: work.image.thumbPosition }}
+                className="block w-full h-auto aspect-square object-cover bg-ink/5"
                 loading="lazy"
                 decoding="async"
               />
