@@ -145,7 +145,7 @@ export const RENDERS = {
   },
   "bed": {
     "w_cm": 12.058,
-    "h_cm": 10.379,
+    "h_cm": 10.382,
     "proj_w_cm": 10.766,
     "margin_cm": 0.646,
     "ref_cm": {
